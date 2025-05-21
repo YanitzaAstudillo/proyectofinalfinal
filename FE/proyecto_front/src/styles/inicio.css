@@ -1,0 +1,35 @@
+
+.body{
+    
+    background-image: url("portada2.jpg");
+    background-size: cover;
+    background: linear-gradient(90deg,
+         #17224d,
+         #17224d
+    );
+}
+.titulo{
+    position: absolute; z-index: 3;
+    left: 20em;
+    top: 70px;
+    word-spacing: 30px;
+    letter-spacing: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+#boton1{
+    background: linear-gradient(90deg,
+    rgb(89, 0, 255),
+    rgba(41, 6, 94, 0.814),
+    black
+    );
+    color: white;
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding: 40px;
+    margin: 9px;
+    position: absolute; z-index: 3;
+    left: 45em;
+    top: 150px;
+}
