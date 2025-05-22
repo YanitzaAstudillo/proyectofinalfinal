@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-#REST_FRAMEWORK ={
-     #'DEFAULT_AUTHENTICATION_CLASSES':(
-        # 'rest_framework_simplejwt.authetication.JWTAuthentication',
-    # )
- #}
+REST_FRAMEWORK ={
+     'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authetication.JWTAuthentication',
+     )
+ }
 
  #SIMPLE_JWT = {
    # 'ACESS_TOKEN_LIFETIME':timedelta (minutes=60),
@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'PROYECTOFINAL.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PROYECTOBEFE',
         'USER': 'root',
         'PASSWORD': '',

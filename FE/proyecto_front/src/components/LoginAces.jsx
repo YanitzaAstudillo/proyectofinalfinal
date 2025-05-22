@@ -12,7 +12,15 @@ const LoginAces = () => {
         <p className="title">Login</p>
         <form className="form">
           <div className="input-group">
-            <label htmlFor="username">Usuario / email</label>
+            <label htmlFor="username">Nombre</label>
+            <input type="text" name="username" id="username" placeholder />
+          </div>
+          <div className="input-group">
+            <label htmlFor="username">Apellido</label>
+            <input type="text" name="username" id="username" placeholder />
+          </div>
+          <div className="input-group">
+            <label htmlFor="username">Email</label>
             <input type="text" name="username" id="username" placeholder />
           </div>
           <div className="input-group">

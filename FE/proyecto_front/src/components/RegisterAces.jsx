@@ -11,7 +11,11 @@ function RegisterAces() {
             <p className="title">Regístrese</p>
          <form className="form">
           <div className="input-group">
-            <label htmlFor="username">Usuario</label>
+            <label htmlFor="username">Nombre</label>
+            <input type="text" name="username" id="username" placeholder />
+          </div>
+          <div className="input-group">
+            <label htmlFor="username">Apellido</label>
             <input type="text" name="username" id="username" placeholder />
           </div>
           <div className="input-group">
