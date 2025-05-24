@@ -15,14 +15,8 @@ const LoginAces = () => {
             <label htmlFor="username">Nombre</label>
             <input type="text" name="username" id="username" placeholder />
           </div>
-          <div className="input-group">
-            <label htmlFor="username">Apellido</label>
-            <input type="text" name="username" id="username" placeholder />
-          </div>
-          <div className="input-group">
-            <label htmlFor="username">Email</label>
-            <input type="text" name="username" id="username" placeholder />
-          </div>
+          
+          
           <div className="input-group">
             <label htmlFor="password">Contraseña</label>
             <input type="password" name="password" id="password" placeholder />

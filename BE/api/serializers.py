@@ -1,16 +1,19 @@
 
 from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 class UsuariosSerializer(serializers.ModelSerializer):
     class Meta:
-        model= Usuarios
-        fields = '__all__'
-    def validate_nombre(self, value):
+        model= User
+        fields = ['first_name', 'last_name','email',]
+
+    def validate_first_name(self, value):
         if len(value) <= 3:
             raise serializers.ValidationError('el nombre debe tener al menos 3 caracteres')
         return value
-    
+
+
 class ContactoSerializer(serializers.ModelSerializer):
     class Meta:
         model= Contacto

@@ -7,6 +7,7 @@ class Usuarios (models.Model):
     direccion = models.CharField(max_length=180)
     telefono= models.CharField(max_length=100)
     esta_afiliado = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.user.username
     

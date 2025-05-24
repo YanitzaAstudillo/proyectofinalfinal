@@ -3,9 +3,12 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
 from .serializers import UsuariosSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from django.contrib.auth import authenticate
+
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework.response import Response
+
 
 # Create your views here.
 class CrearUsuarioView(APIView):
@@ -17,8 +20,9 @@ class CrearUsuarioView(APIView):
         email = request.data.get("email")
 
         direccion = request.data.get("direccion")
-        esta_afiliado = request.data.get("esta_afiliado")
         telefono = request.data.get("telefono")
+        esta_afiliado = request.data.get("esta_afiliado", False)
+        esta_afiliado = True if str(esta_afiliado).lower() "true" else False
 
 
         usuario = User.objects.create_user(
@@ -32,11 +36,26 @@ class CrearUsuarioView(APIView):
         Usuarios.objects.create(
             usuario=usuario,
             direccion = direccion,
-            esta_afiliado = esta_afiliado,
-            telefono = telefono
+            telefono = telefono,
+            esta_afiliado = esta_afiliado
         )
 
         return Response({"exito":"Usuario creado"},status=201)
+
+#login con authenticate
+class ValidarUsuarioView(APIView):
+    def post(self,request):
+        username = request.data.get("username")
+        password = request.data.get("password")
+
+        usuario= authenticate(username=username, password=password)
+
+        if usuario is not None:
+            return Response({"exito":"Usuario validado"},status=200)
+        
+        else:
+            return Response({"error":"Usuario no validado"},status=400)
+            
 
 
 class CrearVerFarmacia(ListCreateAPIView):
