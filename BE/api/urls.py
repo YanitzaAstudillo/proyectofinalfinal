@@ -13,7 +13,7 @@ urlpatterns= [
     path('Provincias/', CrearProvinciasView.as_view()),
     path('Clinicas/', CrearClinicasView.as_view()),
     path('Contacto/', CrearContactoView.as_view()),
-    #path('Usuarios/', UsuariosDetailView.as_view()),
+    path('Usuarios/', UsuariosDetailView.as_view()),
     path('Farmacias/',FarmaciasDetailView.as_view),
     path('Especialidades/', EspecialidadesDetailView.as_view()),
     path('Provincias/', ProvinciasDetailView.as_view()),

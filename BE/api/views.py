@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
-from .serializers import UsuariosSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from .serializers import UsuarioCompletoSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 from rest_framework.views import APIView
-from django.contrib.auth.models import User
 from rest_framework.response import Response
 
 
-# Create your views here.
+
+
+# Create your views here
 class CrearUsuarioView(APIView):
     def post(self,request):
         username = request.data.get("username")
@@ -22,8 +23,6 @@ class CrearUsuarioView(APIView):
         direccion = request.data.get("direccion")
         telefono = request.data.get("telefono")
         esta_afiliado = request.data.get("esta_afiliado", False)
-        esta_afiliado = True if str(esta_afiliado).lower() "true" else False
-
 
         usuario = User.objects.create_user(
             username=username,
@@ -37,7 +36,7 @@ class CrearUsuarioView(APIView):
             usuario=usuario,
             direccion = direccion,
             telefono = telefono,
-            esta_afiliado = esta_afiliado
+            esta_afiliado = esta_afiliado,
         )
 
         return Response({"exito":"Usuario creado"},status=201)
@@ -55,7 +54,7 @@ class ValidarUsuarioView(APIView):
         
         else:
             return Response({"error":"Usuario no validado"},status=400)
-            
+
 
 
 class CrearVerFarmacia(ListCreateAPIView):
@@ -83,7 +82,7 @@ class CrearContactoView(ListCreateAPIView):
 class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
     queryset = Usuarios.objects.all()
-    serializer_class = UsuariosSerializer
+    serializer_class = UsuarioCompletoSerializer
 
 class FarmaciasDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"

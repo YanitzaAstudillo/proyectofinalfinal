@@ -2,14 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Usuarios (models.Model):
-    usuario = models.OneToOneField(User,on_delete=models.CASCADE)
+class Usuarios(models.Model):
+    ROL_CHOICES = [
+        ('admin', 'Administrador'),
+        ('afiliado', 'Afiliado'),
+        ('usuario', 'Usuario'),
+    ]
+
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     direccion = models.CharField(max_length=180)
-    telefono= models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
     esta_afiliado = models.BooleanField(default=False)
-    
+    rol = models.CharField(max_length=20, choices=ROL_CHOICES, default='usuario')
+
     def __str__(self):
-        return self.user.username
+        return self.usuario.username
     
 
 class Contacto (models.Model):

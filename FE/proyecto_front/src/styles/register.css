@@ -8,17 +8,17 @@
     );
 }
  
-.form-container {
+.form-container{
   
   width: 320px;
   border-radius: 0.9rem;
   background-color: rgba(17, 24, 39, 1);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
-  margin-top: 150px;
-  position: absolute; z-index: 3;
-    left: 4em;
-    top: 10px;
+  margin-top: 130px;
+  position: absolute; z-index: 1;
+    left: 60em;
+    top: 0.1px;
 }
 
 .title {

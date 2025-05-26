@@ -24,13 +24,17 @@ async function getUsuarios() {
 
 //////////LLAMADO POST//////////
 
-async function postUsuarios(nombreUsuarios, descripcionProducto, precio, cantidad) {
+async function postUsuarios(username,password,first_name,last_name,email, direccion, telefono,esta_afiliado) {
     
     const obj={
-        "nombre":nombreProducto,
-        "descripcion":descripcionProducto,
-        "precio":precio,
-        "cantidad":cantidad
+        "username":username,
+        "password":password,
+        "first_name":first_name,
+        "last_name":last_name,
+        "email":email,
+        "direccion":direccion,
+        "telefono":telefono,
+        "esta_afiliado":esta_afiliado
     };
 
     try {
@@ -55,12 +59,16 @@ async function postUsuarios(nombreUsuarios, descripcionProducto, precio, cantida
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsuarios(nombreUsuarios,descripcionProducto,precio,cantidad,id) {
+async function updateUsuarios(username,password,first_name,last_name,email, direccion, telefono,esta_afiliado,id) {
     const obj={
-        "nombre":nombreProducto,
-        "descripcion":descripcionProducto,
-        "precio":precio,
-        "cantidad":cantidad
+        "username":username,
+        "password":password,
+        "first_name":first_name,
+        "last_name":last_name,
+        "email":email,
+        "direccion":direccion,
+        "telefono":telefono,
+        "esta_afiliado":esta_afiliado
     };
     
     try {
