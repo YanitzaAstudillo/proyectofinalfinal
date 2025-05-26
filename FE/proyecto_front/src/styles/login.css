@@ -1,5 +1,5 @@
 
-.fondo1{
+.fondo2{
   background-image: url("portada2.jpg");
     background-size: cover;
     background: linear-gradient(90deg,
@@ -8,17 +8,17 @@
     );
 }
  
-.form-container {
-  margin-left: 800px;
+.form-container2{
+  margin-left: 0px;
   width: 320px;
   border-radius: 0.9rem;
   background-color: rgba(17, 24, 39, 1);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
-  margin-top: 150px;
+  
   position: absolute; z-index: 3;
-    left: 4em;
-    top: 10px;
+    left: 60em;
+    top: 250px;
 }
 
 .title {

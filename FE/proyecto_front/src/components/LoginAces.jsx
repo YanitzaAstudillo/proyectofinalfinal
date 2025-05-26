@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import '../styles/inicio.css';
-import llamados from '../services/llamados'
+import '../styles/login.css';
+import llamadosLogin from '../services/llamadosLogin'
 import Swal from "sweetalert2";
 
 function LoginAces() {
@@ -13,29 +13,25 @@ function LoginAces() {
     };
 
     const inicioSesion = async (e) => {
-        e.preventDefault();
-        try {
-            const respuesta = await loginUsuario(formData.username, formData.password);
-            if (respuesta.success) {
-                        Swal.fire('Usuario registrado', '¡Registrado con éxito!', 'success');
+            e.preventDefault();
+            const response = await llamadosLogin.postUsuarios(formData.username,formData.password);
 
-            // Opcional: guardar en localStorage
-            localStorage.setItem("usuario", formData.username);
+            console.log(response);
+            
+            if (response.exito) {
+                Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
+            } else {
+                Swal.fire("Error",  "Credenciales inválidas", "error");
+            }
 
-            // Redirigir o actualizar estado global, si usas React Router o contexto
-            // navigate("/dashboard");
-              } else {
-                Swal.fire("Error", "No se pudo registrar el usuario", "error");
-               }
-              } catch (error) {
-              Swal.fire("Error", "Error inesperado del servidor", "error");
-              }
-    };
+        }
+
 
     return (
         <div className="fondo2">
-            <img src="src/assets/portada2.jpg" alt="portada" width="1528" height="738" />
-            <div className="form-container">
+            <img src="src/assets/portada2.jpg" alt="portada" width="1400" height="750" />
+
+            <div className="form-container2">
                 <p className="title">Iniciar Sesión</p>
                 <form className="form" onSubmit={inicioSesion}>
                     <div className="input-group">

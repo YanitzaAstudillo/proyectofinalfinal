@@ -15,10 +15,10 @@
   background-color: rgba(17, 24, 39, 1);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
-  margin-top: 130px;
+  margin-top: 120px;
   position: absolute; z-index: 1;
     left: 60em;
-    top: 0.1px;
+    top: 10px;
 }
 
 .title {
@@ -29,7 +29,7 @@
 }
 
 .form {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-radius: 0.9rem;
 }
 
@@ -43,7 +43,7 @@
 .input-group label {
   display: block;
   color: rgba(156, 163, 175, 1);
-  margin-bottom: 4px;
+  margin-bottom: 1px;
 }
 
 .input-group input {
@@ -58,7 +58,7 @@
 .forgot a,.signup a {
   color: rgba(243, 244, 246, 1);
   text-decoration: none;
-  font-size: 14px;
+  
 }
 
 .sign {
@@ -66,10 +66,16 @@
   border-radius: 1rem;
   width: 100%;
   background-color: aqua;
-  padding: 0.6rem;
+  padding: 0.5rem;
   text-align: center;
   color: rgba(17, 24, 39, 1);
   border: none;
   font-weight: 600;
   box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
+
+#checkbox{
+  margin-left: 40px;
+  position: relative;
+  bottom: 16px;
 }

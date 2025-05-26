@@ -1,4 +1,5 @@
 
+
 async function getUsuarios() {
     try {
         const response = await fetch("http://127.0.0.1:8000/api/Usuarios/", {
@@ -24,28 +25,29 @@ async function getUsuarios() {
 
 //////////LLAMADO POST//////////
 
-async function loginUsuario(username, password) {
+//////////////LOGIN PROTEGIDO/////////////
+
+async function postUsuarios(username,password) {
+    
+    const obj={
+        "username":username,
+        "password":password,
+        
+    };
+
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/login/", {
+        const response = await fetch ("http://127.0.0.1:8000/api/validarUsuario/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
+            body: JSON.stringify(obj)
         });
+        return await response.json();
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'Error al iniciar sesión');
-        }
-
-        return data;
+        
     } catch (error) {
-        console.error("Login error:", error);
+        console.error('Error posting user:', error);
         throw error;
     }
 }
@@ -55,13 +57,8 @@ async function loginUsuario(username, password) {
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsuarios(nombreUsuarios,descripcionProducto,precio,cantidad,id) {
-    const obj={
-        "nombre":nombreProducto,
-        "descripcion":descripcionProducto,
-        "precio":precio,
-        "cantidad":cantidad
-    };
+async function updateUsuarios(username,password,id) {
+    
     
     try {
 

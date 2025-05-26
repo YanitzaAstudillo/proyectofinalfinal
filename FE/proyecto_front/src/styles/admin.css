@@ -1,0 +1,10 @@
+
+.body2{
+    
+    background-image: url("portada2.jpg");
+    background-size: cover;
+    background: linear-gradient(90deg,
+         #17224d,
+         #17224d
+    );
+}

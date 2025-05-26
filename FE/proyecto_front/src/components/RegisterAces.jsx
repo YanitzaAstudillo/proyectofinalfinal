@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import '../styles/register.css';
 import Swal from "sweetalert2";
 import llamados from "../services/llamados";
+
+
 function RegisterAces() {
     const [formData, setFormData] = useState({
         username: '',
@@ -53,7 +55,7 @@ function RegisterAces() {
 
     return (
         <div className="fondo2">
-            <img src="src/assets/portada2.jpg" alt="portada" width="1400" height="820" />
+            <img src="src/assets/portada2.jpg" alt="portada" width="1400" height="760" />
             <div className="form-container">
                 <p className="title">Regístrese</p>
                 <form className="form" onSubmit={enviarDato}>
@@ -89,12 +91,11 @@ function RegisterAces() {
                         <input type="text" name="telefono" value={formData.telefono} onChange={dato} />
                     </div>
                     <div className="input-group">
-                        <label htmlFor="esta_afiliado">
-                            <input type="checkbox" name="esta_afiliado" checked={formData.esta_afiliado} onChange={dato} />
-                            ¿Desea afiliarse?
+                        <label htmlFor="esta_afiliado">¿Desea afiliarse?
+                        <input id="checkbox" type="checkbox" name="esta_afiliado" checked={formData.esta_afiliado} onChange={dato} />
                         </label>
                     </div>
-                    <br />
+                    
                     <button className="sign" type="submit">Enviar</button>
                 </form>
                 
