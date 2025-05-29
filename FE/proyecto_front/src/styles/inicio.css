@@ -1,6 +1,6 @@
 
 .body{
-    
+
     background-image: url("portada2.jpg");
     background-size: cover;
     background: linear-gradient(90deg,
@@ -8,21 +8,42 @@
          #17224d
     );
 }
-.titulo{
+.enlace_sin_linea{
     position: absolute; z-index: 3;
-    left: 20em;
-    top: 70px;
-    word-spacing: 30px;
-    letter-spacing: 10px;
+    left: 6em;
+    top: 82px;
+    
+    letter-spacing: 7px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    font-weight: bolder;
 }
+
+.enlace_sin_lineaa{
+  text-decoration: none;
+  position: absolute; z-index: 3;
+  left: 14.3em;
+  top: 82px;
+  
+  letter-spacing: 7px;
+  font-weight: bolder;
+}
+
+.enlace_sin_linea1{
+  text-decoration: none;
+  position: absolute; z-index: 3;
+  left: 26em;
+  top: 82px;
+  
+  letter-spacing: 7px;
+  font-weight: bolder;
+}
+
 #boton1{
     background: linear-gradient(90deg,
-    rgb(89, 0, 255),
-    rgba(41, 6, 94, 0.814),
-    black
+     black,
+     rgba(41, 6, 94, 0.814),
+     rgb(89, 0, 255)
     );
     color: white;
     border-radius: 10px;
@@ -30,6 +51,107 @@
     padding: 40px;
     margin: 9px;
     position: absolute; z-index: 3;
-    left: 45em;
+    left: 51em;
     top: 150px;
+}
+
+#boton2{
+    background: linear-gradient(90deg,
+      black,
+      rgba(41, 6, 94, 0.814),
+      rgb(89, 0, 255)
+    );
+    color: white;
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding: 40px;
+    margin: 9px;
+    position: absolute; z-index: 3;
+    left: 51em;
+    top: 300px;
+    letter-spacing: 1.5px;
+}
+
+#boton3{
+    background: linear-gradient(90deg,
+     black,
+     rgba(41, 6, 94, 0.814),
+     rgb(89, 0, 255)
+    );
+    color: white;
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    padding-inline: 22px;
+    margin: 10px;
+
+    position: absolute; z-index: 1;
+    left: 51em;
+    top: 450px;
+}
+
+#boton4{
+    background: linear-gradient(90deg,
+     black,
+     rgba(41, 6, 94, 0.814),
+     rgb(89, 0, 255)
+    );
+    color: white;
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding: 40px;
+    margin: 9px;
+    position: absolute; z-index: 3;
+    left: 66em;
+    top: 150px;
+    letter-spacing: 1.5px;
+}
+
+#boton5{
+    background-color: aqua;
+    color: rgba(41, 6, 94, 0.814);
+    
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding-bottom: 39px;
+    padding-top: 39px;
+    padding-inline: 18px;
+    margin: 9px;
+    position: absolute; z-index: 3;
+    left: 66em;
+    top: 300px;
+    font-weight: bold;
+}
+
+#boton6{
+    background: linear-gradient(90deg,
+     black,
+     rgba(41, 6, 94, 0.814),
+     rgb(89, 0, 255)
+    );
+    color: white;
+    border-radius: 10px;
+    border: rgb(60, 59, 59) solid 1px;
+    padding: 40px;
+    margin: 9px;
+    position: absolute; z-index: 3;
+    left: 66em;
+    top: 450px;
+    letter-spacing: 1px;
+}
+
+.reg{
+   color: white; 
+   position: absolute; z-index: 3;
+    left: 56em;
+    top: 600px;
+}
+
+.tituloLogin{
+   position: absolute; z-index: 3;
+    left: 62em;
+    top: 631px;
+   letter-spacing: 3px;
+   font-weight:bolder;
 }

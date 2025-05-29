@@ -29,10 +29,10 @@ function LoginAces() {
 
     return (
         <div className="fondo2">
-            <img src="src/assets/portada2.jpg" alt="portada" width="1400" height="750" />
+            <img src="../src/assets/portada2.jpg" alt="portada" width="1370" height="750" />
 
             <div className="form-container2">
-                <p className="title">Iniciar Sesión</p>
+                <p className="titlee">Iniciar Sesión</p>
                 <form className="form" onSubmit={inicioSesion}>
                     <div className="input-group">
                         <label htmlFor="username">Nombre de Usuario</label>

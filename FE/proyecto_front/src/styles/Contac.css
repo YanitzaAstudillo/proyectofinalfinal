@@ -1,0 +1,52 @@
+
+.todo{
+  background-image: url("portada3.jpg");
+    background-size: cover;
+    background: linear-gradient(90deg,
+         #17224d,
+         #17224d
+    );
+}
+
+#uno{
+    background-color:aqua;
+    color: #17224d;
+    margin-left: 880px;
+    border-radius: 10px;
+    position: absolute; z-index: 1;
+    top: 200px;
+    padding: 30px; 
+}
+
+.field {
+    margin-bottom: 10px;
+  }
+  
+  .field label {
+    display: block;
+    font-size: 12px;
+    color:#17224d;
+  }
+  
+  .field input {
+    display: block;
+    min-width: 250px;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    padding: 6px 30px;
+    font-size: 14px;
+    background-color:#17224d;
+    color: #fff;
+    border-radius: 6px;
+  }
+
+#cuadro{
+ color:#17224d;
+ font-weight: bold;
+ margin-left: 55px;
+}
+

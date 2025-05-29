@@ -55,7 +55,7 @@ function RegisterAces() {
 
     return (
         <div className="fondo2">
-            <img src="src/assets/portada2.jpg" alt="portada" width="1400" height="760" />
+            <img src="../src/assets/portada2.jpg" alt="portada" width="1370" height="760" />
             <div className="form-container">
                 <p className="title">Regístrese</p>
                 <form className="form" onSubmit={enviarDato}>
