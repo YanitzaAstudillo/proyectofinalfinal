@@ -24,7 +24,7 @@
   position: absolute; z-index: 3;
   left: 14.3em;
   top: 82px;
-  
+  color: white;
   letter-spacing: 7px;
   font-weight: bolder;
 }
@@ -34,7 +34,7 @@
   position: absolute; z-index: 3;
   left: 26em;
   top: 82px;
-  
+  color: white;
   letter-spacing: 7px;
   font-weight: bolder;
 }

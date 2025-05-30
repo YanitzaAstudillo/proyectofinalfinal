@@ -90,11 +90,7 @@ function RegisterAces() {
                         <label htmlFor="telefono">Teléfono</label>
                         <input type="text" name="telefono" value={formData.telefono} onChange={dato} />
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="esta_afiliado">¿Desea afiliarse?
-                        <input id="checkbox" type="checkbox" name="esta_afiliado" checked={formData.esta_afiliado} onChange={dato} />
-                        </label>
-                    </div>
+               
                     
                     <button className="sign" type="submit">Enviar</button>
                 </form>

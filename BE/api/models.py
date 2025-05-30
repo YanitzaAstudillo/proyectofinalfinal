@@ -30,6 +30,7 @@ class Farmacias (models.Model):
     nombre_Farmacia= models.CharField(max_length=100)
     direccion_Farmacia= models.CharField(max_length=180)
     telefono_Farmacia= models.CharField(max_length=100)
+    horario_Farmacia = models.TextField()
     def __str__(self):
         return self.nombre_Farmacia
     

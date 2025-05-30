@@ -1,42 +1,45 @@
 
-
+import { useState,useEffect } from 'react';
 import '../styles/farmacia.css';
+import { Link } from 'react-router-dom';
+import CardFarmacia from './CardFarmacia';
+import llamadosFarma from '../services/llamadosFarma';
+import ListCardFarmacia from './ListCardFarmacia';
 
 function Farma() {
-    const lista = [
-        { nombre: "farma1" },
-        { nombre: "farma2" },
-        { nombre: "farma3" },
-    ];
+    const [listaFarmacias,setListaFarmacias] = useState([])
 
+    useEffect(()=>{
+        const traerFarmacias = async()=>{
+            const datos = await llamadosFarma.getFarmacias()
+            console.log(datos);
+            
+            const datosConHorarios = datos.map((farmacia) => ({
+            ...farmacia,
+            horarios: farmacia.horario_Farmacia?.split('\n') || [], //se convierte en un array
+            }));
+
+            setListaFarmacias(datos)
+            setListaFarmacias(datosConHorarios);
+        }
+        traerFarmacias()
+        
+    },[])
+
+   
     return (
-        <div>
-            <ul>
-                {lista.map((farm) => (
-                    <li key={farm.nombre}>{farm.nombre}</li>
-                ))}
-            </ul>
-
-            <div className="btn-group">
-                <button
-                    type="button"
-                    className="btn btn-danger dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                >Dan
-                </button>
-                <button type="button" class="btn btn-outline-primary">Primary</button>
-                <button type="button" class="btn btn-outline-info">Info</button>
-                <button type="button" class="btn btn-outline-light">Light</button>
-                <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#" onClick={(e) => e.preventDefault()}>Action</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={(e) => e.preventDefault()}>Another action</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={(e) => e.preventDefault()}>Something else here</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="#" onClick={(e) => e.preventDefault()}>Separated link</a></li>
-                </ul>
+        <>
+        <div className='body4'>
+            <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
+            <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
+            <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
+            
+            <div className='far'>
+                <ListCardFarmacia farmacias={listaFarmacias}/>
             </div>
+                
         </div>
+        </>
     );
 }
 
