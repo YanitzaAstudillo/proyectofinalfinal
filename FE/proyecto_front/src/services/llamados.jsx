@@ -1,7 +1,7 @@
 
 async function getUsuarios() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/Usuarios/", {
+        const response = await fetch("http://127.0.0.1:8000/api/todos-usuarios/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,21 +59,17 @@ async function postUsuarios(username,password,first_name,last_name,email, direcc
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsuarios(username,password,first_name,last_name,email, direccion, telefono,esta_afiliado,id) {
+async function updateUsuarios(email, direccion, telefono,id) {
     const obj={
-        "username":username,
-        "password":password,
-        "first_name":first_name,
-        "last_name":last_name,
+        
         "email":email,
         "direccion":direccion,
-        "telefono":telefono,
-        "esta_afiliado":esta_afiliado
+        "telefono":telefono
+        
     };
     
     try {
-
-        const response = await fetch(`http://127.0.0.1:8000/api/Usuarios/${id}/`,{
+        const response = await fetch(`http://127.0.0.1:8000/api/editar-usuarios/${id}/`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -96,7 +92,7 @@ async function updateUsuarios(username,password,first_name,last_name,email, dire
 
 async function deleteUsuarios(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/Usuarios/${id}/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/todos-usuarios/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 
 
 import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 import Swal from "sweetalert2";
 import llamados from "../services/llamados";
@@ -56,6 +57,10 @@ function RegisterAces() {
     return (
         <div className="fondo2">
             <img src="../src/assets/portada2.jpg" alt="portada" width="1370" height="760" />
+            <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
+            <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
+            <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
+
             <div className="form-container">
                 <p className="title">Regístrese</p>
                 <form className="form" onSubmit={enviarDato}>

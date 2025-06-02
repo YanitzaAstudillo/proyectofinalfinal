@@ -8,7 +8,9 @@
          #ffffff
     );
 }
+
 .title{
+  margin-top: 30px;
   text-align: center;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -31,11 +33,66 @@
 #boton9{
   border-radius: 1rem;
   width: 100%;
-  background-color: aqua;
+  background-color: white;
   padding: 0.5rem;
   text-align: center;
   color: rgba(17, 24, 39, 1);
   border: none;
   font-weight:bold;
   box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
+#boton9:hover{
+  background-color:aqua;
+}
+
+#boton10{
+  border-radius: 1rem;
+  width: 100%;
+  margin-top: 70px;
+  background-color: white;
+  padding: 0.5rem;
+  text-align: center;
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  font-weight:bold;
+  box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
+
+#boton11{
+  border-radius: 1rem;
+  width: 100%;
+  margin-top: 70px;
+  background-color: white;
+  padding: 0.5rem;
+  text-align: center;
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  font-weight:bold;
+  box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
+
+#boton12{
+  border-radius: 1rem;
+  width: 100%;
+  margin-top: 70px;
+  background-color:white;
+  padding: 0.5rem;
+  text-align: center;
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  font-weight:bold;
+  box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
+
+#redo{
+  border-radius: 0.5px;
+  outline: auto;
+}
+
+.dentro{
+  gap: 16px;
+  flex-wrap: wrap;
+  position: absolute; z-index: 3;
+    left: 50em;
+    top: 100px;
 }

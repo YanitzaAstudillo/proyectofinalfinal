@@ -1,22 +1,35 @@
 
 from django.urls import path
-from .views import CrearUsuarioView,CrearVerFarmacia, CrearEspecialidadesView, CrearProvinciasView
-from .views import CrearClinicasView, CrearContactoView
-from .views import UsuariosDetailView, FarmaciasDetailView, EspecialidadesDetailView, ProvinciasDetailView
-from .views import ClinicasDetailView, ContactoDetailView, ValidarUsuarioView
+from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView
+
+from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView
+from .views import CrearEspecialidadesView, EspecialidadesDetailView
+from .views import CrearProvinciasView, ProvinciasDetailView
+from .views import CrearClinicasView,ClinicasDetailView
+from .views import CrearContactoView,ContactoDetailView,EditarUsuarioView
+
 
 urlpatterns= [
     path('Usuarios/', CrearUsuarioView.as_view(), name='Usuarios-listar-crear'),
     path('validarUsuario/',ValidarUsuarioView.as_view()),
+    path('todos-usuarios/', UsuariosDetailView.as_view()),
+    path('todos-usuarios/<int:id>/', UsuarioEliminarView.as_view(), name="eliminar_usuario"),
+    path('editar-usuarios/<int:id>/', EditarUsuarioView.as_view(), name="usuario-actualizar"),
+
     path('farmacias/',CrearVerFarmacia.as_view()),
+    path('todas-farmacias/',FarmaciasDetailView.as_view),
+    path('editar-farmacias/<int:pk>/', FarmaciaEliminarView.as_view()),
+
     path('Especialidades/', CrearEspecialidadesView.as_view()),
+    path('todas-especialidades/', EspecialidadesDetailView.as_view()),
+
     path('Provincias/', CrearProvinciasView.as_view()),
+    path('todas-provincias/', ProvinciasDetailView.as_view()),
+
     path('Clinicas/', CrearClinicasView.as_view()),
+    path('todas-clinicas/', ClinicasDetailView.as_view()),
+
     path('Contacto/', CrearContactoView.as_view()),
-    path('Usuarios/', UsuariosDetailView.as_view()),
-    path('Farmacias/',FarmaciasDetailView.as_view),
-    path('Especialidades/', EspecialidadesDetailView.as_view()),
-    path('Provincias/', ProvinciasDetailView.as_view()),
-    path('Clinicas/', ClinicasDetailView.as_view()),
-    path('Contacto/', ContactoDetailView.as_view())
+    path('todos-contacto/', ContactoDetailView.as_view())
+    
 ]

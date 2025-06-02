@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 import llamadosLogin from '../services/llamadosLogin'
 import Swal from "sweetalert2";
@@ -30,6 +31,9 @@ function LoginAces() {
     return (
         <div className="fondo2">
             <img src="../src/assets/portada2.jpg" alt="portada" width="1370" height="750" />
+            <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
+            <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
+            <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
 
             <div className="form-container2">
                 <p className="titlee">Iniciar Sesión</p>

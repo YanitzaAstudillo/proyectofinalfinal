@@ -1,7 +1,7 @@
 
 async function getFarmacias() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/farmacias/", {
+        const response = await fetch ("http://127.0.0.1:8000/api/farmacias/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,9 +57,9 @@ async function postFarmacias(nombre,direccion,telefono,) {
 
 async function updateFarmacias(nombre,direccion,telefono,id) {
     const obj={
-        "nombre":nombre,
-        "direccion":direccion,
-        "telefono":telefono
+        "nombre_Farmacia": nombre,
+    "direccion_Farmacia": direccion,
+    "telefono_Farmacia": telefono
     };
     
     try {

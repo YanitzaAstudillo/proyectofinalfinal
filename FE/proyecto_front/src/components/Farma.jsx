@@ -2,7 +2,7 @@
 import { useState,useEffect } from 'react';
 import '../styles/farmacia.css';
 import { Link } from 'react-router-dom';
-import CardFarmacia from './CardFarmacia';
+
 import llamadosFarma from '../services/llamadosFarma';
 import ListCardFarmacia from './ListCardFarmacia';
 
@@ -16,7 +16,7 @@ function Farma() {
             
             const datosConHorarios = datos.map((farmacia) => ({
             ...farmacia,
-            horarios: farmacia.horario_Farmacia?.split('\n') || [], //se convierte en un array
+            horarios: farmacia.horario_Farmacia?.split('\n') || [], //se convierte en un array//
             }));
 
             setListaFarmacias(datos)

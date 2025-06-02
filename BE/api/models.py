@@ -19,12 +19,6 @@ class Usuarios(models.Model):
         return self.usuario.username
     
 
-class Contacto (models.Model):
-    nombre_Contacto= models.CharField(max_length=100)
-    email_Contacto=models.EmailField(max_length=15)
-    mensaje= models.CharField(max_length=180)
-    def __str__(self):
-        return self.nombre_Contacto
 
 class Farmacias (models.Model):
     nombre_Farmacia= models.CharField(max_length=100)
@@ -59,3 +53,9 @@ class Clinicas (models.Model):
     def __str__(self):
         return self.nombre_Clinica
 
+class Contacto (models.Model):
+    nombre_Contacto= models.CharField(max_length=100)
+    email_Contacto=models.EmailField(max_length=15)
+    mensaje= models.CharField(max_length=180)
+    def __str__(self):
+        return self.nombre_Contacto

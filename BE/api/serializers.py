@@ -6,51 +6,27 @@ from rest_framework import serializers
 
 
 class UsuarioCompletoSerializer(serializers.ModelSerializer):
-    username = serializers.CharField()
-    password = serializers.CharField(write_only=True)
-    first_name = serializers.CharField()
-    last_name = serializers.CharField()
-    email = serializers.EmailField()
-
-    direccion = serializers.CharField()
-    telefono = serializers.CharField()
-    esta_afiliado = serializers.BooleanField(default=False)
-    
-    rol = serializers.ChoiceField(choices=[('admin', 'Administrador'), ('afiliado', 'Afiliado'), ('usuario', 'Usuario')], default='usuario')
+    username = serializers.CharField(source="usuario.username")
+    first_name = serializers.CharField(source="usuario.first_name")
+    last_name = serializers.CharField(source="usuario.last_name")
+    email= serializers.EmailField(source="usuario.email")
 
     class Meta:
         model = Usuarios
-        fields = ['username', 'password', 'first_name', 'last_name', 'email',
-                  'direccion', 'telefono', 'esta_afiliado', 'rol']
-
-    def create(self, validated_data):
-        username = validated_data.pop('username')
-        password = validated_data.pop('password')
-        first_name = validated_data.pop('first_name')
-        last_name = validated_data.pop('last_name')
-        email = validated_data.pop('email')
-
-        user = User.objects.create_user(
-            username=username,
-            password=password,
-            first_name=first_name,
-            last_name=last_name,
-            email=email
-        )
-
-        perfil = Usuarios.objects.create(usuario=user, **validated_data)
-        return perfil
+        fields = ["id","direccion","telefono","esta_afiliado","rol","username","first_name","last_name","email",'usuario_id']
 
 
-class ContactoSerializer(serializers.ModelSerializer):
+class UsuarioEliminarSerializer(serializers.ModelSerializer):
     class Meta:
-        model= Contacto
-        fields = '__all__'
-    def validate_nombre_Contacto(self, value):
-        if len(value) <= 3:
-            raise serializers.ValidationError('el nombre debe tener al menos 3 caracteres')
-        return value
-    
+        model = User
+        fields = "__all__"
+
+
+    # rol = serializers.ChoiceField(choices=[('admin', 'Administrador'), ('afiliado', 'Afiliado'), ('usuario', 'Usuario')], default='usuario')
+
+
+
+
 class FarmaciasSerializer(serializers.ModelSerializer):
     class Meta:
         model= Farmacias
@@ -70,3 +46,12 @@ class ClinicasSerializer (serializers.ModelSerializer):
     class Meta:
         model= Clinicas
         fields= "__all__"
+
+class ContactoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Contacto
+        fields = '__all__'
+    def validate_nombre_Contacto(self, value):
+        if len(value) <= 3:
+            raise serializers.ValidationError('el nombre debe tener al menos 3 caracteres')
+        return value
