@@ -26,11 +26,17 @@ class UsuarioEliminarSerializer(serializers.ModelSerializer):
 
 
 
-
 class FarmaciasSerializer(serializers.ModelSerializer):
     class Meta:
         model= Farmacias
         fields= "__all__"
+
+
+class FarmaciaEliminarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Farmacias
+        fieds= "__all__"
+
 
 class EspecialidadesSerializer (serializers.ModelSerializer):
     class Meta:

@@ -17,17 +17,19 @@ function Inicio() {
             <button id="boton1" onClick={()=>{navigate("/Farmacias")}} size="lg">Farmacias</button>
             <button id="boton2" onClick={()=>{navigate("/Clinicas")}} size="lg">Clinicas</button>
             <button id="boton3" onClick={()=>{navigate("/Especialidades")}} size="lg">Especialidades</button>
-            <button id="boton4" onClick={()=>{navigate("/Afiliarse")}} size="lg">Afiliarse</button>
+            <button id="boton4" onClick={()=>{navigate("/Afiliarse")}} size="lg">Afiliado</button>
             <button id="boton5" onClick={()=>{navigate("/Mision")}} size="lg">Misión y Visión</button>
             <button id="boton6" onClick={()=>{navigate("/Contac")}} size="lg">Contacto</button>
           </div>
             <img src="portada2" alt="portada2" srcSet="../src/assets/portada2.jpg" width={"1370"} height={738}/>
             <p className='reg'>¿Deseas registrarte?<Link to="/Register" >Registrese aquí</Link> </p>
             <div className='tituloLogin'>
-              <div className='cotainer'>
-              <button className='btn btn-primary'>¿Deseas afiliarte a nuestros servicios?</button>
-             </div>
              <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
+            <br />
+            <br />
+            <>
+              <button className='btn btn-primary'>¿Deseas afiliarte?</button>
+              </>
          </div>
         </div>
             

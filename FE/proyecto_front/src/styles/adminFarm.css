@@ -1,5 +1,5 @@
 
-.body2{
+.body5{
     margin-top: 0px;
     height: 100vh;
     background-size: cover;
@@ -30,26 +30,26 @@
     top: 0px;
 }
 
-#boton9{
+#boton18{
   border-radius: 1rem;
   width: 100%;
   background-color: white;
   padding: 0.5rem;
-  margin-top: 10px;
+  margin-top: 70px;
   text-align: center;
   color: rgba(17, 24, 39, 1);
   border: none;
   font-weight:bold;
   box-shadow: 0 10 0px rgba(0, 0, 5, 0);
 }
-#boton9:hover{
+#boton18:hover{
   background-color:aqua;
 }
 
-#boton10{
+#boton91{
   border-radius: 1rem;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 10px;
   background-color: white;
   padding: 0.5rem;
   text-align: center;
@@ -90,12 +90,13 @@
   outline: auto;
 }
 
-.dentro{
-  gap: 16px;
-  flex-wrap: wrap;
-  position: absolute; z-index: 3;
-    left: 50em;
-    top: 100px;
+.dentroo{
+  gap: 5px;
+  display: flex;
+  flex-wrap:wrap;
+  position: absolute; z-index: 1;
+    left: 30em;
+    top: 80px;
 }
 
 #boton13{

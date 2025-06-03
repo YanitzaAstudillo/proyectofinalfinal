@@ -2,7 +2,7 @@
 from django.urls import path
 from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView
 
-from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView
+from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
 from .views import CrearEspecialidadesView, EspecialidadesDetailView
 from .views import CrearProvinciasView, ProvinciasDetailView
 from .views import CrearClinicasView,ClinicasDetailView
@@ -18,7 +18,8 @@ urlpatterns= [
 
     path('farmacias/',CrearVerFarmacia.as_view()),
     path('todas-farmacias/',FarmaciasDetailView.as_view),
-    path('editar-farmacias/<int:pk>/', FarmaciaEliminarView.as_view()),
+    path('todas-farmacias/<int:id>/', FarmaciaEliminarView.as_view()),
+    path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),
 
     path('Especialidades/', CrearEspecialidadesView.as_view()),
     path('todas-especialidades/', EspecialidadesDetailView.as_view()),

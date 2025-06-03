@@ -7,12 +7,10 @@ import Swal from 'sweetalert2';
 
 function Pagadmin() {
     const [usuarios, setUsuarios] = useState([]);
-
-    
-    const [emailEditar, SetEmailEditar] = useState("")
-    const [direccionEditar, SetDireccionEditar] = useState("")
-    const [telefonoEditar, SetTelefonoEditar] = useState("")
-    const [idEditando, setIdEditando] = useState(null);
+    const [emailEditar, setEmailEditar] = useState("");
+    const [direccionEditar, setDireccionEditar] = useState("");
+    const [telefonoEditar, setTelefonoEditar] = useState("");
+    const [idEditando, setIdEditando] = useState(null)
     
 
     useEffect(() => {
@@ -25,10 +23,9 @@ function Pagadmin() {
 
         function iniciarEdicion(usuario) {
             setIdEditando(usuario.id);
-            
-            SetEmailEditar(usuario.email);
-            SetDireccionEditar(usuario.direccion);
-            SetTelefonoEditar(usuario.telefono);
+            setEmailEditar(usuario.email);
+            setDireccionEditar(usuario.direccion);
+            setTelefonoEditar(usuario.telefono);
         }
 
     function editar(id) {   
@@ -52,9 +49,9 @@ function Pagadmin() {
             );
 
             
-            SetEmailEditar("");
-            SetDireccionEditar("");
-            SetTelefonoEditar("");
+            setEmailEditar("");
+            setDireccionEditar("");
+            setTelefonoEditar("");
             setIdEditando(null);
         })
         .catch(() => {
@@ -85,12 +82,12 @@ function Pagadmin() {
             <div className="container9">
                 <p className="title">Panel de Control</p>
                 <br /><br />
-                <form>
+                <div>
                     <Link to={"/Admin"}><button id="boton9">ADMIN USUARIOS</button></Link>
-                    <Link to={"/Farmacias"}><button id="boton10">ADMIN FARMACIAS</button></Link>
+                    <Link to={"/AdminFarm"}><button id="boton10">ADMIN FARMACIAS</button></Link>
                     <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
                     <Link to={"/"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
-                </form>
+                </div>
             </div>
             <div className='dentro'>
                 {usuarios.map((usuario) => (
@@ -102,13 +99,9 @@ function Pagadmin() {
 
                  {idEditando === usuario.id && (
                 <>
-                    <input id="redo" value={emailEditar} onChange={(e) => SetEmailEditar(e.target.value)} type="text"/>{" "} Email<br />
-        
-                     <input id="redo" value={direccionEditar} onChange={(e) => SetDireccionEditar(e.target.value)} type="text" />{" "} Dirección<br />
-        
-                    <input id="redo" value={telefonoEditar} onChange={(e) => SetTelefonoEditar(e.target.value)} type="text" />{" "} Teléfono<br />
-
-                    
+                    <input id="redo" value={emailEditar} onChange={(e) => setEmailEditar(e.target.value)} type="text"/>{" "} Email<br />
+                     <input id="redo" value={direccionEditar} onChange={(e) => setDireccionEditar(e.target.value)} type="text" />{" "} Dirección<br />
+                    <input id="redo" value={telefonoEditar} onChange={(e) => setTelefonoEditar(e.target.value)} type="text" />{" "} Teléfono<br />
                      <br />
                  </>
                 )}
@@ -120,9 +113,7 @@ function Pagadmin() {
                 <button id="boton14" onClick={() => eliminar(usuario.id)}>Eliminar</button> <br />
             </ul>
         ))}
-
          </div>
-                
      </div>
     );
 }

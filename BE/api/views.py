@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView,ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView,ListAPIView
 from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
 from .serializers import UsuarioCompletoSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer
 from django.contrib.auth import authenticate
@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.shortcuts import get_object_or_404
+
 
 
 # Create your views here
@@ -65,7 +65,6 @@ class UsuarioEliminarView(RetrieveDestroyAPIView):
     queryset = Usuarios.objects.all()
     serializer_class = UsuarioCompletoSerializer
 
-
 class EditarUsuarioView(APIView):
     def patch(self, request,id):
         username= request.data.get("username")
@@ -85,15 +84,18 @@ class EditarUsuarioView(APIView):
             usuario.last_name = last_name
         if email:
             usuario.email = email
-        if direccion:
-            usuario.usuarios.direccion = direccion
+
         if telefono:
             usuario.usuarios.telefono = telefono
+        if direccion:
+            usuario.usuarios.direccion = direccion
 
         usuario.save()
+        usuario.usuarios.save()
 
         return Response({"exito":"Usuario actualizado"}, status=status.HTTP_200_OK)
     
+
 
 class CrearVerFarmacia(ListCreateAPIView):
     queryset = Farmacias.objects.all()
@@ -104,16 +106,32 @@ class FarmaciasDetailView(ListAPIView):
     queryset= Farmacias.objects.all()
     serializer_class= FarmaciasSerializer
 
-class FarmaciaEliminarView(APIView):
-    def patch(self, request, pk):
-        farmacia = get_object_or_404(Farmacias, pk=pk)
-        serializer = FarmaciasSerializer(farmacia, data=request.data, partial=True)
-        
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class FarmaciaEliminarView(RetrieveDestroyAPIView):
+    lookup_field = "id"
+    queryset = Farmacias.objects.all()
+    serializer_class = FarmaciasSerializer
+
+
+class EditarFarmaciaView(APIView):
+    def patch(self, request, id):
+        nombre_Farmacia= request.data.get("nombre_Farmacia")
+        direccion_Farmacia= request.data.get("direccion_Farmacia")
+        telefono_Farmacia=request.data.get("telefono_Farmacia")
+        horario_Farmacia= request.data.get("horario_Farmacia")
+
+        farmacia= Farmacias.objects.get(id=id)
+
+        if nombre_Farmacia:
+            farmacia.nombre_Farmacia= nombre_Farmacia
+        if direccion_Farmacia:
+            farmacia.direccion_Farmacia= direccion_Farmacia
+        if telefono_Farmacia:
+            farmacia.telefono_Farmacia= telefono_Farmacia
+        if horario_Farmacia:
+            farmacia.horario_Farmacia= horario_Farmacia
+
+            farmacia.save()
+        return Response({"exito":"Farmacia actualizada"}, status=status.HTTP_200_OK)
 
 
 class CrearEspecialidadesView(ListCreateAPIView):

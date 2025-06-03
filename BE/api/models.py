@@ -19,7 +19,6 @@ class Usuarios(models.Model):
         return self.usuario.username
     
 
-
 class Farmacias (models.Model):
     nombre_Farmacia= models.CharField(max_length=100)
     direccion_Farmacia= models.CharField(max_length=180)

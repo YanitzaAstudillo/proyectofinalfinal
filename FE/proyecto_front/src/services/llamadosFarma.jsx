@@ -21,16 +21,16 @@ async function getFarmacias() {
 }
 
 
-
 //////////LLAMADO POST//////////
 
 
-async function postFarmacias(nombre,direccion,telefono,) {
+async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia) {
     
     const obj={
-        "nombre":nombre,
-        "direccion":direccion,
-        "telefono":telefono
+        "nombre":nombre_Farmacia,
+        "direccion":direccion_Farmacia,
+        "telefono":telefono_Farmacia,
+        "horario":horario_Farmacia
     };
 
     try {
@@ -55,16 +55,17 @@ async function postFarmacias(nombre,direccion,telefono,) {
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateFarmacias(nombre,direccion,telefono,id) {
+async function updateFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,id) {
     const obj={
-        "nombre_Farmacia": nombre,
-    "direccion_Farmacia": direccion,
-    "telefono_Farmacia": telefono
+        "nombre_Farmacia": nombre_Farmacia,
+        "direccion_Farmacia": direccion_Farmacia,
+        "telefono_Farmacia": telefono_Farmacia,
+        "horario_Farmacia":horario_Farmacia
     };
     
     try {
 
-        const response = await fetch(`http://127.0.0.1:8000/api/farmacias/${id}/`,{
+        const response = await fetch(`http://127.0.0.1:8000/api/editar-farmacias/${id}/`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -87,7 +88,7 @@ async function updateFarmacias(nombre,direccion,telefono,id) {
 
 async function deleteFarmacias(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/farmacias/${id}/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/todas-farmacias/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
