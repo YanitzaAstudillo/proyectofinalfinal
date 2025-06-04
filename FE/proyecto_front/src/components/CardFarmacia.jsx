@@ -6,32 +6,34 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DropDownFarmacias from './DropDownFarmacias';
-
+import "../styles/farmacia.css"
+import { blue } from '@mui/material/colors';
 
 function CardFarmacia({nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,imagen, horarios}) {
     
   return (
     <>
-            <Card sx={{ maxWidth: 320 }}>
-                <CardMedia
-                component="img"
-                alt={nombre_Farmacia}
-                height="140"
-                image={imagen}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                 {nombre_Farmacia}
-                </Typography>
-                <Typography variant="body" sx={{ color: 'text.secondary' }}>
-                 {direccion_Farmacia} - {telefono_Farmacia}
-                </Typography>
-            </CardContent>
-             <CardActions>
-                <Button size="small">Share</Button>
-                <DropDownFarmacias horarios={horarios} /> 
-             </CardActions>
-            </Card>
+      <Card id= "dee"sx={{ maxWidth: 220 }}>
+           <CardMedia
+            component="img"
+            className='imagenquenosequierecambiar'
+            alt={nombre_Farmacia}
+            
+            image={imagen}
+   />  
+       <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+         {nombre_Farmacia}
+        </Typography>
+        <Typography variant="body" sx={{ color: 'text.secondary' }}>
+           {direccion_Farmacia} - {telefono_Farmacia}
+        </Typography>
+       </CardContent>
+        <CardActions>
+          <Button id="deee" size="small">Share</Button>
+          <DropDownFarmacias id="deee" horarios={horarios} /> 
+        </CardActions>
+       </Card>
         
     </>
 

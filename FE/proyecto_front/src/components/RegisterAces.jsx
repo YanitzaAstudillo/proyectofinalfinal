@@ -97,7 +97,7 @@ function RegisterAces() {
                     </div>
                
                     
-                    <button className="sign" type="submit">Enviar</button>
+                    <button className="sign" type="submit" href="/Login" >Enviar</button>
                 </form>
                 
             </div>

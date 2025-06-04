@@ -1,5 +1,3 @@
-
-
 .body4{
     margin-top: 0px;
     height: 100vh;
@@ -9,14 +7,28 @@
          #ffffff
     );
 }
-
-.far {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 200px;
+.imagenquenosequierecambiar{
+  width: auto;
+  height: 120px;
+  
 }
-
+.far {
+  display:flex;
+  flex-wrap:wrap;
+  
+  justify-content: center;
+  padding: 220px;
+  gap: 16px;
+  
+}
+#dee{
+  
+  border-radius: 20px;
+    border: rgb(60, 59, 59) solid 1.5px;
+}
+#deee{
+  background-color: #17224d;
+  color: white;
+}
 
 

@@ -71,6 +71,16 @@ function AdminFarma() {
                 }
                     borra(id);
             }
+            
+            function usuarioValido() {
+            const admi = localStorage.getItem("submit")
+            if (admi){
+                return true
+            }else{
+                return false
+            }
+        }
+
 
     return(
         <div className='body5'>

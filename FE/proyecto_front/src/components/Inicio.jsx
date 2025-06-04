@@ -27,10 +27,9 @@ function Inicio() {
              <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
             <br />
             <br />
-            <>
-              <button className='btn btn-primary'>¿Deseas afiliarte?</button>
-              </>
          </div>
+         
+         <a className="nav-link" href="/Register  ">Deseas afiliarte?</a>
         </div>
             
     )

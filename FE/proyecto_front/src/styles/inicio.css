@@ -155,3 +155,11 @@
    letter-spacing: 3px;
    font-weight:bolder;
 }
+
+
+.nav-link{
+    color: white;
+    position: absolute; z-index: 3;
+    left: 60.3em;
+    top: 670px;
+}

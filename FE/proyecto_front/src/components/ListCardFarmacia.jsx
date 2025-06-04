@@ -2,6 +2,7 @@
 import CardFarmacia from "./CardFarmacia";
 import LaBombaImg from '../assets/LaBomba.png';
 import farmaValue from '../assets/farmaValue.jpg';
+import Saba from '../assets/Saba.png';
 
 const ListCardFarmacia = ({ farmacias }) => {
   console.log(farmacias);
@@ -9,6 +10,7 @@ const ListCardFarmacia = ({ farmacias }) => {
   const imagenesFarmacias = {
     1: LaBombaImg,
     2: farmaValue,
+    3: Saba,
   };
 
   return (
