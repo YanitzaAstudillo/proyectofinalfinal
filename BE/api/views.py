@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 
 
 # Create your views here
@@ -50,7 +50,8 @@ class ValidarUsuarioView(APIView):
         usuario= authenticate(username=username, password=password)
 
         if usuario is not None:
-            return Response({"exito":"Usuario validado"},status=200)
+            token_acceso = str(AccessToken.for_user(usuario))
+            return Response({"exito":"Usuario validado","token":token_acceso},status=200)
         
         else:
             return Response({"error":"Usuario no validado"},status=400)
@@ -102,7 +103,6 @@ class CrearVerFarmacia(ListCreateAPIView):
     serializer_class = FarmaciasSerializer
 
 class FarmaciasDetailView(ListAPIView):
-    
     queryset= Farmacias.objects.all()
     serializer_class= FarmaciasSerializer
 
@@ -138,32 +138,63 @@ class CrearEspecialidadesView(ListCreateAPIView):
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
+class EspecialidadesDetailView(ListAPIView):
+    queryset= Especialidades.objects.all()
+    serializer_class= EspecialidadesSerializer
+
+class EspecialidadEliminarView(RetrieveDestroyAPIView):
+    lookup_field = "id"
+    queryset = Farmacias.objects.all()
+    serializer_class = FarmaciasSerializer
+
+class EditarEspecialidadView(APIView):
+    def patch(self, request, id):
+        nombre_Especialidad= request.data.get("nombre_Especialidad")
+        nombre_Medico_Clinica= request.data.get("nombre_Medico_Clinica")
+        descripcion_Especialidad= request.data.get("descripcion_Especialidad")
+        ubicacion_Especialidad= request.data.get ("ubicacion_Especialidad")
+        telefono_Especialidad=request.data.get("telefono_Especialidad")
+        precio= request.data.get("precio")
+
+        especialidad= Especialidades.objects.get(id=id)
+
+        if nombre_Especialidad:
+            especialidad.nombre_Especialidad= nombre_Especialidad
+        if nombre_Medico_Clinica:
+            especialidad.nombre_Medico_Clinica= nombre_Medico_Clinica
+        if descripcion_Especialidad:
+            especialidad.descripcion_especialidad= descripcion_Especialidad
+        if ubicacion_Especialidad:
+            especialidad.ubicacion_Especialidad= ubicacion_Especialidad
+        if telefono_Especialidad:
+            especialidad.telefono_Especialidad= telefono_Especialidad
+        if precio:
+            especialidad.precio= precio
+
+            especialidad.save()
+        return Response({"exito":"Especialidad actualizada"}, status=status.HTTP_200_OK)
+
+
+
 class CrearProvinciasView (ListCreateAPIView):
     queryset=Provincias.objects.all()
+    serializer_class= ProvinciasSerializer
+
+class ProvinciasDetailView(ListAPIView):
+    queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class CrearClinicasView(ListCreateAPIView):
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
+class ClinicasDetailView(ListAPIView):
+    queryset= Clinicas.objects.all()
+    serializer_class= ClinicasSerializer
+
 class CrearContactoView(ListCreateAPIView):
     queryset= Contacto.objects.all()
     serializer_class= ContactoSerializer
-
-class EspecialidadesDetailView(ListAPIView):
-    
-    queryset= Especialidades.objects.all()
-    serializer_class= EspecialidadesSerializer
-
-class ProvinciasDetailView(ListAPIView):
-    
-    queryset= Provincias.objects.all()
-    serializer_class= ProvinciasSerializer
-
-class ClinicasDetailView(ListAPIView):
-    
-    queryset= Clinicas.objects.all()
-    serializer_class= ClinicasSerializer
 
 class ContactoDetailView(ListAPIView):
     lookup_field = "id"

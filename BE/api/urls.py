@@ -1,12 +1,12 @@
 
 from django.urls import path
-from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView
+from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView,EditarUsuarioView
 
 from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
-from .views import CrearEspecialidadesView, EspecialidadesDetailView
+from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
 from .views import CrearProvinciasView, ProvinciasDetailView
 from .views import CrearClinicasView,ClinicasDetailView
-from .views import CrearContactoView,ContactoDetailView,EditarUsuarioView
+from .views import CrearContactoView,ContactoDetailView
 
 
 urlpatterns= [
@@ -17,12 +17,14 @@ urlpatterns= [
     path('editar-usuarios/<int:id>/', EditarUsuarioView.as_view(), name="usuario-actualizar"),
 
     path('farmacias/',CrearVerFarmacia.as_view()),
-    path('todas-farmacias/',FarmaciasDetailView.as_view),
+    path('farmacias/',FarmaciasDetailView.as_view),
     path('todas-farmacias/<int:id>/', FarmaciaEliminarView.as_view()),
     path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),
 
-    path('Especialidades/', CrearEspecialidadesView.as_view()),
+    path('especialidades/', CrearEspecialidadesView.as_view()),
     path('todas-especialidades/', EspecialidadesDetailView.as_view()),
+    path('todas-especialidades/<int:id>/',EspecialidadEliminarView.as_view()),
+    path('editar-especialidad/<int:id>/', EditarEspecialidadView.as_view()),
 
     path('Provincias/', CrearProvinciasView.as_view()),
     path('todas-provincias/', ProvinciasDetailView.as_view()),

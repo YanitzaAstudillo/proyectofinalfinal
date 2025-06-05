@@ -43,6 +43,11 @@ class EspecialidadesSerializer (serializers.ModelSerializer):
         model= Especialidades
         fields= "__all__"
 
+class EspecialidadEliminarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Farmacias
+        fieds= "__all__"
+
 class ProvinciasSerializer (serializers.ModelSerializer):
     class Meta:
         model= Provincias

@@ -21,6 +21,7 @@ function LoginAces() {
             
             if (response.exito) {
                 Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
+                response.token
 
             } else {
                 Swal.fire("Error",  "Credenciales inválidas", "error");

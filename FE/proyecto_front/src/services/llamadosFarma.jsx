@@ -12,8 +12,8 @@ async function getFarmacias() {
             throw new Error('Error fetching farmacias');
         }
 
-        const usuarios = await response.json();
-        return usuarios;
+        const farmacias = await response.json();
+        return farmacias;
     } catch (error) {
         console.error('Error fetching farmacias:', error);
         throw error;
@@ -45,7 +45,7 @@ async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmaci
 
         
     } catch (error) {
-        console.error('Error posting user:', error);
+        console.error('Error posting farmacias:', error);
         throw error;
     }
 }
@@ -96,12 +96,12 @@ async function deleteFarmacias(id) {
         });
 
         if (!response.ok) {
-            throw new Error(`Error deleting user with id ${id}`);
+            throw new Error(`Error deleting farmacias with id ${id}`);
         }
 
         return { message: `User with id ${id} deleted successfully` };
     } catch (error) {
-        console.error('Error deleting user:', error);
+        console.error('Error deleting farmacias:', error);
         throw error;
     }
 }

@@ -47,8 +47,6 @@ function Pagadmin() {
                         : usuario
                 )
             );
-
-            
             setEmailEditar("");
             setDireccionEditar("");
             setTelefonoEditar("");
