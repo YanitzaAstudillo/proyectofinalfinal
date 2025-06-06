@@ -31,7 +31,7 @@ class Farmacias (models.Model):
 class Especialidades (models.Model):
     nombre_Especialidad= models.CharField(max_length=100)
     nombre_Medico_Clinica= models.CharField(max_length=100)
-    descripcion_especialidad= models.CharField(max_length=180)
+    descripcion_Especialidad= models.CharField(max_length=180)
     ubicacion_Especialidad= models.CharField(max_length=180)
     telefono_Especialidad= models.CharField(max_length=100)
     precio= models.IntegerField(blank=False)

@@ -5,6 +5,7 @@ import llamadosFarma from '../services/llamadosFarma.jsx';
 import Swal from 'sweetalert2';
 import '../styles/adminFarm.css';
 
+
 function AdminFarma() {
     const[farmacias, setFarmacias]=useState([]);
     const[nombre_FarmaciaEd, setNombre_FarmaciaEd]=useState("");

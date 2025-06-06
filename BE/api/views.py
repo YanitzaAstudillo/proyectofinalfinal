@@ -163,7 +163,7 @@ class EditarEspecialidadView(APIView):
         if nombre_Medico_Clinica:
             especialidad.nombre_Medico_Clinica= nombre_Medico_Clinica
         if descripcion_Especialidad:
-            especialidad.descripcion_especialidad= descripcion_Especialidad
+            especialidad.descripcion_Especialidad= descripcion_Especialidad
         if ubicacion_Especialidad:
             especialidad.ubicacion_Especialidad= ubicacion_Especialidad
         if telefono_Especialidad:

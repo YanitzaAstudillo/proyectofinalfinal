@@ -1,4 +1,14 @@
 
+
 .row{
-    padding: 180px;
+  
+  display: flex;
+  flex-direction: row; 
+  justify-content:space-between;
+  align-items: center;
+  position: absolute; z-index: 1;
+    right: 6em;
+    left: 6em;
+    top: 6em;
+
 }

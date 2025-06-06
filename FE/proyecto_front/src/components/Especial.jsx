@@ -1,116 +1,49 @@
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import '../styles/especialidades.css';
 import { Link } from 'react-router-dom';
 import llamadosEspecial from "../services/llamadosEspecial";
 
-
 function Especial() {
-    const [listaEspecialidades, setListaEspecialidades]= useState([])
-    const [nombre_Especialidad, setNombre_Especialidad]=useState("")
-    const [nombre_Medico_Clinica, setNombre_Medico_Clinica]= useState("")
-    const [descripcion_Especialidad, setDescripcion_Especialidad]= useState("")
-    const [ubicacion_Especialidad, setUbicacion_Especialidad]= useState("")
-    const [telefono_Especialidad, setTelefono_Especialidad]= useState("")
-    const [precio, setPrecio]= useState(0)
+    const [listaEspecialidades, setListaEspecialidades] = useState([]);
 
-        useEffect(()=>{
-            const traerEspecialidades = async()=>{
-                const dat = await llamadosEspecial.getEspecialidades()
-                console.log(dat);
-
-    
-                setListaEspecialidades(dat);
-            
-            }
-            traerEspecialidades()
-            
-        },[])
-            function nombre(evento) {
-                setNombre_Especialidad(evento.target.value)
-            }
-
-            function nombreClinica(evento) {
-                setNombre_Medico_Clinica(evento.target.value)
-            }
-
-            function descripcion(evento) {
-                setDescripcion_Especialidad(evento.target.value)
-            }
-
-            function ubicacion(evento) {
-                setUbicacion_Especialidad (evento.target.value)
-            }
-
-            function telefono(evento) {
-                setTelefono_Especialidad (evento.target.value)
-            }
-
-            function preciooo(evento) {
-                setPrecio (evento.target.value)
-            }
-
+    useEffect(() => {
+        const traerEspecialidades = async () => {
+            const dat = await llamadosEspecial.getEspecialidades();
+            console.log(dat); // Verifica que los datos llegan correctamente
+            setListaEspecialidades(dat);
+        };
+        traerEspecialidades();
+    }, []);
 
     return (
-        <div className='body4'>
-            <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
-            <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
-            <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
-
-
         <>
+            <div className='body4'>
+                <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
+                <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
+                <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
 
-            <div className="row">
-                <div className="col-sm-6 mb-3 mb-sm-0">
-                    <div className="card">
-                    <div className="card-body">
-                    <h5 className="card-title">Medicina General</h5>
-                    <p className="card-text">Clinica Asembis</p>
-
-                    <label htmlFor="">Nombre Clinica</label>
-                    <input id="ree" onChange={nombre} value={nombre_Especialidad} type="text" />
-
-                    <label htmlFor="">Nombre Clinica</label>
-                    <input id="ree" onChange={nombreClinica} value={nombre_Medico_Clinica} type="text" />
-
-                    <label htmlFor="">Descripcion</label>
-                    <input id="ree" onChange={descripcion} value={descripcion_Especialidad} type="text" />
-
-                    <label htmlFor="">Ubicacion</label>
-                    <input id="ree" onChange={ubicacion} value={ubicacion_Especialidad} type="text" />
-
-                    <label htmlFor="">Telefono</label>
-                    <input id="ree" onChange={telefono} value={telefono_Especialidad} type="text" />
-
-                    <label htmlFor="">Precio consulta</label>
-                    <input id="ree" onChange={preciooo} value={precio} type="text" />
-
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-             </div>
-            <div className="col-sm-6">
-                <div className="card">
-                    <div className="card-body">
-                    <h5 className="card-title">Special title treatment</h5>
-                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                    </div>
+                
+                <div className="row">
+                    {listaEspecialidades.map((especialidad) => (
+                        <div className="col-sm-6 mb-4" key={especialidad.id}>
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{especialidad.nombre_Especialidad}</h5>
+                                    <p className="card-text"><strong>Médico/Clínica:</strong> {especialidad.nombre_Medico_Clinica}</p>
+                                    <p className="card-text"><strong>Descripción:</strong> {especialidad.descripcion_Especialidad}</p>
+                                    <p className="card-text"><strong>Ubicación:</strong> {especialidad.ubicacion_Especialidad}</p>
+                                    <p className="card-text"><strong>Teléfono:</strong> {especialidad.telefono_Especialidad}</p>
+                                    <p className="card-text"><strong>Precio:</strong>C {especialidad.precio}</p>
+                                    <a href="#" className="btn btn-outline-dark">Contactar</a>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
-            </div>
-
         </>
-        
-        <div>
-            <ul>
-           {listaEspecialidades.map ((especialidad)=>(
-                <li key={especialidad.id}>{especialidad.nombre_Especialidad}</li>
-            ))}
-            </ul>
-        </div>
-
-        </div>
-    )
+    );
 }
-export default Especial
+
+export default Especial;

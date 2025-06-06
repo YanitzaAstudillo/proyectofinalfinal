@@ -9,6 +9,7 @@ import DropDownFarmacias from './DropDownFarmacias';
 import "../styles/farmacia.css"
 import { blue } from '@mui/material/colors';
 
+
 function CardFarmacia({nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,imagen, horarios}) {
     
   return (
