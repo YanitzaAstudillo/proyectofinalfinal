@@ -33,10 +33,13 @@ async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmaci
         "horario":horario_Farmacia
     };
 
+    const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90e…I6NH0.ddwm7Ey8zlzYttUPw6EAnaOKZRPeAH1Yq6S0gGsfGxg'
+
     try {
         const response = await fetch ("http://127.0.0.1:8000/api/farmacias/", {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)

@@ -17,5 +17,4 @@ function Privada({children}) {
     </div>
   )
 }
-
 export default Privada

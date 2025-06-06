@@ -29,6 +29,7 @@ function AdminFarma() {
                 setTelefono_FarmaciaEd(farmacia.telefono_Farmacia);
                 setHorario_FarmaciaEd(farmacia.horario_Farmacia);
             }
+
         function edicion(id) {
             if(!nombre_FarmaciaEd || !direccion_FarmaciaEd || !telefono_FarmaciaEd || !horario_FarmaciaEd){
                 Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
@@ -121,12 +122,8 @@ function AdminFarma() {
                 <button id="boton14" onClick={() => borrar(farmacia.id)}>Eliminar</button> <br />
             </ul>
         ))}
-
-            </div>
-
         </div>
-
+        </div>
     )
-
 }
 export default AdminFarma;

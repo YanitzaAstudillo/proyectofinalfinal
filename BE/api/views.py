@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 
 # Create your views here
@@ -57,6 +58,25 @@ class ValidarUsuarioView(APIView):
             return Response({"error":"Usuario no validado"},status=400)
 
 
+class permisos(BasePermission):
+    def has_permission(self, request, view):
+        Usuario= request.user
+
+        if not Usuario.is_authenticated:
+            return False
+        metodo= request.method
+        grupos_usuarios= Usuario.groups.values_list('name', flat=True)
+
+        if metodo in SAFE_METHODS:
+            return True
+        
+        if 'farmacias' in grupos_usuarios:
+            if metodo in ['POST', 'PUT']:
+                return True
+
+        return False
+
+
 class UsuariosDetailView(ListAPIView):
     queryset = Usuarios.objects.all()
     serializer_class = UsuarioCompletoSerializer
@@ -99,6 +119,7 @@ class EditarUsuarioView(APIView):
 
 
 class CrearVerFarmacia(ListCreateAPIView):
+    permission_classes= [permisos]
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
