@@ -1,7 +1,8 @@
+const token= localStorage.getItem("token")
 
 async function getFarmacias() {
     try {
-        const response = await fetch ("http://127.0.0.1:8000/api/farmacias/", {
+        const response = await fetch ("http://127.0.0.1:8000/api/farmacias-get/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,8 +33,6 @@ async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmaci
         "telefono":telefono_Farmacia,
         "horario":horario_Farmacia
     };
-
-    const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90e…I6NH0.ddwm7Ey8zlzYttUPw6EAnaOKZRPeAH1Yq6S0gGsfGxg'
 
     try {
         const response = await fetch ("http://127.0.0.1:8000/api/farmacias/", {
@@ -71,6 +70,7 @@ async function updateFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farma
         const response = await fetch(`http://127.0.0.1:8000/api/editar-farmacias/${id}/`,{
             method: 'PATCH',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)
@@ -94,6 +94,7 @@ async function deleteFarmacias(id) {
         const response = await fetch(`http://127.0.0.1:8000/api/todas-farmacias/${id}/`, {
             method: 'DELETE',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });

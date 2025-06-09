@@ -1,14 +1,25 @@
 
 
-.row{
+.roww{
   
   display: flex;
   flex-direction: row; 
-  justify-content:space-between;
   align-items: center;
   position: absolute; z-index: 1;
-    right: 6em;
-    left: 6em;
+    left: 3em;
     top: 6em;
+  
+}
 
+.cardd{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin-top: 70px;
+  width: 35vh;
+  height: 460px;
+  border-radius: 15px;
 }

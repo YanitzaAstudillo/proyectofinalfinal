@@ -21,7 +21,7 @@ function LoginAces() {
             
             if (response.exito) {
                 Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
-                response.token
+                localStorage.setItem ("token",response.token)
 
             } else {
                 Swal.fire("Error",  "Credenciales inválidas", "error");
@@ -30,18 +30,21 @@ function LoginAces() {
         }
 
         function acess() {
-      const encontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password)
-      if (encontrado){
-        if (encontrado.rol === "admin") {
+          const encontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password)
+          if (encontrado){
+            if (encontrado.rol === "admin") {
             navigate('/AdminFarma');
-        } else if (encontrado.rol === "usuario") {
+
+          localStorage.setItem("submit", "admin");
+
+          } else if (encontrado.rol === "usuario") {
             navigate('/');
-        } 
-      } else {
-        alert("Usuario no encontrado");
-    }
-    localStorage.setItem("submit", "admin");
-  }
+          } 
+          } else {
+            alert("Usuario no encontrado");
+          }
+  
+        }
 
 
     return (

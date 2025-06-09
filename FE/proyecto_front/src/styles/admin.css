@@ -5,7 +5,7 @@
   justify-content:space-between;
   align-items: center;
     margin-top: 0px;
-    height: 100vh;
+    
     background-size: cover;
     background: linear-gradient(90deg,
          #17224d,
@@ -13,7 +13,7 @@
     );
 }
 
-.title{
+.titlle{
   margin-top: 30px;
   text-align: center;
   font-size: 1.5rem;
@@ -23,7 +23,6 @@
 }
 
 .container9{
-  
   height: 100%;
   width: 320px;
   border-radius: 0.9rem;
@@ -113,7 +112,6 @@
   border-radius: 0.5rem;
 }
 
-
 .human-resources {
   --bg-color: #DCE9FF;
   --bg-color-light: #f1f7ff;
@@ -123,10 +121,11 @@
 
 .card {
   margin-top: 70px;
-  width: 255px;
+  width: 250px;
   height: 40px;
   background: #fff;
   border-radius: 1rem;
+  border: rgb(201, 201, 201) solid 1.5px;
   overflow: hidden;
   display: flex;
   padding: 5px;
@@ -136,10 +135,14 @@
   box-shadow: 0 14px 26px rgba(0,0,0,0.04);
   transition: all 0.3s ease-out;
   text-decoration: none;
+  background: linear-gradient(90deg,
+         #17224d,
+         #a1b6f9
+    );
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.005) translateZ(0);
+  transform: translateY(-4px) scale(1.000) translateZ(0);
   box-shadow: 0 12px 15px rgba(0,0,0,0.11),
     0 12px 23px var(--box-shadow-color);
 }
@@ -168,14 +171,14 @@
 }
 
 .card p {
-  font-size:medium;
-  color:rgba(17, 24, 39, 1);
- 
+ font-size:smaller;
+ color:#fff;
  position: absolute;
- font-weight: bold;
+ font-weight: bolder;
+ letter-spacing: 1px;
   z-index: 1;
-  top: 5px;
-  left: 70px;
+  top: 9px;
+  left: 76px;
   transition: color 0.2s ease-out;
 }
 
@@ -197,7 +200,7 @@
   content: "";
   width: 45px;
   height:45px;
-  margin-left: 5px;
+  margin-left: 1px;
   display: block;
   position: absolute;
   background: var(--bg-color);
@@ -206,19 +209,17 @@
 }
 
 .circle svg {
-  z-index: 1000;
+  z-index: 800;
   transform: translateZ(0);
 }
 
 .overlay {
   width: 30px;
   position: absolute;
-  
   height: 30px;
   border-radius: 50%;
   background: var(--bg-color);
   top: 5px;
-  
   z-index: 0;
   transition: transform 0.2s ease-out;
 }

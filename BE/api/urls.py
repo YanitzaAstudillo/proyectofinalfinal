@@ -17,7 +17,7 @@ urlpatterns= [
     path('editar-usuarios/<int:id>/', EditarUsuarioView.as_view(), name="usuario-actualizar"),
 
     path('farmacias/',CrearVerFarmacia.as_view()),
-    path('farmacias/',FarmaciasDetailView.as_view),
+    path('farmacias-get/',FarmaciasDetailView.as_view()),
     path('todas-farmacias/<int:id>/', FarmaciaEliminarView.as_view()),
     path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),
 

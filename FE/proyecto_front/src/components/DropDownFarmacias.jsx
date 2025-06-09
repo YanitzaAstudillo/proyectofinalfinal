@@ -10,10 +10,10 @@ function DropDownFarmacias({ horarios }) {
       <Dropdown.Menu>
         {horarios.length > 0 ? (
           horarios.map((horario, index) => (
-            <Dropdown.Item key={index}>{horario}</Dropdown.Item>
+            <Dropdown.Item id= 'colorsh' key={index}>{horario}</Dropdown.Item>
           ))
         ) : (
-          <Dropdown.Item>No hay horarios disponibles</Dropdown.Item>
+          <Dropdown.Item></Dropdown.Item>
         )}
       </Dropdown.Menu>
     </Dropdown>

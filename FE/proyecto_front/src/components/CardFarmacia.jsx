@@ -31,8 +31,8 @@ function CardFarmacia({nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,imag
         </Typography>
        </CardContent>
         <CardActions>
-          <Button id="deee" size="small">Share</Button>
-          <DropDownFarmacias id="deee" horarios={horarios} /> 
+          <Button id="deee" size="smaller">hola</Button>
+          <DropDownFarmacias horarios={horarios} /> 
         </CardActions>
        </Card>
         

@@ -23,13 +23,26 @@
   
 }
 #dee{
-  
-  border-radius: 20px;
+  border-radius: 10px;
     border: rgb(60, 59, 59) solid 1.5px;
 }
 #deee{
-  background-color: #17224d;
-  color: white;
+  background: #17224d;
+  color:#fff;
+  text-transform: lowercase;
 }
 
+#dropdown-basic{
+  background: #17224d;
+  color:#fff;
+  overflow-y: auto;
+  
+}
 
+#colorsh{
+  background: #c0cbf8;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  
+}

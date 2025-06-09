@@ -78,14 +78,13 @@ function Pagadmin() {
     return (
         <div className="body2">
             <div className="container9">
-                <p className="title">Panel de Control</p>
+                <p className="titlle">Panel de Control</p>
                 <br /><br />
                 <div>
                     <Link to={"/Admin"}><button id="boton9">ADMIN USUARIOS</button></Link>
                     <Link to={"/AdminFarm"}><button id="boton10">ADMIN FARMACIAS</button></Link>
                     <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
                     <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
-                
                 
                 <>
                     <div className="bodies">
@@ -107,11 +106,8 @@ function Pagadmin() {
                 </a>
                 </div>
                 </>
-  
 
-                
-                
-                </div>
+            </div>
             </div>
             <div className='dentro'>
                 {usuarios.map((usuario) => (

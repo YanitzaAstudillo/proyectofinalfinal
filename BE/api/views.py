@@ -64,6 +64,7 @@ class permisos(BasePermission):
 
         if not Usuario.is_authenticated:
             return False
+        
         metodo= request.method
         grupos_usuarios= Usuario.groups.values_list('name', flat=True)
 
@@ -128,6 +129,7 @@ class FarmaciasDetailView(ListAPIView):
     serializer_class= FarmaciasSerializer
 
 class FarmaciaEliminarView(RetrieveDestroyAPIView):
+    permission_classes= [permisos]
     lookup_field = "id"
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer

@@ -24,10 +24,10 @@ function Especial() {
                 <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
 
                 
-                <div className="row">
+                <div className="roww">
                     {listaEspecialidades.map((especialidad) => (
                         <div className="col-sm-6 mb-4" key={especialidad.id}>
-                            <div className="card">
+                            <div className="cardd">
                                 <div className="card-body">
                                     <h5 className="card-title">{especialidad.nombre_Especialidad}</h5>
                                     <p className="card-text"><strong>Médico/Clínica:</strong> {especialidad.nombre_Medico_Clinica}</p>
