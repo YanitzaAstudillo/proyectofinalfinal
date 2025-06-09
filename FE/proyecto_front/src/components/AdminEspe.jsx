@@ -82,18 +82,18 @@ function AdminEspe() {
             }
             
         return(
-            <div>
+            <div className='body5'>
                 <div className="container9">
                     <p className="title">Panel de Control</p>
                     <br /><br />
-                <div>
-                    <Link to={"/Admin"}><button id="boton91">ADMIN USUARIOS</button></Link>
-                    <Link to={"/AdminFarm"}><button id="boton18">ADMIN FARMACIAS</button></Link>
+                <>
+                    <Link to={"/Admin"}><button id="boton911">ADMIN USUARIOS</button></Link>
+                    <Link to={"/AdminFarm"}><button id="boton181">ADMIN FARMACIAS</button></Link>
                     <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
-                    <Link to={"/"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
+                    <Link to={"/AdminEspecial"}><button id="boton121">ADMIN ESPECIALIDADES</button></Link>
+                </>
                 </div>
-                </div>
-                <div className='dentroo'>
+                <div className='dentro'>
                     {especialidades.map((especialidad) => (
                     <ul key={especialidad.id}>
                      <br />
