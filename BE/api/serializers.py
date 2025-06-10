@@ -54,9 +54,10 @@ class ProvinciasSerializer (serializers.ModelSerializer):
         fields= "__all__"
 
 class ClinicasSerializer (serializers.ModelSerializer):
+    nombre_provincia = serializers.CharField(source="Provincias.nombre_Provincia",read_only=True)
     class Meta:
         model= Clinicas
-        fields= "__all__"
+        fields = ['id', 'nombre_Clinica', 'direccion_Clinica', 'horario', 'telefono_Clinica', 'nombre_provincia']
 
 class ContactoSerializer(serializers.ModelSerializer):
     class Meta:

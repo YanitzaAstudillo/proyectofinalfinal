@@ -5,7 +5,7 @@ from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,Usuar
 from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
 from .views import CrearProvinciasView, ProvinciasDetailView
-from .views import CrearClinicasView,ClinicasDetailView
+from .views import CrearClinicasView,ClinicasDetailView,ClinicaEliminarView,EditarClinicaView
 from .views import CrearContactoView,ContactoDetailView
 
 
@@ -22,15 +22,17 @@ urlpatterns= [
     path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),
 
     path('especialidades/', CrearEspecialidadesView.as_view()),
-    path('todas-especialidades/', EspecialidadesDetailView.as_view()),
+    path('especialidades-get/', EspecialidadesDetailView.as_view()),
     path('todas-especialidades/<int:id>/',EspecialidadEliminarView.as_view()),
     path('editar-especialidad/<int:id>/', EditarEspecialidadView.as_view()),
 
-    path('Provincias/', CrearProvinciasView.as_view()),
+    path('provincias/', CrearProvinciasView.as_view()),
     path('todas-provincias/', ProvinciasDetailView.as_view()),
 
-    path('Clinicas/', CrearClinicasView.as_view()),
-    path('todas-clinicas/', ClinicasDetailView.as_view()),
+    path('clinicas/', CrearClinicasView.as_view()),
+    path('clinicas-get/', ClinicasDetailView.as_view()),
+    path('todas-clinicas/', ClinicaEliminarView.as_view()),
+    path('editar-clinica/<int:id>/', EditarClinicaView.as_view()),
 
     path('Contacto/', CrearContactoView.as_view()),
     path('todos-contacto/', ContactoDetailView.as_view())

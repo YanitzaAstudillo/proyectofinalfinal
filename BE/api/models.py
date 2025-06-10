@@ -39,7 +39,16 @@ class Especialidades (models.Model):
         return self.nombre_Especialidad
 
 class Provincias (models.Model):
-    nombre_Provincia= models.CharField(max_length=100)
+    PROVINCIAS_SELECT = [
+        ("alajuela", "ALAJUELA"),
+        ("heredia", "HEREDIA"),
+        ("cartago", "CARTAGO"),
+        ("san josé", "SAN JOSÉ"),
+        ("limón", "LIMÓN"),
+        ("puntarenas", "PUNTARENAS"),
+        ("guanacaste", "GUANACASTE"),
+    ]
+    nombre_Provincia = models.CharField(max_length=20, choices=PROVINCIAS_SELECT)
     def __str__(self):
         return self.nombre_Provincia
 

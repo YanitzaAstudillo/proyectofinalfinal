@@ -11,6 +11,8 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
+from random import randrange
+
 
 # Create your views here
 class CrearUsuarioView(APIView):
@@ -167,8 +169,8 @@ class EspecialidadesDetailView(ListAPIView):
 
 class EspecialidadEliminarView(RetrieveDestroyAPIView):
     lookup_field = "id"
-    queryset = Farmacias.objects.all()
-    serializer_class = FarmaciasSerializer
+    queryset = Especialidades.objects.all()
+    serializer_class = EspecialidadesSerializer
 
 class EditarEspecialidadView(APIView):
     def patch(self, request, id):
@@ -207,6 +209,7 @@ class ProvinciasDetailView(ListAPIView):
     queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
+
 class CrearClinicasView(ListCreateAPIView):
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
@@ -214,6 +217,37 @@ class CrearClinicasView(ListCreateAPIView):
 class ClinicasDetailView(ListAPIView):
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
+
+class ClinicaEliminarView(RetrieveDestroyAPIView):
+    lookup_field = "id"
+    queryset = Clinicas.objects.all()
+    serializer_class = ClinicasSerializer
+
+class EditarClinicaView(APIView):
+    def patch(self, request, id):
+        nombre_Clinica= request.data.get("nombre_Clinica")
+        direccion_Clinica= request.data.get("direccion_Clinica")
+        horario= request.data.get("horario")
+        telefono_Clinica= request.data.get("telefono_Clinica")
+        nombre_provincia= request.data.get("nombre_provincia")
+
+        clinica= Clinicas.objects.get(id=id)
+
+        if nombre_Clinica:
+            clinica.nombre_Clinica= nombre_Clinica
+        if direccion_Clinica:
+            clinica.direccion_Clinica= direccion_Clinica
+        if horario:
+            clinica.horario= horario
+        if telefono_Clinica:
+            clinica.telefono_Clinica= telefono_Clinica
+        if nombre_provincia:
+            clinica.nombre_provincia= nombre_provincia
+
+        clinica.save()
+        return Response({"exito":"Clinica actualizada"}, status=status.HTTP_200_OK)
+
+
 
 class CrearContactoView(ListCreateAPIView):
     queryset= Contacto.objects.all()
@@ -223,3 +257,5 @@ class ContactoDetailView(ListAPIView):
     lookup_field = "id"
     queryset= Contacto.objects.all()
     serializer_class= ContactoSerializer
+
+

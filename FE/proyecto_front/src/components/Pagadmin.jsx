@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import llamados from '../services/llamados.jsx';
 import '../styles/admin.css';
 import Swal from 'sweetalert2';
+import Grafico from './grafico.jsx';
+
 
 function Pagadmin() {
     const [usuarios, setUsuarios] = useState([]);
@@ -73,6 +75,9 @@ function Pagadmin() {
     
         elimin(id);
     }
+    
+ 
+
 
 
     return (
@@ -133,6 +138,8 @@ function Pagadmin() {
                 <button id="boton14" onClick={() => eliminar(usuario.id)}>Eliminar</button> <br />
             </ul>
         ))}
+
+         <Grafico />
          </div>
      </div>
     );

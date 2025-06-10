@@ -10,7 +10,7 @@ function Especial() {
     useEffect(() => {
         const traerEspecialidades = async () => {
             const dat = await llamadosEspecial.getEspecialidades();
-            console.log(dat); // Verifica que los datos llegan correctamente
+            console.log(dat);
             setListaEspecialidades(dat);
         };
         traerEspecialidades();

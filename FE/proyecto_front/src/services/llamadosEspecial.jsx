@@ -1,7 +1,7 @@
 
 async function getEspecialidades() {
     try {
-        const response = await fetch ("http://127.0.0.1:8000/api/especialidades/", {
+        const response = await fetch ("http://127.0.0.1:8000/api/especialidades-get/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
