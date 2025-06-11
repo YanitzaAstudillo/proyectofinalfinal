@@ -6,12 +6,24 @@ const Grafico = () => {
   const chartRef = useRef(null);
   let chartInstance = null;
   
+  const [nombre_provincia, setNombre_provincia]= useState([]);
+
+    useEffect(() => {
+            async function traerClinicas() {
+                const datoooo = await llamadosClinic.getClinicas();
+                setClinicas(datoooo);
+            }
+                traerClinicas();
+                if (datoooo){
+                    setNombre_provincia(prev => prev.filter(nombre_provincia => nombre_provincia.id !== id));
+                }
+    }, []);
+
     /*
         Estado que guarda la cantidad de provincias de cada una (7)
         Hacer un useEffect que haga una petición a la url de CLINICAS
         Al resultado de eso, filtrarlo donde el nombre_provincia sea igual Alajuela
     */
-
 
 
 

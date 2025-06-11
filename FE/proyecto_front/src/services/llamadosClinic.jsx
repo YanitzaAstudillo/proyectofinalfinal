@@ -24,14 +24,14 @@ async function getClinicas() {
 //////////LLAMADO POST//////////
 
 
-async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,Provincia) {
+async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_Provincia) {
     
     const obj={
         "nombre":nombre_Clinica,
         "direccion":direccion_Clinica,
         "horario":horario,
         "telefono": telefono_Clinica,
-        "Provincia":Provincia
+        "Provincia":nombre_Provincia
     };
 
     try {

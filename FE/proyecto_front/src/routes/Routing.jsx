@@ -10,6 +10,7 @@ import Farmacias from '../pages/Farmacias.jsx';
 import Especialidades from '../pages/Especialidades.jsx';
 import AdminEspecial from '../pages/AdminEspecial.jsx';
 import Clinicas from '../pages/Clinicas.jsx';
+import AdminClinica from '../pages/AdminClinica.jsx';
 //import AdminFarm from '../pages/AdminFarm.jsx';
 //import Privada from '../componentes/Privada.jsx';
 //<Route path="/AdminFarm" element={<Privada children={<AdminFarm/>}/>} />
@@ -21,6 +22,7 @@ function Routing() {
             <Router>
                 <Routes>
 
+                 <Route path="/AdminClinica" element={<AdminClinica/>}/>
                  <Route path="/Clinicas" element={<Clinicas/>}/>
                  <Route path="/AdminEspecial" element={<AdminEspecial/>}/>
                  <Route path="/Especialidades" element={<Especialidades/>}/>

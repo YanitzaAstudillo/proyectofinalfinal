@@ -92,8 +92,8 @@ function AdminFarma() {
                 <div>
                     <Link to={"/Admin"}><button id="boton91">ADMIN USUARIOS</button></Link>
                     <Link to={"/AdminFarm"}><button id="boton18">ADMIN FARMACIAS</button></Link>
-                    <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
-                    <Link to={"/"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
+                    <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
+                    <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
                 </div>
             </div>
             <div className='dentroo'>

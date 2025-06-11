@@ -14,7 +14,6 @@ function Pagadmin() {
     const [telefonoEditar, setTelefonoEditar] = useState("");
     const [idEditando, setIdEditando] = useState(null)
     
-
     useEffect(() => {
         async function cargarUsuarios() {
             const dato = await llamados.getUsuarios();
@@ -75,10 +74,6 @@ function Pagadmin() {
     
         elimin(id);
     }
-    
- 
-
-
 
     return (
         <div className="body2">
@@ -88,7 +83,7 @@ function Pagadmin() {
                 <div>
                     <Link to={"/Admin"}><button id="boton9">ADMIN USUARIOS</button></Link>
                     <Link to={"/AdminFarm"}><button id="boton10">ADMIN FARMACIAS</button></Link>
-                    <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
+                    <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
                     <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
                 
                 <>

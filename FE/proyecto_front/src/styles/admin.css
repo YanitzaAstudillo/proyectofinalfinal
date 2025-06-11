@@ -1,11 +1,10 @@
 
 .body2{
-    display: flex;
+  display: flex;
   flex-direction: row; 
   justify-content:space-between;
   align-items: center;
     margin-top: 0px;
-    
     background-size: cover;
     background: linear-gradient(90deg,
          #17224d,

@@ -89,9 +89,8 @@ function AdminEspe() {
                 <>
                     <Link to={"/Admin"}><button id="boton911">ADMIN USUARIOS</button></Link>
                     <Link to={"/AdminFarm"}><button id="boton181">ADMIN FARMACIAS</button></Link>
-                    <Link to={"/"}><button id="boton11">ADMIN CLINICAS</button></Link>
+                    <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
                     <Link to={"/AdminEspecial"}><button id="boton121">ADMIN ESPECIALIDADES</button></Link>
-
                 <>
                     <div className="bodies">
                         <a className="card human-resources" href="#">
@@ -112,15 +111,14 @@ function AdminEspe() {
                 </a>
                 </div>
                 </>
-
                 </>
                 </div>
                 <div className='dentro'>
                     {especialidades.map((especialidad) => (
                     <ul key={especialidad.id}>
                      <br />
-                     <strong>Nombre Farmacia:</strong> {especialidad.nombre_Especialidad} <br />
-                     <strong>Nombre Clinica:</strong> {especialidad.nombre_Medico_Clinica} <br />
+                     <strong>Especialidad:</strong> {especialidad.nombre_Especialidad} <br />
+                     <strong>Nombre Medico ó Clinica:</strong> {especialidad.nombre_Medico_Clinica} <br />
                      <strong>Descripcion:</strong> {especialidad.descripcion_Especialidad} <br />
                      <strong>Ubicacion:</strong> {especialidad.ubicacion_Especialidad} <br />
                      <strong>Teléfono:</strong> {especialidad.telefono_Especialidad} <br />
