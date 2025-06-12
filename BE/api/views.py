@@ -136,7 +136,6 @@ class FarmaciaEliminarView(RetrieveDestroyAPIView):
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
-
 class EditarFarmaciaView(APIView):
     def patch(self, request, id):
         nombre_Farmacia= request.data.get("nombre_Farmacia")
@@ -200,7 +199,6 @@ class EditarEspecialidadView(APIView):
         return Response({"exito":"Especialidad actualizada"}, status=status.HTTP_200_OK)
 
 
-
 class CrearProvinciasView (ListCreateAPIView):
     queryset=Provincias.objects.all()
     serializer_class= ProvinciasSerializer
@@ -208,6 +206,12 @@ class CrearProvinciasView (ListCreateAPIView):
 class ProvinciasDetailView(ListAPIView):
     queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
+
+class ProvinciaEliminarView(RetrieveDestroyAPIView):
+    lookup_field = "id"
+    queryset = Provincias.objects.all()
+    serializer_class = ProvinciasSerializer
+
 
 
 class CrearClinicasView(ListCreateAPIView):
@@ -246,7 +250,6 @@ class EditarClinicaView(APIView):
 
         clinica.save()
         return Response({"exito":"Clinica actualizada"}, status=status.HTTP_200_OK)
-
 
 
 class CrearContactoView(ListCreateAPIView):

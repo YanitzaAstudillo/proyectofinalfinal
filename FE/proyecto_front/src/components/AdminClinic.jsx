@@ -134,7 +134,9 @@ function adminClinic() {
                 <button id="boton14" onClick={() => ClinicaElim(clinica.id)}>Eliminar</button> <br />
                 </ul>
             ))}
+            <div className='graf'>
                 <Grafico />
+            </div>
             </div>
         </div>
     )

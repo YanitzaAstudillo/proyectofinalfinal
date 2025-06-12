@@ -24,14 +24,14 @@ async function getClinicas() {
 //////////LLAMADO POST//////////
 
 
-async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_Provincia) {
+async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_provincia) {
     
     const obj={
         "nombre":nombre_Clinica,
         "direccion":direccion_Clinica,
         "horario":horario,
         "telefono": telefono_Clinica,
-        "Provincia":nombre_Provincia
+        "Provincia":nombre_provincia
     };
 
     try {
@@ -56,13 +56,13 @@ async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Cl
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,Provincia,id) {
+async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_provincia,id) {
     const obj={
         "nombre_Clinica": nombre_Clinica,
         "direccion_Clinica":direccion_Clinica,
         "horario": horario,
         "telefono_Clinica":telefono_Clinica,
-        "Provincia": Provincia
+        "Provincia": nombre_provincia
     };
     
     try {
@@ -82,7 +82,6 @@ async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_
         throw error;
     }
 }
-
 
 
 //////////////LLAMADO DELETE/////////////

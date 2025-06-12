@@ -4,7 +4,7 @@ from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,Usuar
 
 from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
-from .views import CrearProvinciasView, ProvinciasDetailView
+from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView
 from .views import CrearClinicasView,ClinicasDetailView,ClinicaEliminarView,EditarClinicaView
 from .views import CrearContactoView,ContactoDetailView
 
@@ -27,8 +27,9 @@ urlpatterns= [
     path('editar-especialidad/<int:id>/', EditarEspecialidadView.as_view()),
 
     path('provincias/', CrearProvinciasView.as_view()),
-    path('todas-provincias/', ProvinciasDetailView.as_view()),
-
+    path('provincias-get/', ProvinciasDetailView.as_view()),
+    path('todas-provincias/<int:id>/',ProvinciaEliminarView.as_view()),
+    
     path('clinicas/', CrearClinicasView.as_view()),
     path('clinicas-get/', ClinicasDetailView.as_view()),
     path('todas-clinicas/', ClinicaEliminarView.as_view()),

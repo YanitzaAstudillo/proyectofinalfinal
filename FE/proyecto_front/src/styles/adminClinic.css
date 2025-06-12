@@ -58,3 +58,13 @@
 #boton222:hover{
   background-color:aqua;
 }
+
+.graf{
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width: 100%;
+  position: absolute; z-index: 1;
+    left: 20em;
+    top: 250px;
+}

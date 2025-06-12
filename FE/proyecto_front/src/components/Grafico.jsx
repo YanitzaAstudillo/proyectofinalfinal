@@ -1,165 +1,90 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import llamadosClinic from '../services/llamadosClinic.jsx';
 
 const Grafico = () => {
   const chartRef = useRef(null);
-  let chartInstance = null;
-  
-  const [nombre_provincia, setNombre_provincia]= useState([]);
+  const [clinicasAlajuela, setClinicasAlajuela] = useState([]);
+  const [clinicasHeredia, setClinicasHeredia]= useState([]);
+  const [clinicasCartago, setClinicasCartago]= useState([]);
+  const [clinicasSanjose, setClinicasSanjose]= useState([]);
+  const [clinicasLimon, setClinicasLimon]= useState([]);
+  const [clinicasPuntarenas, setClinicasPuntarenas]=useState([]);
+  const [clinicasGuanacaste, setClinicasGuanacaste]=useState([]);
 
-    useEffect(() => {
-            async function traerClinicas() {
-                const datoooo = await llamadosClinic.getClinicas();
-                setClinicas(datoooo);
-            }
-                traerClinicas();
-                if (datoooo){
-                    setNombre_provincia(prev => prev.filter(nombre_provincia => nombre_provincia.id !== id));
-                }
-    }, []);
 
-    /*
-        Estado que guarda la cantidad de provincias de cada una (7)
-        Hacer un useEffect que haga una petición a la url de CLINICAS
-        Al resultado de eso, filtrarlo donde el nombre_provincia sea igual Alajuela
-    */
+  useEffect(() => {
+    async function traerClinicas() {
+      const dato = await llamadosClinic.getClinicas();
+      const filtroAlajuela = dato.filter(
+        (provincia) => provincia.nombre_provincia === "alajuela"
+      );
+       const filtroHeredia = dato.filter(
+        (provincia) => provincia.nombre_provincia === "heredia"
+      );
+       const filtroCartago=dato.filter(
+        (provincia)=> provincia.nombre_provincia=== "cartago"
+      );
+       const filtroSanjose =dato.filter(
+        (provincia)=> provincia.nombre_provincia === "san josé"
+      );
+       const filtroLimon= dato.filter(
+        (provincia)=> provincia.nombre_provincia=== "limon"
+       );
+       const filtroPuntarenas=dato.filter(
+        (provincia) => provincia.nombre_provincia=== "puntarenas"
+       );
+       const filtroGuanacaste=dato.filter(
+        (provincia) => provincia.nombre_provincia=== "guanacaste"
+       );
+
+      setClinicasHeredia(filtroHeredia);
+      setClinicasAlajuela(filtroAlajuela);
+      setClinicasCartago(filtroCartago);
+      setClinicasSanjose(filtroSanjose);
+      setClinicasLimon(filtroLimon);
+      setClinicasPuntarenas(filtroPuntarenas);
+      setClinicasGuanacaste(filtroGuanacaste);
+    }
+    traerClinicas();
+  }, []);
 
 
 
   useEffect(() => {
     const chartDom = chartRef.current;
-    chartInstance = echarts.init(chartDom);
+    const chartInstance = echarts.init(chartDom);
 
     const option = {
-      color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+      color: ['#80FFA5'],
       title: {
-        text: 'Gradient Stacked Area Chart'
+        text: 'Cantidad de Clínicas por provincia'
       },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
-          type: 'cross',
-          label: {
-            backgroundColor: '#6a7985'
-          }
+          type: 'shadow'
         }
       },
-      legend: {
-        data: ['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']
+      xAxis: {
+        type: 'category',
+        data: ["Alajuela","Heredia","San José","Limón","Guanacaste","Puntarenas","Cartago"]
       },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
+      yAxis: {
+        type: 'value'
       },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-      },
-      xAxis: [
-        {
-          type: 'category',
-          boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        }
-      ],
-      yAxis: [
-        {
-          type: 'value'
-        }
-      ],
       series: [
         {
-          name: 'Line 1',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: { width: 0 },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 0.8,
+          name: 'Clínicas',
+          type: 'bar',
+          data: [clinicasAlajuela.length,clinicasHeredia.length,clinicasCartago.length,clinicasSanjose.length,clinicasLimon.length,clinicasPuntarenas.length,clinicasGuanacaste.length],
+          barWidth: '50%',
+          itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgb(128, 255, 165)' },
-              { offset: 1, color: 'rgb(1, 191, 236)' }
+              { offset: 0, color: '#80FFA5' },
+              { offset: 1, color: '#00DDFF' }
             ])
-          },
-          emphasis: { focus: 'series' },
-          data: [140, 232, 101, 264, 90, 340, 250]
-        },
-        {
-          name: 'Line 2',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: { width: 0 },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 0.8,
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgb(0, 221, 255)' },
-              { offset: 1, color: 'rgb(77, 119, 255)' }
-            ])
-          },
-          emphasis: { focus: 'series' },
-          data: [120, 282, 111, 234, 220, 340, 310]
-        },
-        {
-          name: 'Line 3',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: { width: 0 },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 0.8,
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgb(55, 162, 255)' },
-              { offset: 1, color: 'rgb(116, 21, 219)' }
-            ])
-          },
-          emphasis: { focus: 'series' },
-          data: [320, 132, 201, 334, 190, 130, 220]
-        },
-        {
-          name: 'Line 4',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: { width: 0 },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 0.8,
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgb(255, 0, 135)' },
-              { offset: 1, color: 'rgb(135, 0, 157)' }
-            ])
-          },
-          emphasis: { focus: 'series' },
-          data: [220, 402, 231, 134, 190, 230, 120]
-        },
-        {
-          name: 'Line 5',
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: { width: 0 },
-          showSymbol: false,
-          label: {
-            show: true,
-            position: 'top'
-          },
-          areaStyle: {
-            opacity: 0.8,
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgb(255, 191, 0)' },
-              { offset: 1, color: 'rgb(224, 62, 76)' }
-            ])
-          },
-          emphasis: { focus: 'series' },
-          data: [220, 302, 181, 234, 210, 290, 150]
+          }
         }
       ]
     };
@@ -169,14 +94,13 @@ const Grafico = () => {
     const resizeChart = () => chartInstance && chartInstance.resize();
     window.addEventListener('resize', resizeChart);
 
-    
     return () => {
       window.removeEventListener('resize', resizeChart);
       chartInstance && chartInstance.dispose();
     };
-  }, []);
+  }, [clinicasAlajuela]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
+  return <div ref={chartRef} style={{ width: '50%', height: '400px' }} />;
 };
 
 export default Grafico;
