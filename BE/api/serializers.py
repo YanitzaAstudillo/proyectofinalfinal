@@ -22,7 +22,7 @@ class UsuarioEliminarSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-    # rol = serializers.ChoiceField(choices=[('admin', 'Administrador'), ('afiliado', 'Afiliado'), ('usuario', 'Usuario')], default='usuario')
+    # rol = serializers.ChoiceField(choices=[('admin', 'Administrador'), ('asociado', 'asociado'), ('usuario', 'Usuario')], default='usuario')
 
 
 

@@ -5,7 +5,7 @@ import '../styles/login.css';
 import llamadosLogin from '../services/llamadosLogin'
 import Swal from "sweetalert2";
 
-function LoginAces() {
+function LoginAces(){
     const [formData, setFormData] = useState({ username: '', password: '' });
 
     const datoss = (e) => {
@@ -13,39 +13,39 @@ function LoginAces() {
         setFormData({ ...formData, [name]: value });
     };
 
+
+
     const inicioSesion = async (e) => {
-            e.preventDefault();
-            const response = await llamadosLogin.postUsuarios(formData.username,formData.password);
+      e.preventDefault();
+      try {
+        const response = await llamadosLogin.postUsuarios(formData.username, formData.password);
+        console.log(response);
 
-            console.log(response);
-            
-            if (response.exito) {
-                Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
-                localStorage.setItem ("token",response.token)
+        if (response.exito) {
+          Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
 
-            } else {
-                Swal.fire("Error",  "Credenciales inválidas", "error");
-            }
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("submit", response.grupo_usuario); 
 
+        if (response.rol === "admin") {
+        navigate('/AdminFarma');
+        } else if (response.rol === "usuario") {
+          navigate('/');
+        } else {
+         Swal.fire("Error", "Rol no reconocido", "error");
         }
 
-        function acess() {
-          const encontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password)
-          if (encontrado){
-            if (encontrado.rol === "admin") {
-            navigate('/AdminFarma');
-
-          localStorage.setItem("submit", "admin");
-
-          } else if (encontrado.rol === "usuario") {
-            navigate('/');
-          } 
-          } else {
-            alert("Usuario no encontrado");
-          }
-  
+        } else {
+          Swal.fire("Error", "Credenciales inválidas", "error");
         }
+      } catch (error) {
+      console.error("Error en inicio de sesión:", error);
+      Swal.fire("Error", "Ocurrió un problema en el servidor", "error");
+      }
+    };
 
+
+    
 
     return (
         <div className="fondo2">

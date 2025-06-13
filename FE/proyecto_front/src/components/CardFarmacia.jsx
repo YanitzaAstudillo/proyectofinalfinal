@@ -31,7 +31,7 @@ function CardFarmacia({nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,imag
         </Typography>
        </CardContent>
         <CardActions>
-          <Button id="deee" size="smaller">hola</Button>
+          <Button id="deee" href="https://www.waze.com/es/live-map">WAZE</Button>
           <DropDownFarmacias horarios={horarios} /> 
         </CardActions>
        </Card>

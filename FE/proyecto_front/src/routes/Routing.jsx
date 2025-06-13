@@ -11,11 +11,9 @@ import Especialidades from '../pages/Especialidades.jsx';
 import AdminEspecial from '../pages/AdminEspecial.jsx';
 import Clinicas from '../pages/Clinicas.jsx';
 import AdminClinica from '../pages/AdminClinica.jsx';
-import Provincias from '../pages/Provincias.jsx';
-//import AdminFarm from '../pages/AdminFarm.jsx';
-//import Privada from '../componentes/Privada.jsx';
-//<Route path="/AdminFarm" element={<Privada children={<AdminFarm/>}/>} />
 
+import AdminFarm from '../pages/AdminFarm.jsx';
+import Privada from '../components/Privada.jsx';
 function Routing() {
     
     return(
@@ -23,7 +21,7 @@ function Routing() {
             <Router>
                 <Routes>
 
-                 <Route path="/Provincias" element={<Provincias/>}/>
+                 <Route path="/AdminFarm" element={<Privada rol={"administrador"} children={<AdminFarm/>}/>} />
                  <Route path="/AdminClinica" element={<AdminClinica/>}/>
                  <Route path="/Clinicas" element={<Clinicas/>}/>
                  <Route path="/AdminEspecial" element={<AdminEspecial/>}/>

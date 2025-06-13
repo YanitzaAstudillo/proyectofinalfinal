@@ -89,8 +89,9 @@ class ValidarUsuarioView(APIView):
 
         if usuario is not None:
             token_acceso = str(AccessToken.for_user(usuario))
-            return Response({"exito":"Usuario validado","token":token_acceso},status=200)
-        
+            id_usuario = usuario.id
+            grupo_usuario = usuario.groups.first().name if usuario.groups.exists() else None
+            return Response({"exito":"Usuario validado","token":token_acceso,"id":id_usuario,"grupo_usuario":grupo_usuario},status=200)
         else:
             return Response({"error":"Usuario no validado"},status=400)
 
@@ -144,7 +145,7 @@ class CrearVerFarmacia(ListCreateAPIView):
     serializer_class = FarmaciasSerializer
 
 class FarmaciasDetailView(ListAPIView):
-    permission_classes= [permisos]
+    
     queryset= Farmacias.objects.all()
     serializer_class= FarmaciasSerializer
 
@@ -183,7 +184,7 @@ class CrearEspecialidadesView(ListCreateAPIView):
     serializer_class= EspecialidadesSerializer
 
 class EspecialidadesDetailView(ListAPIView):
-    permission_classes = [permisos]
+    
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
@@ -245,7 +246,7 @@ class CrearClinicasView(ListCreateAPIView):
     serializer_class= ClinicasSerializer
 
 class ClinicasDetailView(ListAPIView):
-    permission_classes = [permisos]
+    
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 

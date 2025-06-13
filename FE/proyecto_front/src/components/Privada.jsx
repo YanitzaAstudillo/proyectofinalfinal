@@ -2,10 +2,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Privada({children}) {
+function Privada({children,rol}) {
     function adminValido() {
-        const admi=localStorage.getItem("submit")
-        if (admi) {
+        const rolLocal = localStorage.getItem("submit")
+        if (rolLocal === rol) {
             return true
         }else{
             return false

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import llamados from '../services/llamados.jsx';
 import '../styles/admin.css';
 import Swal from 'sweetalert2';
-import Grafico from './grafico.jsx';
+
 
 
 function Pagadmin() {
@@ -57,7 +57,6 @@ function Pagadmin() {
             Swal.fire('Error', 'No se pudo actualizar el usuario.', 'error');
         });
 }
-
     function eliminar(id) {
         async function elimin(id) {
             const confirmado = window.confirm("¿Está seguro de eliminar este usuario?");
@@ -85,7 +84,6 @@ function Pagadmin() {
                     <Link to={"/AdminFarm"}><button id="boton10">ADMIN FARMACIAS</button></Link>
                     <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
                     <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
-                
                 <>
                     <div className="bodies">
                         <a className="card human-resources" href="#">
@@ -106,7 +104,6 @@ function Pagadmin() {
                 </a>
                 </div>
                 </>
-
             </div>
             </div>
             <div className='dentro'>
@@ -133,11 +130,8 @@ function Pagadmin() {
                 <button id="boton14" onClick={() => eliminar(usuario.id)}>Eliminar</button> <br />
             </ul>
         ))}
-
-         <Grafico />
          </div>
      </div>
     );
 }
-
 export default Pagadmin;

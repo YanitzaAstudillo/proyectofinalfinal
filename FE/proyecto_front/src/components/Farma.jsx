@@ -16,7 +16,7 @@ function Farma() {
             
             const datosConHorarios = datos.map((farmacia) => ({
             ...farmacia,
-            horarios: farmacia.horario_Farmacia?.split('\n') || [], //se convierte en un array//
+            horarios: farmacia.horario_Farmacia?.split('\n') || [], //se convierte en un array!!//
             }));
 
             setListaFarmacias(datos)

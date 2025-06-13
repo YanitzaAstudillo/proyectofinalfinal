@@ -29,7 +29,7 @@ function Inicio() {
             <br />
          </div>
          
-         <a className="nav-link" href="/Register  ">Deseas afiliarte?</a>
+         <a className="nav-link" href="/Register">Deseas afiliarte?</a>
         </div>
             
     )
