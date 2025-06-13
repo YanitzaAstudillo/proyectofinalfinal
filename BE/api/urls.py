@@ -1,7 +1,6 @@
 
 from django.urls import path
 from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView,EditarUsuarioView
-
 from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
 from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView
@@ -37,5 +36,5 @@ urlpatterns= [
 
     path('Contacto/', CrearContactoView.as_view()),
     path('todos-contacto/', ContactoDetailView.as_view())
-    
+
 ]

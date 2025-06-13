@@ -4,7 +4,7 @@
   flex-direction: row; 
   justify-content:space-between;
   align-items: center;
-  height: 100vh;
+  height: 112vh;
   background-size: cover;
   background: linear-gradient(90deg,
         #17224d,
@@ -17,7 +17,7 @@
   width: 320px;
   border-radius: 0.9rem;
   background-color: rgba(17, 24, 39, 1);
-  padding: 2rem;
+  
   color: rgba(243, 244, 246, 1);
   position: absolute; z-index: 3;
     left: 0em;
@@ -40,7 +40,7 @@
   align-items: center;
   position: absolute; z-index: 3;
     left: 20em;
-    top: 100px;
+    top: 0px;
 }
 
 #boton222{
@@ -60,11 +60,12 @@
 }
 
 .graf{
+  display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
   position: absolute; z-index: 1;
     left: 20em;
-    top: 250px;
+    top: 460px;
 }

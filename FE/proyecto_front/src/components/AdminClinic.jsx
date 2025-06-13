@@ -105,7 +105,6 @@ function adminClinic() {
             </>
             </> 
             </div>
-
             <div className='render'>
                 {clinicas.map((clinica) => (
                     <ul key={clinica.id}>
@@ -126,7 +125,6 @@ function adminClinic() {
                      <br />
                  </>
                 )}
-
                 {idEd !== clinica.id && (
                  <button id="boton13" onClick={() => inicioEdition(clinica)}> Editar </button>
                  )}

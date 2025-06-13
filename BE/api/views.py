@@ -9,9 +9,44 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
-from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.permissions import BasePermission, SAFE_METHODS,IsAuthenticated
 
 from random import randrange
+
+"""
+administrador
+asociado
+paciente
+"""
+
+class permisos(BasePermission):
+    def has_permission(self, request, view):
+        Usuario= request.user
+
+        if not Usuario.is_authenticated:
+            return False
+        
+        metodo= request.method
+        grupos_usuarios= Usuario.groups.values_list('name', flat=True)
+
+        if metodo in SAFE_METHODS:
+            return True
+        
+        if 'paciente' in grupos_usuarios:
+            if metodo in ['POST', 'GET']:
+                return True
+            return False
+
+        if 'administrador' in grupos_usuarios:
+            if metodo in ['POST','PUT','PATCH','DELETE','GET']:
+                return True
+            return False
+        
+        if 'afiliado' in grupos_usuarios:
+            if metodo in ['POST','PUT','PATCH','DELETE','GET']:
+                return True
+
+        return False
 
 
 # Create your views here
@@ -60,36 +95,19 @@ class ValidarUsuarioView(APIView):
             return Response({"error":"Usuario no validado"},status=400)
 
 
-class permisos(BasePermission):
-    def has_permission(self, request, view):
-        Usuario= request.user
-
-        if not Usuario.is_authenticated:
-            return False
-        
-        metodo= request.method
-        grupos_usuarios= Usuario.groups.values_list('name', flat=True)
-
-        if metodo in SAFE_METHODS:
-            return True
-        
-        if 'farmacias' in grupos_usuarios:
-            if metodo in ['POST', 'PUT']:
-                return True
-
-        return False
-
-
 class UsuariosDetailView(ListAPIView):
+    permission_classes = [permisos]
     queryset = Usuarios.objects.all()
     serializer_class = UsuarioCompletoSerializer
 
 class UsuarioEliminarView(RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Usuarios.objects.all()
     serializer_class = UsuarioCompletoSerializer
 
 class EditarUsuarioView(APIView):
+    permission_classes = [IsAuthenticated]
     def patch(self, request,id):
         username= request.data.get("username")
         first_name= request.data.get("first_name")
@@ -120,23 +138,24 @@ class EditarUsuarioView(APIView):
         return Response({"exito":"Usuario actualizado"}, status=status.HTTP_200_OK)
     
 
-
 class CrearVerFarmacia(ListCreateAPIView):
     permission_classes= [permisos]
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
 class FarmaciasDetailView(ListAPIView):
+    permission_classes= [permisos]
     queryset= Farmacias.objects.all()
     serializer_class= FarmaciasSerializer
 
 class FarmaciaEliminarView(RetrieveDestroyAPIView):
-    permission_classes= [permisos]
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
 class EditarFarmaciaView(APIView):
+    permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Farmacia= request.data.get("nombre_Farmacia")
         direccion_Farmacia= request.data.get("direccion_Farmacia")
@@ -159,19 +178,23 @@ class EditarFarmaciaView(APIView):
 
 
 class CrearEspecialidadesView(ListCreateAPIView):
+    permission_classes = [permisos]
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
 class EspecialidadesDetailView(ListAPIView):
+    permission_classes = [permisos]
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
 class EspecialidadEliminarView(RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Especialidades.objects.all()
     serializer_class = EspecialidadesSerializer
 
 class EditarEspecialidadView(APIView):
+    permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Especialidad= request.data.get("nombre_Especialidad")
         nombre_Medico_Clinica= request.data.get("nombre_Medico_Clinica")
@@ -200,34 +223,40 @@ class EditarEspecialidadView(APIView):
 
 
 class CrearProvinciasView (ListCreateAPIView):
+    permission_classes = [permisos]
     queryset=Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciasDetailView(ListAPIView):
+    permission_classes = [permisos]
     queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciaEliminarView(RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Provincias.objects.all()
     serializer_class = ProvinciasSerializer
 
 
-
 class CrearClinicasView(ListCreateAPIView):
+    permission_classes = [permisos]
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
 class ClinicasDetailView(ListAPIView):
+    permission_classes = [permisos]
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
 class ClinicaEliminarView(RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Clinicas.objects.all()
     serializer_class = ClinicasSerializer
 
 class EditarClinicaView(APIView):
+    permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Clinica= request.data.get("nombre_Clinica")
         direccion_Clinica= request.data.get("direccion_Clinica")

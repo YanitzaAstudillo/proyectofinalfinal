@@ -100,7 +100,7 @@ const Grafico = () => {
     };
   }, [clinicasAlajuela]);
 
-  return <div ref={chartRef} style={{ width: '50%', height: '400px' }} />;
+  return <div ref={chartRef} style={{ width: '50%', height: '360px' }} />;
 };
 
 export default Grafico;
