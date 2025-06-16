@@ -11,6 +11,7 @@ function AdminFarma() {
   const [direccion_FarmaciaEd, setDireccion_FarmaciaEd] = useState("");
   const [telefono_FarmaciaEd, setTelefono_FarmaciaEd] = useState("");
   const [horario_FarmaciaEd, setHorario_FarmaciaEd] = useState("");
+  const [sucursales_FarmaciaEd,setSucursales_FarmaciaEd]=useState("");
   const [idEdit, setIdEdit] = useState(null);
 
   useEffect(() => {
@@ -27,29 +28,32 @@ function AdminFarma() {
     setDireccion_FarmaciaEd(farmacia.direccion_Farmacia);
     setTelefono_FarmaciaEd(farmacia.telefono_Farmacia);
     setHorario_FarmaciaEd(farmacia.horario_Farmacia);
+    setSucursales_FarmaciaEd(farmacia.sucursales_Farmacia);
   }
 
   function edicion(id) {
-    if(!nombre_FarmaciaEd || !direccion_FarmaciaEd || !telefono_FarmaciaEd || !horario_FarmaciaEd){
+    if(!nombre_FarmaciaEd || !direccion_FarmaciaEd || !telefono_FarmaciaEd || !horario_FarmaciaEd || !sucursales_FarmaciaEd){
       Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
       return;
     }
-    llamadosFarma.updateFarmacias(nombre_FarmaciaEd,direccion_FarmaciaEd,telefono_FarmaciaEd,horario_FarmaciaEd,id)
+    console.log(id);
+    
+    llamadosFarma.updateFarmacias(nombre_FarmaciaEd,direccion_FarmaciaEd,telefono_FarmaciaEd,horario_FarmaciaEd,sucursales_FarmaciaEd,id)
       .then(() => {
         Swal.fire('Farmacia actualizada', 'La actualización fue exitosa!', 'success');
 
         setFarmacias(prev =>
           prev.map(farmacia =>
             farmacia.id === id
-              ? { ...farmacia, nombre_Farmacia: nombre_FarmaciaEd, direccion_Farmacia: direccion_FarmaciaEd, telefono_Farmacia: telefono_FarmaciaEd, horario_Farmacia: horario_FarmaciaEd }
+              ? { ...farmacia, nombre_Farmacia: nombre_FarmaciaEd, direccion_Farmacia: direccion_FarmaciaEd, telefono_Farmacia: telefono_FarmaciaEd, horario_Farmacia: horario_FarmaciaEd,sucursales_Farmacia:sucursales_FarmaciaEd }
               : farmacia
           )
-        );
-
+        ); 
         setNombre_FarmaciaEd("");
         setDireccion_FarmaciaEd("");
         setTelefono_FarmaciaEd("");
         setHorario_FarmaciaEd("");
+        setSucursales_FarmaciaEd("");
         setIdEdit(null);
       })
       .catch(() => {
@@ -114,13 +118,15 @@ function AdminFarma() {
             <li><strong>Dirección farmacia:</strong> {farmacia.direccion_Farmacia}</li>
             <li><strong>Teléfono:</strong> {farmacia.telefono_Farmacia}</li>
             <li><strong>Horario:</strong> {farmacia.horario_Farmacia}</li>
+            <li><strong>Sucursales:</strong> {farmacia.sucursales_Farmacia}</li>
 
             {idEdit === farmacia.id && (
               <>
-                <input className="redo" value={nombre_FarmaciaEd} onChange={(e) => setNombre_FarmaciaEd(e.target.value)} type="text" placeholder="Nombre" />
-                <input className="redo" value={direccion_FarmaciaEd} onChange={(e) => setDireccion_FarmaciaEd(e.target.value)} type="text" placeholder="Dirección" />
-                <input className="redo" value={telefono_FarmaciaEd} onChange={(e) => setTelefono_FarmaciaEd(e.target.value)} type="text" placeholder="Teléfono" />
-                <input className="redo" value={horario_FarmaciaEd} onChange={(e) => setHorario_FarmaciaEd(e.target.value)} type="text" placeholder="Horario" />
+                <input className="redo" value={nombre_FarmaciaEd} onChange={(e) => setNombre_FarmaciaEd(e.target.value)} type="text" placeholder="Nombre"/>
+                <input className="redo" value={direccion_FarmaciaEd} onChange={(e) =>setDireccion_FarmaciaEd(e.target.value)} type="text" placeholder="Dirección"/>
+                <input className="redo" value={telefono_FarmaciaEd} onChange={(e) =>setTelefono_FarmaciaEd(e.target.value)} type="text" placeholder="Teléfono"/>
+                <input className="redo" value={horario_FarmaciaEd} onChange={(e) => setHorario_FarmaciaEd(e.target.value)} type="text" placeholder="Horario"/>
+                <input className= "redo" value={sucursales_FarmaciaEd} onChange={(e)=>setSucursales_FarmaciaEd(e.target.value)}placeholder="Sucursales" type="text"/>
               </>
             )}
 

@@ -140,7 +140,7 @@ class EditarUsuarioView(APIView):
     
 
 class CrearVerFarmacia(ListCreateAPIView):
-    permission_classes= [permisos]
+    # permission_classes= [permisos]
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
@@ -162,7 +162,7 @@ class EditarFarmaciaView(APIView):
         direccion_Farmacia= request.data.get("direccion_Farmacia")
         telefono_Farmacia=request.data.get("telefono_Farmacia")
         horario_Farmacia= request.data.get("horario_Farmacia")
-        sucursales_Farmacia=request.data.get("sucursales_Farmacias")
+        sucursales_Farmacia=request.data.get("sucursales_Farmacia")
 
         farmacia= Farmacias.objects.get(id=id)
 

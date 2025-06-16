@@ -21,7 +21,7 @@ urlpatterns= [
     path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),
 
     path('especialidades/', CrearEspecialidadesView.as_view()),
-    path('especialidades-get/', EspecialidadesDetailView.as_view()),
+    path('especialidades-get/',EspecialidadesDetailView.as_view()),
     path('todas-especialidades/<int:id>/',EspecialidadEliminarView.as_view()),
     path('editar-especialidad/<int:id>/', EditarEspecialidadView.as_view()),
 

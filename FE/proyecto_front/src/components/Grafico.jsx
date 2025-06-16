@@ -49,8 +49,6 @@ const Grafico = () => {
     traerClinicas();
   }, []);
 
-
-
   useEffect(() => {
     const chartDom = chartRef.current;
     const chartInstance = echarts.init(chartDom);
