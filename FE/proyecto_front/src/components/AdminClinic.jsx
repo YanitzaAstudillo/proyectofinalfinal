@@ -12,7 +12,7 @@ function adminClinic() {
     const [direccion_ClinicaEd, setDireccion_ClinicaEd]= useState("");
     const [horarioEd, setHorarioEd]= useState("");
     const [telefono_ClinicaEd, setTelefono_ClinicaEd]= useState("");
-    const [nombre_provinciaEd, setNombre_provinciaEd]= useState("");
+    const [nombre_ProvinciaEd, setNombre_ProvinciaEd]= useState("");
     const [idEd, setIdEd]= useState(null)
 
     useEffect(() => {
@@ -28,35 +28,35 @@ function adminClinic() {
                 setDireccion_ClinicaEd(clinica.direccion_Clinica);
                 setHorarioEd(clinica.horario);
                 setTelefono_ClinicaEd(clinica.telefono_Clinica);
-                setNombre_provinciaEd(clinica.nombre_provincia);
+                setNombre_ProvinciaEd(clinica.nombre_Provincia);
             }
             function Edittt(id) {
-                if (!nombre_ClinicaEd || !direccion_ClinicaEd || !horarioEd || !telefono_ClinicaEd || !nombre_provinciaEd){
+                if (!nombre_ClinicaEd || !direccion_ClinicaEd || !horarioEd || !telefono_ClinicaEd || !nombre_ProvinciaEd){
                     Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
                 return;
                 }
 
-                llamadosClinic.updateClinicas(nombre_ClinicaEd,direccion_ClinicaEd,horarioEd,telefono_ClinicaEd,nombre_provinciaEd,id)
+                llamadosClinic.updateClinicas(nombre_ClinicaEd,direccion_ClinicaEd,horarioEd,telefono_ClinicaEd,nombre_ProvinciaEd,id)
                     .then(() => {
                         Swal.fire('Clinica actualizada', 'La actualización fue exitosa!', 'success');
                                                 
                         setClinicas(prev =>
                         prev.map(clinica =>
                         clinica.id === id
-                        ? { ...clinica, nombre_Clinica:nombre_ClinicaEd, direccion_Clinica: direccion_ClinicaEd,horario: horarioEd,telefono_Clinica:telefono_ClinicaEd,nombre_provincia:nombre_provinciaEd}
+                        ? { ...clinica, nombre_Clinica:nombre_ClinicaEd, direccion_Clinica: direccion_ClinicaEd,horario: horarioEd,telefono_Clinica:telefono_ClinicaEd,nombre_Provincia:nombre_ProvinciaEd}
                         : clinica
                         )
                         );
-                            setNombre_ClinicaEd("");
-                            setDireccion_ClinicaEd("");
-                            setHorarioEd("");
-                            setTelefono_ClinicaEd("");
-                            setNombre_provinciaEd("");
-                            setIdEd(null);
+                        setNombre_ClinicaEd("");
+                        setDireccion_ClinicaEd("");
+                        setHorarioEd("");
+                        setTelefono_ClinicaEd("");
+                        setNombre_ProvinciaEd("");
+                        setIdEd(null);
                         })
-                            .catch(() => {
-                                Swal.fire('Error', 'No se pudo actualizar', 'error');
-                            });
+                        .catch(() => {
+                         Swal.fire('Error', 'No se pudo actualizar', 'error');
+                        });
             }
             function ClinicaElim(id) {
                 async function elis(id) {
@@ -113,7 +113,7 @@ function adminClinic() {
                      <strong>Direccion:</strong> {clinica.direccion_Clinica} <br />
                      <strong>Horario:</strong> {clinica.horario} <br />
                      <strong>Telefono:</strong> {clinica.telefono_Clinica} <br />
-                     <strong>Provincia:</strong> {clinica.nombre_provincia} <br />
+                     <strong>Provincia:</strong> {clinica.nombre_Provincia} <br />
 
                      {idEd === clinica.id && (
                 <>
@@ -121,7 +121,7 @@ function adminClinic() {
                     <input id="redo" value={direccion_ClinicaEd} onChange={(e) => setDireccion_ClinicaEd(e.target.value)} type="text" />{" "} Direccion<br />
                     <input id="redo" value={horarioEd} onChange={(e) => setHorarioEd(e.target.value)} type="text" />{" "} Horario<br />
                     <input id="redo" value={telefono_ClinicaEd} onChange={(e) => setTelefono_ClinicaEd(e.target.value)} type="text" />{" "} Telefono<br />
-                    <input id="redo" value={nombre_provinciaEd} onChange={(e) => setNombre_provinciaEd(e.target.value)} type="text" />{" "} Provincia<br />
+                    <input id="redo" value={nombre_ProvinciaEd} onChange={(e) => setNombre_ProvinciaEd(e.target.value)} type="text" />{" "} Provincia<br />
                      <br />
                  </>
                 )}

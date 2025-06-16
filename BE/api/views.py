@@ -244,7 +244,7 @@ class ProvinciaEliminarView(RetrieveDestroyAPIView):
 
 
 class CrearClinicasView(ListCreateAPIView):
-    permission_classes = [permisos]
+    # permission_classes = [permisos]
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
@@ -260,13 +260,13 @@ class ClinicaEliminarView(RetrieveDestroyAPIView):
     serializer_class = ClinicasSerializer
 
 class EditarClinicaView(APIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Clinica= request.data.get("nombre_Clinica")
         direccion_Clinica= request.data.get("direccion_Clinica")
         horario= request.data.get("horario")
         telefono_Clinica= request.data.get("telefono_Clinica")
-        nombre_provincia= request.data.get("nombre_provincia")
+        nombre_Provincia= request.data.get("nombre_Provincia")
 
         clinica= Clinicas.objects.get(id=id)
 
@@ -278,8 +278,8 @@ class EditarClinicaView(APIView):
             clinica.horario= horario
         if telefono_Clinica:
             clinica.telefono_Clinica= telefono_Clinica
-        if nombre_provincia:
-            clinica.nombre_provincia= nombre_provincia
+        if nombre_Provincia:
+            clinica.nombre_Provincia= nombre_Provincia
 
         clinica.save()
         return Response({"exito":"Clinica actualizada"}, status=status.HTTP_200_OK)

@@ -1,0 +1,35 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, #17224d, #ffffff);
+  color: rgba(243, 244, 246, 1);
+}
+.body45{
+  padding-top: 80px;
+  min-height: 100vh;
+  background: linear-gradient(90deg,
+         #17224d,
+         #ffffff);
+  font-family: 'Segoe UI', sans-serif;
+}
+.provincia-bloque{
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  width: calc(100% - 340px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #17224d;
+  
+}
