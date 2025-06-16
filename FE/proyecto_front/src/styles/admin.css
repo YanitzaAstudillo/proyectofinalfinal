@@ -4,8 +4,8 @@
   flex-direction: row; 
   justify-content:space-between;
   align-items: center;
-    margin-top: 0px;
-    background-size: cover;
+  margin-top: 0px;
+  background-size: cover;
     background: linear-gradient(90deg,
          #17224d,
          #ffffff
@@ -98,6 +98,7 @@
   flex-direction: row; 
   justify-content:space-between;
   align-items: center;
+  background-size: cover;
   position: absolute; z-index: 3;
     left: 20em;
     top: 100px;
@@ -124,6 +125,7 @@
   height: 40px;
   background: #fff;
   border-radius: 1rem;
+  background-size: cover;
   border: rgb(201, 201, 201) solid 1.5px;
   overflow: hidden;
   display: flex;

@@ -6,39 +6,33 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DropDownFarmacias from './DropDownFarmacias';
-import "../styles/farmacia.css"
-import { blue } from '@mui/material/colors';
+import '../styles/farmacia.css';
 
-
-function CardFarmacia({nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,imagen, horarios}) {
-    
+function CardFarmacia({ nombre_Farmacia, direccion_Farmacia, telefono_Farmacia,imagen,horarios,sucursales}) {
   return (
-    <>
-      <Card id= "dee"sx={{ maxWidth: 220 }}>
-           <CardMedia
-            component="img"
-            className='imagenquenosequierecambiar'
-            alt={nombre_Farmacia}
-            
-            image={imagen}
-   />  
-       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-         {nombre_Farmacia}
+    <Card className="card-farmacia">
+      <CardMedia
+        component="img"
+        className="card-img"
+        alt={nombre_Farmacia}
+        image={imagen}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h6" component="div">
+          {nombre_Farmacia}
         </Typography>
-        <Typography variant="body" sx={{ color: 'text.secondary' }}>
-           {direccion_Farmacia} - {telefono_Farmacia}
+        <Typography variant="body2" color="text.secondary">
+          {direccion_Farmacia}<br />{telefono_Farmacia}
         </Typography>
-       </CardContent>
-        <CardActions>
-          <Button id="deee" href="https://www.waze.com/es/live-map">WAZE</Button>
-          <DropDownFarmacias horarios={horarios} /> 
-        </CardActions>
-       </Card>
-        
-    </>
-
-    
+      </CardContent>
+      <CardActions>
+        <Button className="boton-waze" href="https://www.waze.com/es/live-map" target="_blank">
+          WAZE
+        </Button>
+        <DropDownFarmacias horarios={horarios} sucursales={sucursales} />
+      </CardActions>
+    </Card>
   );
 }
-export default CardFarmacia
+
+export default CardFarmacia;

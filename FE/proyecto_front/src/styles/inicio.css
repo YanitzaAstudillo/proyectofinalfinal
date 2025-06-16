@@ -1,23 +1,39 @@
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .body{
-
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    box-sizing: border-box;
     background-image: url("portada2.jpg");
     background-size: cover;
     background: linear-gradient(90deg,
          #17224d,
          #17224d
     );
-    
 }
 .enlace_sin_linea{
     position: absolute; z-index: 3;
     left: 6em;
     top: 82px;
-    
     letter-spacing: 7px;
     text-decoration: none;
     color: white;
     font-weight: bolder;
+}
+.enlace_sin_linea:hover{
+    color: #c0cbf8;
+    transform: translateY(-4px) scale(1.000) translateZ(0);
+    box-shadow: 0 12px 15px rgba(0,0,0,0.11),
+    0 12px 23px var(--box-shadow-color);
+    
 }
 
 .enlace_sin_lineaa{
@@ -29,6 +45,12 @@
   letter-spacing: 7px;
   font-weight: bolder;
 }
+.enlace_sin_lineaa:hover{
+    color: #c0cbf8;
+    transform: translateY(-4px) scale(1.000) translateZ(0);
+    box-shadow: 0 12px 15px rgba(0,0,0,0.11),
+    0 12px 23px var(--box-shadow-color);
+}
 
 .enlace_sin_linea1{
   text-decoration: none;
@@ -39,7 +61,25 @@
   letter-spacing: 7px;
   font-weight: bolder;
 }
+.enlace_sin_linea1:hover{
+    color: #c0cbf8;
+    transform: translateY(-4px) scale(1.000) translateZ(0);
+    box-shadow: 0 12px 15px rgba(0,0,0,0.11),
+    0 12px 23px var(--box-shadow-color);
+}
 
+.card-botones{
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+    width: calc(100% - 340px);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: absolute; z-index: 3;
+}
 #boton1{
     background: linear-gradient(90deg,
      black,
@@ -86,7 +126,6 @@
     padding-top: 40px;
     padding-inline: 22px;
     margin: 10px;
-
     position: absolute; z-index: 1;
     left: 51em;
     top: 450px;
@@ -112,14 +151,13 @@
 #boton5{
     background-color: aqua;
     color: rgba(41, 6, 94, 0.814);
-    
     border-radius: 10px;
     border: rgb(60, 59, 59) solid 1px;
     padding-bottom: 39px;
     padding-top: 39px;
     padding-inline: 18px;
     margin: 9px;
-    position: absolute; z-index: 3;
+    position: relative; z-index: 3;
     left: 66em;
     top: 300px;
     font-weight: bold;
@@ -157,10 +195,21 @@
    font-weight:bolder;
 }
 
-
 .nav-link{
     color: white;
     position: absolute; z-index: 3;
     left: 60.3em;
     top: 670px;
+}
+
+@media screen and (max-width: 768px) {
+  .body{
+    flex-direction:column;
+    align-items: center;
+  }
+
+  .card-botones{
+    width: 90%;
+    max-width: 100%;
+  }
 }

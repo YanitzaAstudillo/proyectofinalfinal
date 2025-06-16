@@ -105,7 +105,7 @@ function adminClinic() {
             </>
             </> 
             </div>
-            <div className='render'>
+            <div className='dentroo'>
                 {clinicas.map((clinica) => (
                     <ul key={clinica.id}>
                      <br />
@@ -132,9 +132,9 @@ function adminClinic() {
                 <button id="boton14" onClick={() => ClinicaElim(clinica.id)}>Eliminar</button> <br />
                 </ul>
             ))}
-            <div className='graf'>
+            
                 <Grafico />
-            </div>
+            
             </div>
         </div>
     )

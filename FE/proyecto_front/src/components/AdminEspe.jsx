@@ -84,7 +84,7 @@ function AdminEspe() {
         return(
             <div className='body5'>
                 <div className="container11">
-                    <p className="title">Panel de Control</p>
+                    <p className="titll">Panel de Control</p>
                     <br /><br />
                 <>
                     <Link to={"/Admin"}><button id="boton911">ADMIN USUARIOS</button></Link>
@@ -108,12 +108,12 @@ function AdminEspe() {
                     </svg>
                     </div>
                     <p>CERRAR SESION</p>
-                </a>
-                </div>
+                    </a>
+                    </div>
                 </>
                 </>
                 </div>
-                <div className='dentro'>
+                <div className='dentroo'>
                     {especialidades.map((especialidad) => (
                     <ul key={especialidad.id}>
                      <br />

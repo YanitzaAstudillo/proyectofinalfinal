@@ -1,25 +1,41 @@
 
 
 .roww{
-  
   display: flex;
-  flex-direction: row; 
-  align-items: center;
-  position: absolute; z-index: 1;
-    left: 3em;
-    top: 6em;
-  
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+  color: black;
 }
 
-.cardd{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  align-items: center;
-  background: #fff;
+.tarjeta{
+  flex: 1 1 280px;
+  max-width: 300px;
+}
+
+.card-bodii{
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
+  background-color: #fff;
   padding: 20px;
-  margin-top: 70px;
-  width: 35vh;
-  height: 460px;
-  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.card-bodii:hover{
+  transform: translateY(-4px);
+}
+
+@media screen and (max-width: 768px) {
+  .roww {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-bodii{
+    width: 90%;
+    max-width: 100%;
+  }
 }

@@ -23,24 +23,23 @@ function Especial() {
                 <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
                 <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
 
-                
-                <div className="roww">
-                    {listaEspecialidades.map((especialidad) => (
-                        <div className="col-sm-6 mb-4" key={especialidad.id}>
-                            <div className="cardd">
-                                <div className="card-body">
-                                    <h5 className="card-title">{especialidad.nombre_Especialidad}</h5>
-                                    <p className="card-text"><strong>Médico/Clínica:</strong> {especialidad.nombre_Medico_Clinica}</p>
-                                    <p className="card-text"><strong>Descripción:</strong> {especialidad.descripcion_Especialidad}</p>
-                                    <p className="card-text"><strong>Ubicación:</strong> {especialidad.ubicacion_Especialidad}</p>
-                                    <p className="card-text"><strong>Teléfono:</strong> {especialidad.telefono_Especialidad}</p>
-                                    <p className="card-text"><strong>Precio:</strong>C {especialidad.precio}</p>
-                                    <a href="#" className="btn btn-outline-dark">Contactar</a>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <div className="roww">
+                {listaEspecialidades.map((especialidad) => (
+                 <div className="tarjeta" key={especialidad.id}>
+                 <>
+                 <div className="card-bodii">
+                    <h5 className="card-title">{especialidad.nombre_Especialidad}</h5>
+                    <p className="card-text"><strong>Médico/Clínica:</strong> {especialidad.nombre_Medico_Clinica}</p>
+                    <p className="card-text"><strong>Descripción:</strong> {especialidad.descripcion_Especialidad}</p>
+                    <p className="card-text"><strong>Ubicación:</strong> {especialidad.ubicacion_Especialidad}</p>
+                    <p className="card-text"><strong>Teléfono:</strong> {especialidad.telefono_Especialidad}</p>
+                    <p className="card-text"><strong>Precio:</strong>C {especialidad.precio}</p>
+                    <a href="https://www.waze.com/es/live-map" className="btn btn-outline-dark">WAZE</a>
+                 </div>
+                 </>
+                 </div>
+                ))}
+            </div>
             </div>
         </>
     );

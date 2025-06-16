@@ -1,27 +1,39 @@
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, #17224d, #ffffff);
+  color: rgba(243, 244, 246, 1);
+}
+
 .body8{
   display: flex;
-  flex-direction: row; 
-  justify-content:space-between;
-  align-items: center;
-  height: 112vh;
-  background-size: cover;
-  background: linear-gradient(90deg,
-        #17224d,
-        #ffffff
-    );
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .container88{
-  height: 100%;
-  width: 320px;
-  border-radius: 0.9rem;
+  width: 100%;
+  height: 700px;
+  max-width: 320px;
   background-color: rgba(17, 24, 39, 1);
-  padding: 2rem;
-  color: rgba(243, 244, 246, 1);
-  position: absolute; z-index: 3;
-    left: 0em;
-    top: 0px;
+  border-radius: 0.9rem;
+  padding: 2.5rem;
+  color: white;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .tit{
@@ -33,27 +45,19 @@
   color: white;
 }
 
-.render{
-  display: flex;
-  flex-direction: row; 
-  justify-content:space-between;
-  align-items: center;
-  position: absolute; z-index: 3;
-    left: 20em;
-    top: 0px;
-}
-
-#boton222{
+#boton181, #boton222, #boton911, #boton11{
   border-radius: 1rem;
   width: 100%;
   background-color: white;
   padding: 0.5rem;
-  margin-top: 70px;
+  margin-top: 1rem;
   text-align: center;
   color: rgba(17, 24, 39, 1);
   border: none;
-  font-weight:bold;
-  box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 #boton222:hover{
   background-color:aqua;

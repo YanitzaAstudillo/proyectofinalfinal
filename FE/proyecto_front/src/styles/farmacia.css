@@ -1,48 +1,97 @@
+
 .body4{
-    margin-top: 0px;
-    height: 111vh;
-    
-    background-size: cover;
-    background: linear-gradient(90deg,
+  padding-top: 80px;
+  min-height: 100vh;
+  background: linear-gradient(90deg,
          #17224d,
-         #ffffff
-    );
+         #ffffff);
+  font-family: 'Segoe UI', sans-serif;
 }
-.imagenquenosequierecambiar{
-  width: auto;
-  height: 120px;
-  
-}
+
 .far {
-  display:flex;
-  flex-wrap:wrap;
-  
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 220px;
-  gap: 16px;
-  
-}
-#dee{
-  border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1.5px;
-}
-#deee{
-  background: #17224d;
-  color:#fff;
-  text-transform: lowercase;
+  gap:16px;
+  padding: 45px 15px;
+  box-sizing: border-box;
 }
 
-#dropdown-basic{
-  background: #17224d;
-  color:#fff;
+.card-farmacia{
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 15px;
+
+}
+.card-farmacia:hover{
+  transform: translateY(-4px);
+}
+
+.card-img {
+  height: 160px;
+  object-fit: cover;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.boton-waze{
+  background-color: #edeaea!important;
+  transition: background-color 0.3s ease;
+  color: #17224d !important;
+  cursor: pointer;
+  font-weight: bolder;
+  text-transform: uppercase;
+  gap: 0px;
+}
+.boton-waze:hover{
+  background-color: #ccc!important;
+}
+
+.dropdown-toggle{
+  
+  background-color: #edeaea!important;
+  transition: background-color 0.3s ease;
+  border: none !important;
+  color: #17224d !important;
+  cursor: pointer;
+}
+.dropdown-toggle:hover{
+  background-color: #ccc!important;
+}
+
+.dropdown-menu {
+  max-height: 200px;
   overflow-y: auto;
-  
+}
+.horario-item {
+  padding: 5px;
+  background-color: #f0f3ff;
+  text-align: center;
 }
 
-#colorsh{
-  background: #c0cbf8;
-  padding: 10px;
-  text-align: center;
+@media screen and (max-width: 768px) {
+  .far {
+    flex-direction:column;
+    align-items: center;
+  }
+  .dropdown-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-farmacia {
+    width: 90%;
+    max-width: 100%;
+  }
+}
+
+.dropdown-container {
+  display: flex;
+  gap: 4px;
+  align-items: center;
   justify-content: center;
-  
+  padding: 0px;
 }

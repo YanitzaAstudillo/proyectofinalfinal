@@ -31,13 +31,12 @@ function Farma() {
         <>
         <div className='body4'>
             <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
-            <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
+            <Link to="/" className='enlace_sin_lineaa'>NOSOTROS</Link>
             <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
-            
+      
             <div className='far'>
                 <ListCardFarmacia farmacias={listaFarmacias}/>
             </div>
-                
         </div>
         </>
     );

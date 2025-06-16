@@ -52,8 +52,6 @@ async function postEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,desc
     }
 }
 
-
-
 //////////////LLAMADO UPDATE/////////////
 
 
@@ -69,7 +67,7 @@ async function updateEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,de
     
     try {
 
-        const response = await fetch(`http://127.0.0.1:8000/api/editar-especialidades/${id}/`,{
+        const response = await fetch(`http://127.0.0.1:8000/api/editar-especialidad/${id}/`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -85,10 +83,7 @@ async function updateEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,de
     }
 }
 
-
-
 //////////////LLAMADO DELETE/////////////
-
 
 async function deleteEspecialidades(id) {
     try {
