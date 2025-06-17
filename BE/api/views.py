@@ -242,6 +242,19 @@ class ProvinciaEliminarView(RetrieveDestroyAPIView):
     queryset = Provincias.objects.all()
     serializer_class = ProvinciasSerializer
 
+class EditarProvinciaView(APIView):
+    def patch(self, request, id):
+        nombre_Provincia= request.data.get("nombre_Provincia")
+
+        provincia= Provincias.objects.get(id=id)
+
+        if nombre_Provincia:
+            provincia.nombre_Provincia= nombre_Provincia
+
+            provincia.save()
+
+        return Response({"exito":"Provincia actualizada"}, status=status.HTTP_200_OK)
+
 
 class CrearClinicasView(ListCreateAPIView):
     # permission_classes = [permisos]
@@ -266,7 +279,7 @@ class EditarClinicaView(APIView):
         direccion_Clinica= request.data.get("direccion_Clinica")
         horario= request.data.get("horario")
         telefono_Clinica= request.data.get("telefono_Clinica")
-        nombre_Provincia= request.data.get("nombre_Provincia")
+        nombre_Provincia= request.data.get("Provincias")
 
         clinica= Clinicas.objects.get(id=id)
 

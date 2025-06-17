@@ -3,7 +3,7 @@ from django.urls import path
 from .views import CrearUsuarioView, UsuariosDetailView,ValidarUsuarioView,UsuarioEliminarView,EditarUsuarioView
 from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, EditarFarmaciaView
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
-from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView
+from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView,EditarProvinciaView
 from .views import CrearClinicasView,ClinicasDetailView,ClinicaEliminarView,EditarClinicaView
 from .views import CrearContactoView,ContactoDetailView
 
@@ -28,6 +28,7 @@ urlpatterns= [
     path('provincias/', CrearProvinciasView.as_view()),
     path('provincias-get/', ProvinciasDetailView.as_view()),
     path('todas-provincias/<int:id>/',ProvinciaEliminarView.as_view()),
+    path('editar-provincia/<int:id>/', EditarProvinciaView.as_view()),
     
     path('clinicas/', CrearClinicasView.as_view()),
     path('clinicas-get/', ClinicasDetailView.as_view()),

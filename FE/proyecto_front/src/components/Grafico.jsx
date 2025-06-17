@@ -17,25 +17,25 @@ const Grafico = () => {
     async function traerClinicas() {
       const dato = await llamadosClinic.getClinicas();
       const filtroAlajuela = dato.filter(
-        (provincia) => provincia.nombre_provincia === "alajuela"
+        (provincia) => provincia.nombre_Provincia === "alajuela"
       );
        const filtroHeredia = dato.filter(
-        (provincia) => provincia.nombre_provincia === "heredia"
+        (provincia) => provincia.nombre_Provincia === "heredia"
       );
        const filtroCartago=dato.filter(
-        (provincia)=> provincia.nombre_provincia=== "cartago"
+        (provincia)=> provincia.nombre_Provincia=== "cartago"
       );
        const filtroSanjose =dato.filter(
-        (provincia)=> provincia.nombre_provincia === "san josé"
+        (provincia)=> provincia.nombre_Provincia === "san josé"
       );
        const filtroLimon= dato.filter(
-        (provincia)=> provincia.nombre_provincia=== "limon"
+        (provincia)=> provincia.nombre_Provincia=== "limon"
        );
        const filtroPuntarenas=dato.filter(
-        (provincia) => provincia.nombre_provincia=== "puntarenas"
+        (provincia) => provincia.nombre_Provincia=== "puntarenas"
        );
        const filtroGuanacaste=dato.filter(
-        (provincia) => provincia.nombre_provincia=== "guanacaste"
+        (provincia) => provincia.nombre_Provincia=== "guanacaste"
        );
 
       setClinicasHeredia(filtroHeredia);

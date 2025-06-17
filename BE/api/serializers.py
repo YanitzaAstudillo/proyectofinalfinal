@@ -59,7 +59,7 @@ class ProvinciaEliminarSerializer(serializers.ModelSerializer):
         fieds= "__all__"
 
 class ClinicasSerializer (serializers.ModelSerializer):
-    nombre_Provincia = serializers.CharField(source="Provincias.nombre_Provincia",read_only=True)
+    nombre_Provincia = serializers.CharField(source="Provincias.nombre_Provincia")
     class Meta:
         model= Clinicas
         fields = ['id','nombre_Clinica','direccion_Clinica','horario','telefono_Clinica','Provincias','nombre_Provincia']

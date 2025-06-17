@@ -51,22 +51,19 @@ async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Cl
     }
 }
 
-
-
 //////////////LLAMADO UPDATE/////////////
 
-
-async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_provincia,id) {
+async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_Provincia,id) {
     const obj={
         "nombre_Clinica": nombre_Clinica,
         "direccion_Clinica":direccion_Clinica,
         "horario": horario,
         "telefono_Clinica":telefono_Clinica,
-        "Provincia": nombre_provincia
+        "Provincias": parseInt(nombre_Provincia)
     };
+    console.log(obj);
     
     try {
-
         const response = await fetch(`http://127.0.0.1:8000/api/editar-clinica/${id}/`,{
             method: 'PATCH',
             headers: {
@@ -74,8 +71,6 @@ async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_
             },
             body: JSON.stringify(obj)
         });
-
-     
         return await response.json();
     } catch (error) {
         console.error('Error update clinica:', error);
@@ -83,9 +78,7 @@ async function updateClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_
     }
 }
 
-
 //////////////LLAMADO DELETE/////////////
-
 
 async function deleteClinicas(id) {
     try {
