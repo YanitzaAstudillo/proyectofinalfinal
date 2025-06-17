@@ -1,104 +1,102 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
-import llamadosClinic from '../services/llamadosClinic.jsx';
 
-const Grafico = () => {
+const Grafico = ({ clinicas }) => {
   const chartRef = useRef(null);
-  const [clinicasAlajuela, setClinicasAlajuela] = useState([]);
-  const [clinicasHeredia, setClinicasHeredia]= useState([]);
-  const [clinicasCartago, setClinicasCartago]= useState([]);
-  const [clinicasSanjose, setClinicasSanjose]= useState([]);
-  const [clinicasLimon, setClinicasLimon]= useState([]);
-  const [clinicasPuntarenas, setClinicasPuntarenas]=useState([]);
-  const [clinicasGuanacaste, setClinicasGuanacaste]=useState([]);
-
 
   useEffect(() => {
-    async function traerClinicas() {
-      const dato = await llamadosClinic.getClinicas();
-      const filtroAlajuela = dato.filter(
-        (provincia) => provincia.nombre_Provincia === "alajuela"
-      );
-       const filtroHeredia = dato.filter(
-        (provincia) => provincia.nombre_Provincia === "heredia"
-      );
-       const filtroCartago=dato.filter(
-        (provincia)=> provincia.nombre_Provincia=== "cartago"
-      );
-       const filtroSanjose =dato.filter(
-        (provincia)=> provincia.nombre_Provincia === "san josé"
-      );
-       const filtroLimon= dato.filter(
-        (provincia)=> provincia.nombre_Provincia=== "limon"
-       );
-       const filtroPuntarenas=dato.filter(
-        (provincia) => provincia.nombre_Provincia=== "puntarenas"
-       );
-       const filtroGuanacaste=dato.filter(
-        (provincia) => provincia.nombre_Provincia=== "guanacaste"
-       );
+    if (!chartRef.current) return;
 
-      setClinicasHeredia(filtroHeredia);
-      setClinicasAlajuela(filtroAlajuela);
-      setClinicasCartago(filtroCartago);
-      setClinicasSanjose(filtroSanjose);
-      setClinicasLimon(filtroLimon);
-      setClinicasPuntarenas(filtroPuntarenas);
-      setClinicasGuanacaste(filtroGuanacaste);
+    const chartInstance = echarts.init(chartRef.current);
+
+    const equivalencias = {
+      'alajuela': 'alajuela',
+      'heredia': 'heredia',
+      'cartago': 'cartago',
+      'san josé': 'san jose',
+      'san jose': 'san jose',
+      'limón': 'limon',
+      'limon': 'limon',
+      'puntarenas': 'puntarenas',
+      'guanacaste': 'guanacaste',
+};
+
+    const conteo = {
+      alajuela: 0,
+      heredia: 0,
+      cartago: 0,
+      'san josé': 0,
+      limon: 0,
+      puntarenas: 0,
+      guanacaste: 0,
+    };
+
+    clinicas.forEach((c) => {
+    const original = c.nombre_Provincia?.toLowerCase()?.trim();
+    const clave = equivalencias[original];
+    if (clave && conteo[clave] !== undefined) {
+      conteo[clave]++;
     }
-    traerClinicas();
-  }, []);
-
-  useEffect(() => {
-    const chartDom = chartRef.current;
-    const chartInstance = echarts.init(chartDom);
+  });
 
     const option = {
-      color: ['#80FFA5'],
       title: {
-        text: 'Cantidad de Clínicas por provincia'
+        text: 'Cantidad de Clínicas por provincia',
       },
       tooltip: {
         trigger: 'axis',
-        axisPointer: {
-          type: 'shadow'
-        }
+        axisPointer: { type: 'shadow' },
       },
       xAxis: {
         type: 'category',
-        data: ["Alajuela","Heredia","San José","Limón","Guanacaste","Puntarenas","Cartago"]
+        data: [
+          'Alajuela',
+          'Heredia',
+          'San José',
+          'Limón',
+          'Guanacaste',
+          'Puntarenas',
+          'Cartago',
+        ],
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
       },
       series: [
         {
           name: 'Clínicas',
           type: 'bar',
-          data: [clinicasAlajuela.length,clinicasHeredia.length,clinicasCartago.length,clinicasSanjose.length,clinicasLimon.length,clinicasPuntarenas.length,clinicasGuanacaste.length],
+          data: [
+            conteo.alajuela,
+            conteo.heredia,
+            conteo['san josé'],
+            conteo.limon,
+            conteo.guanacaste,
+            conteo.puntarenas,
+            conteo.cartago,
+          ],
           barWidth: '50%',
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: '#80FFA5' },
-              { offset: 1, color: '#00DDFF' }
-            ])
-          }
-        }
-      ]
+              { offset: 1, color: '#00DDFF' },
+            ]),
+          },
+        },
+      ],
     };
 
     chartInstance.setOption(option);
-
-    const resizeChart = () => chartInstance && chartInstance.resize();
-    window.addEventListener('resize', resizeChart);
+    const handleResize = () => chartInstance.resize();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resizeChart);
-      chartInstance && chartInstance.dispose();
+      window.removeEventListener('resize', handleResize);
+      chartInstance.dispose();
     };
-  }, [clinicasAlajuela]);
+  }, [clinicas]);
 
-  return <div ref={chartRef} style={{ width: '50%', height: '360px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '360px' }} />;
 };
 
 export default Grafico;

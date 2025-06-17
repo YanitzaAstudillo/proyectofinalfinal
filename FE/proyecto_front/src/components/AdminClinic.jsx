@@ -40,7 +40,7 @@ function AdminClinic() {
         setDireccion_ClinicaEd(clinica.direccion_Clinica);
         setHorarioEd(clinica.horario);
         setTelefono_ClinicaEd(clinica.telefono_Clinica);
-        setNombre_ProvinciaEd(clinica.Provincia); // Asumimos que es el ID
+        setNombre_ProvinciaEd(clinica.Provincia);
     }
 
     async function Edittt(id) {
@@ -147,7 +147,7 @@ function AdminClinic() {
                     </ul>
                 ))}
 
-                <Grafico />
+                <Grafico clinicas={clinicas}/>
             </div>
         </div>
     );

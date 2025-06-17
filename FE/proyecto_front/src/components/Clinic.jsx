@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import llamadosClinic from '../services/llamadosClinic.jsx';
 import '../styles/clinicas.css';
-import { registerLoading } from 'echarts';
+
 
 const provincias = [
     "San José",
@@ -18,24 +18,27 @@ function Clinic() {
     const [traerClinicas, setTraerClinicas] = useState([])
 
     useEffect(() => {
-        async function fetchClinicas() {
-            try {
-                const clinicas = await llamadosClinic.getClinicas();
-                const clinicasFiltradas = clinicas.filter((clinica) => clinica.nombre_provincia === clinicasPorProvincia)
-                setTraerClinicas(clinicasFiltradas)
-                console.log(clinicasFiltradas);
-            } catch (error) {
-                console.error("Error cargando clínicas:", error);
-            }
+    if (!clinicasPorProvincia) return;
+
+    async function fetchClinicas() {
+        try {
+            const clinicas = await llamadosClinic.getClinicas();
+            const clinicasFiltradas = clinicas.filter(
+                (clinica) => clinica.nombre_provincia === clinicasPorProvincia
+            );
+            setTraerClinicas(clinicasFiltradas);
+        } catch (error) {
+            console.error("Error cargando clínicas:", error);
         }
+    }
 
         fetchClinicas();
     }, [clinicasPorProvincia]);
 
     return (
         <div className="body45">
-            <select name="" id="" onChange={(e) => setClinicasPorProvincia(e.target.value)}>
-                <option value="" disabled selected>Seleccione una provinica para filtrar</option>
+            <select value={clinicasPorProvincia} onChange={(e) => setClinicasPorProvincia(e.target.value)}>
+                <option value="" disabled>Seleccione una provincia para filtrar</option>
                 <option value="alajuela">Alajuela</option>
                 <option value="limón">Limón</option>
                 <option value="cartago">Cartago</option>
@@ -44,17 +47,15 @@ function Clinic() {
                 <option value="puntarenas">Puntarenas</option>
                 <option value="heredia">Heredia</option>
                 </select>
-                {traerClinicas.map((clin) => {
-                    return (
-                        <>
-                            <strong>Nombre Clinica:</strong> {clin.nombre_Clinica} <br />
-                            <strong>Direccion:</strong> {clin.direccion_Clinica} <br />
-                            <strong>Horario:</strong> {clin.horario} <br />
-                            <strong>Telefono:</strong> {clin.telefono_Clinica} <br />
-                            <strong>Provincia:</strong> {clin.nombre_provincia} <br />
-                        </>
-                    )
-                })}
+            {traerClinicas.map((clin) => (
+             <div className= "renderizado" key={clin.id}>
+             <strong>Nombre Clinica:</strong> {clin.nombre_Clinica} <br />
+             <strong>Direccion:</strong> {clin.direccion_Clinica} <br />
+             <strong>Horario:</strong> {clin.horario} <br />
+             <strong>Telefono:</strong> {clin.telefono_Clinica} <br />
+             <strong>Provincia:</strong> {clin.nombre_provincia} <br />
+             </div>
+            ))}
 
         </div>
     );

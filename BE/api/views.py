@@ -11,7 +11,6 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 from rest_framework.permissions import BasePermission, SAFE_METHODS,IsAuthenticated
 
-from random import randrange
 
 """
 administrador
@@ -227,17 +226,17 @@ class EditarEspecialidadView(APIView):
 
 
 class CrearProvinciasView (ListCreateAPIView):
-    permission_classes = [permisos]
+    #permission_classes = [permisos]
     queryset=Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciasDetailView(ListAPIView):
-    permission_classes = [permisos]
+    #permission_classes = [permisos]
     queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciaEliminarView(RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Provincias.objects.all()
     serializer_class = ProvinciasSerializer
@@ -291,8 +290,13 @@ class EditarClinicaView(APIView):
             clinica.horario= horario
         if telefono_Clinica:
             clinica.telefono_Clinica= telefono_Clinica
+        
         if nombre_Provincia:
-            clinica.nombre_Provincia= nombre_Provincia
+            try:
+                provincia_instancia = Provincias.objects.get(id=nombre_Provincia)
+                clinica.Provincias = provincia_instancia
+            except Provincias.DoesNotExist:
+                return Response({"error": "Provincia no encontrada"}, status=status.HTTP_400_BAD_REQUEST)
 
         clinica.save()
         return Response({"exito":"Clinica actualizada"}, status=status.HTTP_200_OK)

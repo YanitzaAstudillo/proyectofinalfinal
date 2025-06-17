@@ -19,7 +19,7 @@ body{
          #ffffff);
   font-family: 'Segoe UI', sans-serif;
 }
-.provincia-bloque{
+.renderizado{
   flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
