@@ -1,17 +1,20 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/inicio.css';
+import Footer from '../components/Footer';
 
 
 function Inicio() {
     const navigate = useNavigate()
     
     return (
-
-        <div className='body'>
-          <Link to="/PagInicio"  className='enlace_sin_linea'>INICIO</Link>
-          <Link to="/"  className='enlace_sin_lineaa'>NOSOTROS</Link>
+        <div className='booody'>
+          
+          <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
+          <Link to="/" className='enlace_sin_lineaa'>NOSOTROS</Link>
           <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
+          
+          
           <div className='card-botones'>
             <div className='botones'>
              <button id="boton1" onClick={()=>{navigate("/Farmacias")}} size="lg">Farmacias</button>
@@ -26,16 +29,14 @@ function Inicio() {
             <p className='reg'>¿Deseas registrarte?<Link to="/Register" >Registrese aquí</Link> </p>
             <div className='tituloLogin'>
              <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
-            <br />
-            <br />
-         </div>
-         
-         <a className="nav-link" href="/Register">Deseas afiliarte?</a>
-        </div>
-            
-    )
-            
+             <br />
+             <br />
+            </div>
+             <a className="nav-link" href="/Register">Deseas afiliarte?</a>
 
+             <Footer/>
+        </div>
+    )
 }
 
 export default Inicio;

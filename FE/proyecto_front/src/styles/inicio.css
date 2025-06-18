@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
 }
-.body{
+.booody{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -19,8 +19,9 @@
          #17224d
     );
 }
+
 .enlace_sin_linea{
-    position: absolute; z-index: 3;
+    position: absolute; z-index: 13;
     left: 6em;
     top: 82px;
     letter-spacing: 7px;
@@ -38,7 +39,8 @@
 
 .enlace_sin_lineaa{
   text-decoration: none;
-  position: absolute; z-index: 3;
+  position: absolute;
+   z-index: 123;
   left: 14.3em;
   top: 82px;
   color: white;
@@ -54,7 +56,8 @@
 
 .enlace_sin_linea1{
   text-decoration: none;
-  position: absolute; z-index: 3;
+  position: absolute; 
+  z-index: 13;
   left: 26em;
   top: 82px;
   color: white;
@@ -203,12 +206,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .body{
+  .booody{
     flex-direction:column;
     align-items: center;
   }
 
-  .card-botones{
+  .card-botones,
+  .reg,
+  .tituloLogin{
     width: 90%;
     max-width: 100%;
   }

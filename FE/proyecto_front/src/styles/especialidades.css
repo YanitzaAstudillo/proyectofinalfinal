@@ -25,7 +25,7 @@
 }
 
 .card-bodii:hover{
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 @media screen and (max-width: 768px) {
