@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/inicio.css';
-import Footer from '../components/Footer';
+
 
 
 function Inicio() {
@@ -30,11 +30,10 @@ function Inicio() {
             <div className='tituloLogin'>
              <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
              <br />
-             <br />
             </div>
              <a className="nav-link" href="/Register">Deseas afiliarte?</a>
-
-             <Footer/>
+  
+          <footer><p id="fu">@2025 Todos los Derechos Reservados</p></footer>
         </div>
     )
 }

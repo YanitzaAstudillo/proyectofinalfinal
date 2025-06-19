@@ -1,5 +1,32 @@
 
 .duo{
-    margin-left: 650px;
+    position: absolute;
+    display: flex;
+    
+    align-items: center;
+    z-index: 13;
+    left: 1280px;
+    top: 65px;
     cursor: pointer;
+}
+
+
+#fu{
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  position: absolute; z-index: 10;
+  top: 690px;
+  width: 100%;
+    animation: mymove 70s infinite;
+    white-space: nowrap;
+  }
+
+ @keyframes mymove {
+  from {
+    left: -90%;
+  }
+  to {
+    left: 90%;
+  }
 }
