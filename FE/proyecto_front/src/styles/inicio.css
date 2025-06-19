@@ -34,9 +34,7 @@
     transform: translateY(-4px) scale(1.000) translateZ(0);
     box-shadow: 0 12px 15px rgba(0,0,0,0.11),
     0 12px 23px var(--box-shadow-color);
-    
 }
-
 .enlace_sin_lineaa{
   text-decoration: none;
   position: absolute;

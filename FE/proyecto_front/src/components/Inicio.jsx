@@ -33,7 +33,6 @@ function Inicio() {
             </div>
              <a className="nav-link" href="/Register">Deseas afiliarte?</a>
   
-          <footer><p id="fu">@2025 Todos los Derechos Reservados</p></footer>
         </div>
     )
 }

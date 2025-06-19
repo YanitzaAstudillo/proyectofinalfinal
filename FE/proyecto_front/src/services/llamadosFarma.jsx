@@ -1,3 +1,4 @@
+
 const token= localStorage.getItem("token")
 
 async function getFarmacias() {
@@ -5,6 +6,29 @@ async function getFarmacias() {
         const response = await fetch ("http://127.0.0.1:8000/api/farmacias-get/", {
             method: 'GET',
             headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error fetching farmacias');
+        }
+
+        const farmacias = await response.json();
+        return farmacias;
+    } catch (error) {
+        console.error('Error fetching farmacias:', error);
+        throw error;
+    }
+}
+
+async function getFarmaciasPorDirector(id) {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch (`http://127.0.0.1:8000/api/farmacias_director/${id}/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -67,7 +91,7 @@ async function updateFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farma
     };
     
     try {
-
+        
         const response = await fetch(`http://127.0.0.1:8000/api/editar-farmacias/${id}/`,{
             method: 'PATCH',
             headers: {
@@ -109,4 +133,4 @@ async function deleteFarmacias(id) {
     }
 }
 
-export default { deleteFarmacias,postFarmacias,updateFarmacias,getFarmacias };
+export default { deleteFarmacias,postFarmacias,updateFarmacias,getFarmacias,getFarmaciasPorDirector};

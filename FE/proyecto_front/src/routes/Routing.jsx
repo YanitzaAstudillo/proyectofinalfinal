@@ -21,7 +21,7 @@ function Routing() {
             <Router>
                 <Routes>
 
-                 <Route path="/AdminFarm" element={<Privada rol={"administrador"} children={<AdminFarm/>}/>} />
+                 <Route path="/AdminFarm" element={<Privada rol={["asociado","administrador"]} children={<AdminFarm/>}/>} />
                  <Route path="/AdminClinica" element={<AdminClinica/>}/>
                  <Route path="/Clinicas" element={<Clinicas/>}/>
                  <Route path="/AdminEspecial" element={<AdminEspecial/>}/>

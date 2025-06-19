@@ -1,10 +1,13 @@
 
 async function getUsuarios() {
     try {
+        const token = localStorage.getItem('token');
         const response = await fetch("http://127.0.0.1:8000/api/todos-usuarios/", {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                
             }
         });
 
@@ -19,8 +22,6 @@ async function getUsuarios() {
         throw error;
     }
 }
-
-
 
 //////////LLAMADO POST//////////
 

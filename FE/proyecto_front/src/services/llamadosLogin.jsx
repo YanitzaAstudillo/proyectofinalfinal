@@ -43,16 +43,16 @@ async function postUsuarios(username,password) {
             },
             body: JSON.stringify(obj)
         });
-        return await response.json();
-
+        const respuesta = await response.json()
+        console.log(respuesta);
+        
+        return respuesta
         
     } catch (error) {
         console.error('Error posting user:', error);
         throw error;
     }
 }
-
-
 
 //////////////LLAMADO UPDATE/////////////
 

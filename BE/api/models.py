@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 class Usuarios(models.Model):
     ROL_CHOICES = [
         ('admin', 'Administrador'),
-        ('afiliado', 'Afiliado'),
+        ('asociado', 'Asociado'),
         ('usuario', 'Usuario'),
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     direccion = models.CharField(max_length=180)
     telefono = models.CharField(max_length=100)
-    esta_afiliado = models.BooleanField(default=False)
+    esta_asociado = models.BooleanField(default=False)
     rol = models.CharField(max_length=20, choices=ROL_CHOICES, default='usuario')
 
     def __str__(self):
@@ -25,6 +25,7 @@ class Farmacias (models.Model):
     telefono_Farmacia= models.CharField(max_length=100)
     horario_Farmacia = models.TextField()
     sucursales_Farmacia = models.CharField(max_length=180, null=True, blank=True)
+    director_Farmacia = models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre_Farmacia
     

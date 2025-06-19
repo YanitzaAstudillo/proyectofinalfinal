@@ -23,9 +23,7 @@ function Farma() {
             setListaFarmacias(datosConHorarios);
         }
         traerFarmacias()
-        
     },[])
-
    
     return (
         <>

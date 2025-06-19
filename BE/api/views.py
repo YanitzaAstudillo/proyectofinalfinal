@@ -312,3 +312,11 @@ class ContactoDetailView(ListAPIView):
     serializer_class= ContactoSerializer
 
 
+class FarmaciasPorDirectorId(APIView):
+    def get(self,request,id):
+        try:
+            farmacias = Farmacias.objects.filter(director_Farmacia=id)
+            serializer = FarmaciasSerializer(farmacias,many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Farmacias.DoesNotExist:
+            return Response({"error": "No se encontraron farmacias para este director"}, status=status.HTTP_404_NOT_FOUND)

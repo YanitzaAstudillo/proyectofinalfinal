@@ -5,7 +5,7 @@ from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, 
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
 from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView,EditarProvinciaView
 from .views import CrearClinicasView,ClinicasDetailView,ClinicaEliminarView,EditarClinicaView
-from .views import CrearContactoView,ContactoDetailView
+from .views import CrearContactoView,ContactoDetailView,FarmaciasPorDirectorId
 
 
 urlpatterns= [
@@ -16,6 +16,7 @@ urlpatterns= [
     path('editar-usuarios/<int:id>/', EditarUsuarioView.as_view(), name="usuario-actualizar"),
 
     path('farmacias/',CrearVerFarmacia.as_view()),
+    path('farmacias_director/<int:id>/', FarmaciasPorDirectorId.as_view(), name='farmacias_director'),
     path('farmacias-get/',FarmaciasDetailView.as_view()),
     path('todas-farmacias/<int:id>/', FarmaciaEliminarView.as_view()),
     path('editar-farmacias/<int:id>/', EditarFarmaciaView.as_view()),

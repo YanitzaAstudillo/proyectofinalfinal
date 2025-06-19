@@ -16,6 +16,7 @@ function AdminClinic() {
     const [nombre_ProvinciaEd, setNombre_ProvinciaEd] = useState("");
     const [idEd, setIdEd] = useState(null);
 
+
     useEffect(() => {
         async function cargarClinicas() {
             const datax = await llamadosClinic.getClinicas();
@@ -109,7 +110,6 @@ function AdminClinic() {
                     <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
                 </>
             </div>
-
             <div className='dentroo'>
                 {clinicas.map((clinica) => (
                     <ul key={clinica.id}>
@@ -118,7 +118,7 @@ function AdminClinic() {
                         <strong>Dirección:</strong> {clinica.direccion_Clinica} <br />
                         <strong>Horario:</strong> {clinica.horario} <br />
                         <strong>Teléfono:</strong> {clinica.telefono_Clinica} <br />
-                        <strong>Provincia:</strong> {clinica.nombre_Provincia} <br /> {/* ID o nombre, según tu backend */}
+                        <strong>Provincia:</strong> {clinica.nombre_Provincia} <br />
 
                         {idEd === clinica.id && (
                             <>
@@ -141,7 +141,6 @@ function AdminClinic() {
                         {idEd !== clinica.id && (
                             <button id="boton13" onClick={() => inicioEdition(clinica)}>Editar</button>
                         )}
-
                         <button id="boton13" onClick={() => Edittt(clinica.id)}>Confirmar edición</button><br />
                         <button id="boton14" onClick={() => ClinicaElim(clinica.id)}>Eliminar</button><br />
                     </ul>

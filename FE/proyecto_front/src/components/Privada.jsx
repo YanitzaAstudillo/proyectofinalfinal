@@ -5,10 +5,14 @@ import { Link } from 'react-router-dom'
 function Privada({children,rol}) {
     function adminValido() {
         const rolLocal = localStorage.getItem("submit")
-        if (rolLocal === rol) {
-            return true
-        }else{
-            return false
+        console.log(Array.isArray(rol));
+        if (Array.isArray(rol)) {
+            return rolLocal && rol.includes(rolLocal);
+        }
+        if (rolLocal) {
+            return rolLocal === rol;
+        } else {
+            return false;
         }
     }
   return (

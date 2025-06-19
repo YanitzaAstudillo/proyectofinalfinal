@@ -15,6 +15,7 @@ function AdminEspe() {
         const[telefono_EspecialidadEd, setTelefono_EspecialidadEd]= useState("");
         const[precioEd, setPrecioEd]= useState("");
         const [idEdita, setIdEdita]= useState(null)
+
         
         useEffect(() => {
             async function cargarEspecialidades() {
@@ -93,7 +94,7 @@ function AdminEspe() {
                     <Link to={"/AdminEspecial"}><button id="boton121">ADMIN ESPECIALIDADES</button></Link>
                 <>
                     <div className="bodies">
-                        <a className="card human-resources" href="#">
+                        <button className="card human-resources" href="/">
                          <div className="overlay" />
                             <div className="circle">
                             <svg xmlnsXlink="/" xmlns="" version="1.1" viewBox="1855 26 66 77" height="77px" width="66px">
@@ -107,8 +108,8 @@ function AdminEspe() {
                     </g>
                     </svg>
                     </div>
-                    <p>CERRAR SESION</p>
-                    </a>
+                    <p><Link to="/" style={{ color: 'white', textDecoration: 'none' }} >CERRAR SESION</Link></p>
+                    </button>
                     </div>
                 </>
                 </>

@@ -14,9 +14,10 @@ function AdminFarma() {
   const [sucursales_FarmaciaEd,setSucursales_FarmaciaEd]=useState("");
   const [idEdit, setIdEdit] = useState(null);
 
+
   useEffect(() => {
     async function cargarFarmacias() {
-      const dat = await llamadosFarma.getFarmacias();
+      const dat = await llamadosFarma.getFarmaciasPorDirector(localStorage.getItem('id'));
       setFarmacias(dat);
     }
     cargarFarmacias();
@@ -90,7 +91,7 @@ function AdminFarma() {
 
     <>
         <div className="bodies">
-         <a className="card human-resources" href="#">
+         <button className="card human-resources" href="/">
          <div className="overlay" />
          <div className="circle">
          <svg xmlnsXlink="/" xmlns="" version="1.1" viewBox="1855 26 66 77" height="77px" width="66px">
@@ -104,15 +105,15 @@ function AdminFarma() {
          </g>
          </svg>
         </div>
-            <p>CERRAR SESION</p>
-            </a>
+            <p><Link to="/" style={{ color: 'white', textDecoration: 'none' }} >CERRAR SESION</Link></p>
+          </button>
         </div>
         </>
         </>
     </div>
 
       <div className='dentroo'>
-        {farmacias.map((farmacia) => (
+        {farmacias.length > 0 ? farmacias.map((farmacia) => (
           <ul key={farmacia.id}>
             <li><strong>Nombre Farmacia:</strong> {farmacia.nombre_Farmacia}</li>
             <li><strong>Dirección farmacia:</strong> {farmacia.direccion_Farmacia}</li>
@@ -136,7 +137,7 @@ function AdminFarma() {
             <button id="boton13" onClick={() => edicion(farmacia.id)}>Confirmar edición</button>
             <button id="boton14" onClick={() => borrar(farmacia.id)}>Eliminar</button>
           </ul>
-        ))}
+        )):<h1>NO HAY FARMACIAS</h1>}
       </div>
     </div>
   )
