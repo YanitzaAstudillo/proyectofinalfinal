@@ -49,14 +49,16 @@ async function getFarmaciasPorDirector(id) {
 //////////LLAMADO POST//////////
 
 
-async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,sucursales_Farmacia) {
+async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,sucursales_Farmacia,director_Farmacia,img) {
     
     const obj={
-        "nombre":nombre_Farmacia,
-        "direccion":direccion_Farmacia,
-        "telefono":telefono_Farmacia,
-        "horario":horario_Farmacia,
-        "sucursales":sucursales_Farmacia
+        "nombre_Farmacia":nombre_Farmacia,
+        "direccion_Farmacia":direccion_Farmacia,
+        "telefono_Farmacia":telefono_Farmacia,
+        "horario_Farmacia":horario_Farmacia,
+        "sucursales_Farmacia":sucursales_Farmacia,
+        "director_Farmacia":director_Farmacia,
+        "img":img
     };
 
     try {
@@ -77,17 +79,17 @@ async function postFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmaci
     }
 }
 
-
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,sucursales_Farmacia,id) {
+async function updateFarmacias(nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,sucursales_Farmacia,img,id) {
     const obj={
         "nombre_Farmacia": nombre_Farmacia,
         "direccion_Farmacia": direccion_Farmacia,
         "telefono_Farmacia": telefono_Farmacia,
         "horario_Farmacia":horario_Farmacia,
-        "sucursales_Farmacia":sucursales_Farmacia
+        "sucursales_Farmacia":sucursales_Farmacia,
+        "img":img
     };
     
     try {

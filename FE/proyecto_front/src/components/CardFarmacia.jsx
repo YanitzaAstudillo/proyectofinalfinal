@@ -15,8 +15,9 @@ function CardFarmacia({ nombre_Farmacia, direccion_Farmacia, telefono_Farmacia,i
         component="img"
         className="card-img"
         alt={nombre_Farmacia}
-        image={imagen}
+        src={imagen}
       />
+      <img className="card-img-mobile" src={imagen} alt={nombre_Farmacia} />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {nombre_Farmacia}

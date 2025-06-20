@@ -162,6 +162,7 @@ class EditarFarmaciaView(APIView):
         telefono_Farmacia=request.data.get("telefono_Farmacia")
         horario_Farmacia= request.data.get("horario_Farmacia")
         sucursales_Farmacia=request.data.get("sucursales_Farmacia")
+        img = request.data.get("img")
 
         farmacia= Farmacias.objects.get(id=id)
 
@@ -175,6 +176,8 @@ class EditarFarmaciaView(APIView):
             farmacia.horario_Farmacia= horario_Farmacia
         if sucursales_Farmacia:
             farmacia.sucursales_Farmacia=sucursales_Farmacia
+        if img:
+            farmacia.img = img
 
             farmacia.save()
         return Response({"exito":"Farmacia actualizada"}, status=status.HTTP_200_OK)

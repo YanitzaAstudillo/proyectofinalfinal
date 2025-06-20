@@ -23,7 +23,7 @@ const ListCardFarmacia = ({ farmacias }) => {
           nombre_Farmacia={farmacia.nombre_Farmacia}
           direccion_Farmacia={farmacia.direccion_Farmacia}
           telefono_Farmacia={farmacia.telefono_Farmacia}
-          imagen={imagenesFarmacias[farmacia.id]}
+          imagen={farmacia.img}
           horarios={farmacia.horarios}
           sucursales={farmacia.sucursales_Farmacia}
         />

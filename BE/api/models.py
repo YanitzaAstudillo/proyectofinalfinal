@@ -26,6 +26,8 @@ class Farmacias (models.Model):
     horario_Farmacia = models.TextField()
     sucursales_Farmacia = models.CharField(max_length=180, null=True, blank=True)
     director_Farmacia = models.ForeignKey(User,on_delete=models.CASCADE)
+    img = models.URLField(max_length=500, null=True, blank=True)
+
     def __str__(self):
         return self.nombre_Farmacia
     
