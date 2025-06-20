@@ -6,7 +6,6 @@ import '../styles/admin.css';
 import Swal from 'sweetalert2';
 
 
-
 function Pagadmin() {
     const [usuarios, setUsuarios] = useState([]);
     const [emailEditar, setEmailEditar] = useState("");
@@ -15,15 +14,14 @@ function Pagadmin() {
     const [idEditando, setIdEditando] = useState(null)
 
     
-    
     useEffect(() => {
         async function cargarUsuarios() {
             const dato = await llamados.getUsuarios();
             setUsuarios(dato);
         }
-        cargarUsuarios();
+        cargarUsuarios()
         
-    }, []);
+    },[]);
 
         function iniciarEdicion(usuario) {
             setIdEditando(usuario.id);

@@ -1,5 +1,7 @@
 import llamadosFarma from "../services/llamadosFarma";
 import { useState,useEffect } from "react";
+import '../styles/adminFarm.css'
+
 const AggFarmacias = () => {
     const [nombre_Farmacia, setNombre_Farmacia] = useState("");
     const [direccion_Farmacia, setDireccion_Farmacia] = useState("");
@@ -39,7 +41,6 @@ const AggFarmacias = () => {
       return null;
     }
   }
-
     const agregarFarmacia = async (e) => {
         e.preventDefault();
         const peticion = await llamadosFarma.postFarmacias(
@@ -47,15 +48,15 @@ const AggFarmacias = () => {
             img
         );
         console.log(peticion);
-        
     }
   return (  
     <div className="agregar-farmacias">
       <h2>Agregar Farmacias</h2>
       <div className="farmacia-list">
+        
         <input
           type="text"
-            placeholder="Nombre de la Farmacia"
+            placeholder="Nombre de la Farmacia" 
             value={nombre_Farmacia}
             onChange={(e) => setNombre_Farmacia(e.target.value)}
         />
@@ -88,7 +89,7 @@ const AggFarmacias = () => {
           accept="image/*"
           onChange={(e)=>uploadImageToCloudinary(e.target.files[0])}
         />
-        <button onClick={(e)=>agregarFarmacia(e)}>Agregar farmacia</button>
+        <button id= "color" onClick={(e)=>agregarFarmacia(e)}>Agregar farmacia</button>
       </div>
     </div>
   );

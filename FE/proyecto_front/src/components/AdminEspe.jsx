@@ -119,7 +119,7 @@ function AdminEspe() {
                     <ul key={especialidad.id}>
                      <br />
                      <strong>Especialidad:</strong> {especialidad.nombre_Especialidad} <br />
-                     <strong>Nombre Medico ó Clinica:</strong> {especialidad.nombre_Medico_Clinica} <br />
+                     <strong>Nombre Medico o Clinica:</strong> {especialidad.nombre_Medico_Clinica} <br />
                      <strong>Descripcion:</strong> {especialidad.descripcion_Especialidad} <br />
                      <strong>Ubicacion:</strong> {especialidad.ubicacion_Especialidad} <br />
                      <strong>Teléfono:</strong> {especialidad.telefono_Especialidad} <br />

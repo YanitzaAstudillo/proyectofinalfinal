@@ -19,13 +19,13 @@
 
 .card-farmacia{
   max-width: 280px;
-  border-radius: 12px;
+  border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease;
   background-color: #fff;
   box-sizing: border-box;
-  padding: 15px;
-
+  padding: 0px;
+  
 }
 .card-farmacia:hover{
   transform: translateY(-4px);
@@ -45,19 +45,17 @@
   cursor: pointer;
   font-weight: bolder;
   text-transform: uppercase;
-  gap: 0px;
 }
 .boton-waze:hover{
   background-color: #ccc!important;
 }
-
 .dropdown-toggle{
-  
   background-color: #edeaea!important;
   transition: background-color 0.3s ease;
   border: none !important;
   color: #17224d !important;
   cursor: pointer;
+  box-sizing: border-box;
 }
 .dropdown-toggle:hover{
   background-color: #ccc!important;
@@ -66,10 +64,13 @@
 .dropdown-menu {
   max-height: 200px;
   overflow-y: auto;
+  background-color: #e0e4f1;
+  box-sizing: border-box;
+  padding: 6px;
 }
 .horario-item {
-  padding: 5px;
-  background-color: #f0f3ff;
+  padding: 4px;
+  background-color: #e0e4f1;
   text-align: center;
 }
 
@@ -84,7 +85,7 @@
   }
   .card-farmacia {
     width: 90%;
-    max-width: 100%;
+    max-width: 90%;
   }
 }
 .dropdown-container {

@@ -62,7 +62,6 @@ body {
 #boton222:hover{
   background-color:aqua;
 }
-
 .graf{
   display: flex;
   flex-direction: row;

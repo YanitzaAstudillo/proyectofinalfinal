@@ -79,7 +79,7 @@ body {
 
 .dentroo ul{
   flex: 1 1 300px;
-  background-color: white;
+  background-color:  #ccc;
   border-radius: 0.8rem;
   padding: 1rem;
   list-style: none;
@@ -142,4 +142,32 @@ input.redo {
     flex: 1 1 100%;
     margin: 0;
   }
+}
+.agregar-farmacias{
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  width: calc(100% - 340px);
+
+  background-color: rgb(123, 181, 177);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  list-style: none;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: rgba(17, 24, 39, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 0;
+}
+.farmacia-list,
+input{
+  border-radius: 6px;
+}
+#color{
+  background-color: rgb(126, 143, 160);
+  border-radius: 5px;
+  padding: 3px;
 }

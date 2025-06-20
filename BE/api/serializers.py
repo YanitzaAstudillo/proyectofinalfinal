@@ -13,7 +13,7 @@ class UsuarioCompletoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Usuarios
-        fields = ["id","direccion","telefono","esta_afiliado","rol","username","first_name","last_name","email",'usuario_id']
+        fields = ["id","direccion","telefono","esta_asociado","rol","username","first_name","last_name","email",'usuario_id']
 
 
 class UsuarioEliminarSerializer(serializers.ModelSerializer):
