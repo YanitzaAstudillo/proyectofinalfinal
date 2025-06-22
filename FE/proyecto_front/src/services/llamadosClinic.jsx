@@ -24,31 +24,44 @@ async function getClinicas() {
 //////////LLAMADO POST//////////
 
 
-async function postClinicas(nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,nombre_provincia) {
-    
-    const obj={
-        "nombre":nombre_Clinica,
-        "direccion":direccion_Clinica,
-        "horario":horario,
-        "telefono": telefono_Clinica,
-        "Provincia":nombre_provincia
-    };
+async function postClinicas(
+  nombreClinica,
+  direccionClinica,
+  horario,
+  telefonoClinica,
+  provinciaId
+) {
+  const obj = {
+    nombre_Clinica: nombreClinica,
+    direccion_Clinica: direccionClinica,
+    horario,
+    telefono_Clinica: telefonoClinica,
+    Provincias: parseInt(provinciaId, 10),
+  };
 
-    try {
-        const response = await fetch ("http://127.0.0.1:8000/api/clinicas/", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(obj)
-        });
-        return await response.json();
+  console.log("Enviando clínica:", obj);
 
-        
-    } catch (error) {
-        console.error('Error posting clinicass:', error);
-        throw error;
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/clinicas/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Error del servidor:", response.status, data);
+      throw new Error("Error al crear clínica");
     }
+
+    return data;
+  } catch (error) {
+    console.error("Error en postClinicas:", error);
+    throw error;
+  }
 }
 
 //////////////LLAMADO UPDATE/////////////

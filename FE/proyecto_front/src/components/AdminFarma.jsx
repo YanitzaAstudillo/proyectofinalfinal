@@ -15,8 +15,6 @@ function AdminFarma() {
   const [idEdit, setIdEdit] = useState(null);
   
 
-
-
   useEffect(() => {
     async function cargarFarmacias() {
       const dat = await llamadosFarma.getFarmaciasPorDirector(localStorage.getItem('id'));

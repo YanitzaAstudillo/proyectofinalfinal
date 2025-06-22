@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView,ListAPIView
-from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
-from .serializers import UsuarioCompletoSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer
+from rest_framework.generics import ListCreateAPIView,RetrieveDestroyAPIView,ListAPIView
+from .models import Usuarios, Contacto,Farmacias,Especialidades,Provincias, Clinicas,Centro
+from .serializers import UsuarioCompletoSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer,CentroSerializer
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 #from rest_framework.generics import RetrieveUpdateAPIView
@@ -11,12 +11,6 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 from rest_framework.permissions import BasePermission, SAFE_METHODS,IsAuthenticated
 
-
-"""
-administrador
-asociado
-paciente
-"""
 
 class permisos(BasePermission):
     def has_permission(self, request, view):
@@ -41,7 +35,7 @@ class permisos(BasePermission):
                 return True
             return False
         
-        if 'afiliado' in grupos_usuarios:
+        if 'asociado' in grupos_usuarios:
             if metodo in ['POST','PUT','PATCH','DELETE','GET']:
                 return True
 
@@ -202,31 +196,67 @@ class EspecialidadEliminarView(RetrieveDestroyAPIView):
 class EditarEspecialidadView(APIView):
     permission_classes = [IsAuthenticated]
     def patch(self, request, id):
-        nombre_Especialidad= request.data.get("nombre_Especialidad")
-        nombre_Medico_Clinica= request.data.get("nombre_Medico_Clinica")
-        descripcion_Especialidad= request.data.get("descripcion_Especialidad")
-        ubicacion_Especialidad= request.data.get ("ubicacion_Especialidad")
-        telefono_Especialidad=request.data.get("telefono_Especialidad")
-        precio= request.data.get("precio")
+        nombre_Especialidad = request.data.get("nombre_Especialidad")
+        centro_id = request.data.get("centro")
+        descripcion_Especialidad = request.data.get("descripcion_Especialidad")
+        ubicacion_Especialidad = request.data.get("ubicacion_Especialidad")
+        
+        precio = request.data.get("precio")
 
-        especialidad= Especialidades.objects.get(id=id)
+        try:
+            especialidad = Especialidades.objects.get(id=id)
+        except Especialidades.DoesNotExist:
+            return Response({"error": "Especialidad no encontrada"}, status=status.HTTP_404_NOT_FOUND)
 
         if nombre_Especialidad:
-            especialidad.nombre_Especialidad= nombre_Especialidad
-        if nombre_Medico_Clinica:
-            especialidad.nombre_Medico_Clinica= nombre_Medico_Clinica
+            especialidad.nombre_Especialidad = nombre_Especialidad
         if descripcion_Especialidad:
-            especialidad.descripcion_Especialidad= descripcion_Especialidad
+            especialidad.descripcion_Especialidad = descripcion_Especialidad
         if ubicacion_Especialidad:
-            especialidad.ubicacion_Especialidad= ubicacion_Especialidad
-        if telefono_Especialidad:
-            especialidad.telefono_Especialidad= telefono_Especialidad
+            especialidad.ubicacion_Especialidad = ubicacion_Especialidad
+        
         if precio:
-            especialidad.precio= precio
+            especialidad.precio = precio
+        if centro_id:
+            try:
+                centro_instancia = Centro.objects.get(id=centro_id)
+                especialidad.centro = centro_instancia
+            except Centro.DoesNotExist:
+                return Response({"error": "Centro no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-            especialidad.save()
-        return Response({"exito":"Especialidad actualizada"}, status=status.HTTP_200_OK)
+        especialidad.save()
 
+        return Response({"exito": "Especialidad actualizada"}, status=status.HTTP_200_OK)
+
+
+class CentroListView(ListCreateAPIView):
+    queryset = Centro.objects.all()
+    serializer_class = CentroSerializer
+
+class CentroDetailView(ListAPIView):
+    queryset=Centro.objects.all()
+    serializer_class=CentroSerializer
+
+class CentroEliminarView(RetrieveDestroyAPIView):
+    lookup_field = "id"
+    queryset =Centro.objects.all()
+    serializer_class =CentroSerializer
+
+class EditarCentroView(APIView):
+    def patch(self, request, id):
+        nombre_Centro = request.data.get("nombre_Centro")
+
+        try:
+            centro = Centro.objects.get(id=id)
+        except Centro.DoesNotExist:
+            return Response({"error": "Centro no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        if nombre_Centro:
+            centro.nombre_Centro = nombre_Centro
+            centro.save()
+            return Response({"exito": "Centro actualizado"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "No se proporcionaron dato"}, status=status.HTTP_400_BAD_REQUEST)
 
 class CrearProvinciasView (ListCreateAPIView):
     #permission_classes = [permisos]

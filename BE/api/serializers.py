@@ -1,5 +1,5 @@
 
-from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas
+from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas,Centro
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
@@ -25,7 +25,6 @@ class UsuarioEliminarSerializer(serializers.ModelSerializer):
     # rol = serializers.ChoiceField(choices=[('admin', 'Administrador'), ('asociado', 'asociado'), ('usuario', 'Usuario')], default='usuario')
 
 
-
 class FarmaciasSerializer(serializers.ModelSerializer):
     class Meta:
         model= Farmacias
@@ -47,6 +46,11 @@ class EspecialidadEliminarSerializer(serializers.ModelSerializer):
     class Meta:
         model=Farmacias
         fieds= "__all__"
+
+class CentroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Centro
+        fieds="__all__"
 
 class ProvinciasSerializer (serializers.ModelSerializer):
     class Meta:

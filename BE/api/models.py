@@ -32,12 +32,20 @@ class Farmacias (models.Model):
         return self.nombre_Farmacia
     
 
+class Centro(models.Model):
+    nombre = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.nombre
+    
+
 class Especialidades (models.Model):
     nombre_Especialidad= models.CharField(max_length=100)
-    nombre_Medico_Clinica= models.CharField(max_length=100)
+    centro = models.ForeignKey(Centro, on_delete=models.CASCADE, null=True, blank=True)
+
     descripcion_Especialidad= models.CharField(max_length=180)
     ubicacion_Especialidad= models.CharField(max_length=180)
-    telefono_Especialidad= models.CharField(max_length=100)
+    
     precio= models.IntegerField(blank=False)
     def __str__(self):
         return self.nombre_Especialidad

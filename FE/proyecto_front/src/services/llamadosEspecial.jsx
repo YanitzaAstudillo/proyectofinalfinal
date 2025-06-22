@@ -24,14 +24,14 @@ async function getEspecialidades() {
 //////////LLAMADO POST//////////
 
 
-async function postEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,descripcion_Especialidad,ubicacion_Especialidad,telefono_Especialidad,precio) {
+async function postEspecialidades(nombre_Especialidad,centro_id,descripcion_Especialidad,ubicacion_Especialidad,precio) {
     
     const obj={
         "nombre":nombre_Especialidad,
-        "nombre clinica":nombre_Medico_Clinica,
+        "centro": centro_id,
         "descripcion":descripcion_Especialidad,
         "ubicacion": ubicacion_Especialidad,
-        "telefono":telefono_Especialidad,
+        
         "precio":precio
     };
 
@@ -55,13 +55,13 @@ async function postEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,desc
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateEspecialidades(nombre_Especialidad,nombre_Medico_Clinica,descripcion_Especialidad,ubicacion_Especialidad,telefono_Especialidad, precio ,id) {
+async function updateEspecialidades(nombre_Especialidad,centro_id,descripcion_Especialidad,ubicacion_Especialidad,precio ,id) {
     const obj={
         "nombre_Especialidad": nombre_Especialidad,
-        "nombre_Medico_Clinica":nombre_Medico_Clinica,
+        "centro": centro_id,
         "descripcion_Especialidad": descripcion_Especialidad,
         "ubicacion_Especialidad":ubicacion_Especialidad,
-        "telefono_Especialidad": telefono_Especialidad,
+        
         "precio":precio
     };
     

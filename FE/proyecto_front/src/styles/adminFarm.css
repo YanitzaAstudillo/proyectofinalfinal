@@ -143,14 +143,14 @@ input.redo {
     margin: 0;
   }
 }
-.agregar-farmacias{
+.agregar-f{
   flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 1rem;
-  width: calc(100% - 340px);
-
+  width: calc(100% - 30px);
+  
   background-color: rgb(123, 181, 177);
   border-radius: 0.8rem;
   padding: 1rem;
@@ -162,7 +162,7 @@ input.redo {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   margin: 0;
 }
-.farmacia-list,
+.f-list,
 input{
   border-radius: 6px;
 }

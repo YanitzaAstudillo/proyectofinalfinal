@@ -16,6 +16,8 @@ function Especial() {
         traerEspecialidades();
     }, []);
 
+    
+
     return (
         <>
             <div className='body4'>
@@ -32,7 +34,7 @@ function Especial() {
                     <p className="card-text"><strong>Médico/Clínica:</strong> {especialidad.nombre_Medico_Clinica}</p>
                     <p className="card-text"><strong>Descripción:</strong> {especialidad.descripcion_Especialidad}</p>
                     <p className="card-text"><strong>Ubicación:</strong> {especialidad.ubicacion_Especialidad}</p>
-                    <p className="card-text"><strong>Teléfono:</strong> {especialidad.telefono_Especialidad}</p>
+                    
                     <p className="card-text"><strong>Precio:</strong>C {especialidad.precio}</p>
                     <a href="https://www.waze.com/es/live-map" className="btn btn-outline-dark">WAZE</a>
                  </div>

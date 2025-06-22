@@ -11,7 +11,6 @@ const AggFarmacias = () => {
 
   const [img, setImg] = useState(null)
 
-
   async function uploadImageToCloudinary(file) {
     const url = "https://api.cloudinary.com/v1_1/dic09m8ij/upload";
     const preset = "imagen";
@@ -50,9 +49,9 @@ const AggFarmacias = () => {
         console.log(peticion);
     }
   return (  
-    <div className="agregar-farmacias">
+    <div className="agregar-f">
       <h2>Agregar Farmacias</h2>
-      <div className="farmacia-list">
+      <div className="f-list">
         
         <input
           type="text"
