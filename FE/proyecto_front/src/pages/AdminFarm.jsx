@@ -6,8 +6,9 @@ import AggFarmacias from "../components/AggFarmacias";
 function AdminFarm() {
     return(
             <div>
-                <AdminFarma/>
                 <AggFarmacias/>
+                <AdminFarma/>
+                
             </div>
         )
 }

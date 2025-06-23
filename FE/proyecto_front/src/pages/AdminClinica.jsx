@@ -6,8 +6,9 @@ import AggClinicas from "../components/AggClinicas";
 function AdminClinica() {
     return(
         <div>
-            <AdminClinic />
             <AggClinicas />
+            <AdminClinic />
+            
         </div>
     )
 }

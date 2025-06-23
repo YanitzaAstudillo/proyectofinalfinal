@@ -7,8 +7,9 @@ import AggEspe from "../components/AggEspe";
 function AdminEspecial() {
     return(
             <div>
-                <AdminEspe />
                 <AggEspe />
+                <AdminEspe />
+                
             </div>
         )
 }

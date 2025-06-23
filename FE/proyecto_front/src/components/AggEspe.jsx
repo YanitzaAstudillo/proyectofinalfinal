@@ -128,7 +128,7 @@ const AggEspe = () => {
 
       <hr style={{ margin: "2rem 0" }} />
 
-      <h4>Agregar centros asistenciales (separados con coma)</h4>
+      <h5>Agregar centros asistenciales</h5>
       <form onSubmit={agregarCentrosVarios} className="f-list">
         <input
           type="text"

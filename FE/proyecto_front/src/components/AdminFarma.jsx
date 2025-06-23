@@ -111,7 +111,6 @@ function AdminFarma() {
           </>
         </>
       </div>
-
       <div className='dentroo'>
         {farmacias.length > 0 ? farmacias.map((farmacia) => (
           <ul key={farmacia.id}>
