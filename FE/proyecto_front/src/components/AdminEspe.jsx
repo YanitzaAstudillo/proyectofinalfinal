@@ -35,19 +35,19 @@ function AdminEspe() {
                 setPrecioEd(especialidad.precio);
             }
             function edicionn(id) {
-                if(!nombre_EspecialidadEd || !centroEdEd || !descripcion_EspecialidadEd || !ubicacion_EspecialidadEd || !telefono_EspecialidadEd || !precioEd) {
+                if(!nombre_EspecialidadEd || !centroEd || !descripcion_EspecialidadEd || !ubicacion_EspecialidadEd || !precioEd) {
                     Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
                  return;
                 }
                    
-                llamadosEspecial.updateEspecialidades(nombre_EspecialidadEd, centroEd, descripcion_EspecialidadEd, ubicacion_EspecialidadEd,telefono_EspecialidadEd,precioEd, id)
+                llamadosEspecial.updateEspecialidades(nombre_EspecialidadEd, centroEd, descripcion_EspecialidadEd, ubicacion_EspecialidadEd,precioEd, id)
                 .then(() => {
                     Swal.fire('Especialidad actualizada', 'La actualización fue exitosa!', 'success');
                                 
                 setEspecialidades(prev =>
                     prev.map(especialidad =>
                     especialidad.id === id
-                    ? { ...especialidad, nombre_Especialidad:setNombre_EspecialidadEd, centro: centroEd,descripcion_Especialidad: descripcion_EspecialidadEd,ubicacion_Especialidad:ubicacion_EspecialidadEd,telefono_Especialidad:telefono_EspecialidadEd,precio:precioEd}
+                    ? { ...especialidad, nombre_Especialidad:setNombre_EspecialidadEd, centro: centroEd,descripcion_Especialidad: descripcion_EspecialidadEd,ubicacion_Especialidad:ubicacion_EspecialidadEd,precio:precioEd}
                     : especialidad
                     )
                 );
@@ -119,7 +119,7 @@ function AdminEspe() {
                     <ul key={especialidad.id}>
                      <br />
                      <strong>Especialidad:</strong> {especialidad.nombre_Especialidad} <br />
-                     <strong>centro:</strong> {especialidad.centro} <br />
+                     <strong>centro:</strong> {especialidad.nombre_centro} <br />
                      <strong>Descripcion:</strong> {especialidad.descripcion_Especialidad} <br />
                      <strong>Ubicacion:</strong> {especialidad.ubicacion_Especialidad} <br />
                      

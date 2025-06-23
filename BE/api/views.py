@@ -178,7 +178,7 @@ class EditarFarmaciaView(APIView):
 
 
 class CrearEspecialidadesView(ListCreateAPIView):
-    permission_classes = [permisos]
+    #permission_classes = [permisos]
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
@@ -188,13 +188,13 @@ class EspecialidadesDetailView(ListAPIView):
     serializer_class= EspecialidadesSerializer
 
 class EspecialidadEliminarView(RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Especialidades.objects.all()
     serializer_class = EspecialidadesSerializer
 
 class EditarEspecialidadView(APIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Especialidad = request.data.get("nombre_Especialidad")
         centro_id = request.data.get("centro")
@@ -299,7 +299,7 @@ class ClinicasDetailView(ListAPIView):
     serializer_class= ClinicasSerializer
 
 class ClinicaEliminarView(RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Clinicas.objects.all()
     serializer_class = ClinicasSerializer

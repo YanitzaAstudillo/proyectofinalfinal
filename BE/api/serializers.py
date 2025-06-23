@@ -34,23 +34,23 @@ class FarmaciasSerializer(serializers.ModelSerializer):
 class FarmaciaEliminarSerializer(serializers.ModelSerializer):
     class Meta:
         model=Farmacias
-        fieds= "__all__"
-
+        fields= "__all__"
 
 class EspecialidadesSerializer (serializers.ModelSerializer):
+    nombre_centro = serializers.CharField(source="centro.nombre",read_only=True)
     class Meta:
         model= Especialidades
         fields= "__all__"
 
 class EspecialidadEliminarSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Farmacias
-        fieds= "__all__"
+        model=Especialidades
+        fields= "__all__"
 
 class CentroSerializer(serializers.ModelSerializer):
     class Meta:
         model=Centro
-        fieds="__all__"
+        fields="__all__"
 
 class ProvinciasSerializer (serializers.ModelSerializer):
     class Meta:
@@ -63,7 +63,7 @@ class ProvinciaEliminarSerializer(serializers.ModelSerializer):
         fieds= "__all__"
 
 class ClinicasSerializer (serializers.ModelSerializer):
-    nombre_Provincia = serializers.CharField(source="Provincias.nombre_Provincia")
+    nombre_Provincia = serializers.CharField(source="Provincias.nombre_Provincia",read_only=True)
     class Meta:
         model= Clinicas
         fields = ['id','nombre_Clinica','direccion_Clinica','horario','telefono_Clinica','Provincias','nombre_Provincia']

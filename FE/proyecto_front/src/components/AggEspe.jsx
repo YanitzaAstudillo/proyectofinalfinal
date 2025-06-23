@@ -1,20 +1,31 @@
 
-import { useState } from "react";
-import llamadosEspecial from '../services/llamadosEspecial';
-import '../styles/adminEspe.css';
+import { useEffect, useState } from "react";
+import llamadosEspecial from "../services/llamadosEspecial";
+import "../styles/adminEspe.css";
 
 const AggEspe = () => {
-  
   const [nombre_Especialidad, setNombre_Especialidad] = useState("");
   const [centroSeleccionado, setCentroSeleccionado] = useState("");
   const [descripcion_Especialidad, setDescripcion_Especialidad] = useState("");
   const [ubicacion_Especialidad, setUbicacion_Especialidad] = useState("");
-  
   const [precio, setPrecio] = useState("");
-
   const [nuevoCentroNombre, setNuevoCentroNombre] = useState("");
 
+  const [centros, setCentros] = useState([]);
 
+  const cargarCentros = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/centros/");
+      const data = await res.json();
+      setCentros(data);
+    } catch (error) {
+      console.error("Error cargando centros:", error);
+    }
+  };
+
+  useEffect(() => {
+    cargarCentros();
+  }, []);
 
   const agregarEspecialidad = async (e) => {
     e.preventDefault();
@@ -24,7 +35,6 @@ const AggEspe = () => {
         centroSeleccionado,
         descripcion_Especialidad,
         ubicacion_Especialidad,
-        
         precio
       );
       console.log("Especialidad agregada:", response);
@@ -32,7 +42,6 @@ const AggEspe = () => {
       setCentroSeleccionado("");
       setDescripcion_Especialidad("");
       setUbicacion_Especialidad("");
-      
       setPrecio("");
     } catch (error) {
       console.error("Error agregando especialidad:", error);
@@ -42,7 +51,7 @@ const AggEspe = () => {
   const agregarCentrosVarios = async (e) => {
     e.preventDefault();
     const nombres = nuevoCentroNombre
-      .split(',')
+      .split(",")
       .map((nombre) => nombre.trim())
       .filter((nombre) => nombre.length > 0);
 
@@ -61,7 +70,7 @@ const AggEspe = () => {
         }
       }
 
-      await cargarCentros();
+      await cargarCentros(); 
       setNuevoCentroNombre("");
     } catch (error) {
       console.error("Error agregando centros:", error);
@@ -82,9 +91,14 @@ const AggEspe = () => {
         <select
           value={centroSeleccionado}
           onChange={(e) => setCentroSeleccionado(e.target.value)}
-          required
-        >
           
+        >
+          <option value="">Seleccione un centro</option>
+          {centros.map((centro) => (
+            <option key={centro.id} value={centro.id}>
+              {centro.nombre}
+            </option>
+          ))}
         </select>
         <input
           type="text"
@@ -100,7 +114,6 @@ const AggEspe = () => {
           onChange={(e) => setUbicacion_Especialidad(e.target.value)}
           required
         />
-        
         <input
           type="number"
           placeholder="Precio"
@@ -108,7 +121,9 @@ const AggEspe = () => {
           onChange={(e) => setPrecio(e.target.value)}
           required
         />
-        <button id="color" type="submit">Agregar Especialidad</button>
+        <button id="color" type="submit">
+          Agregar Especialidad
+        </button>
       </form>
 
       <hr style={{ margin: "2rem 0" }} />
@@ -120,9 +135,10 @@ const AggEspe = () => {
           placeholder="Ej: Clínica Central, Hospital Sur"
           value={nuevoCentroNombre}
           onChange={(e) => setNuevoCentroNombre(e.target.value)}
-          
         />
-        <button id="color" type="submit">Agregar Centro Asistencial</button>
+        <button id="color" type="submit">
+          Agregar Centro Asistencial
+        </button>
       </form>
     </div>
   );

@@ -2,7 +2,6 @@
 import { useState,useEffect } from 'react';
 import '../styles/farmacia.css';
 import { Link } from 'react-router-dom';
-
 import llamadosFarma from '../services/llamadosFarma';
 import ListCardFarmacia from './ListCardFarmacia';
 

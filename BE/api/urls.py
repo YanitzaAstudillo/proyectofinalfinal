@@ -38,7 +38,7 @@ urlpatterns= [
     
     path('clinicas/', CrearClinicasView.as_view()),
     path('clinicas-get/', ClinicasDetailView.as_view()),
-    path('todas-clinicas/', ClinicaEliminarView.as_view()),
+    path('todas-clinicas/<int:id>/', ClinicaEliminarView.as_view()),
     path('editar-clinica/<int:id>/', EditarClinicaView.as_view()),
 
     path('Contacto/', CrearContactoView.as_view()),
