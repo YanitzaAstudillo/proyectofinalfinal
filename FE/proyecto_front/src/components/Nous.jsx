@@ -10,7 +10,7 @@ function Nous() {
         <div className='body3'>
 
           <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
-          <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
+          <Link to="/Nosotros" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
           <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
 
             <div className='container'>
@@ -25,10 +25,7 @@ function Nous() {
                  <br />
                   Visión
                  <br />
-                 Convertirnos en la principal plataforma de información médica en Costa Rica, en busca de brindar soluciones médicas a la población.
-                 <br />
-                 <br />
-                    
+                 Convertirnos en la principal plataforma de información médica en Costa Rica, en busca de brindar soluciones médicas a la población.              
                 </p>
             </div>
         </div>

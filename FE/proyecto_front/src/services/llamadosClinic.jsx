@@ -25,11 +25,11 @@ async function getClinicas() {
 
 
 async function postClinicas(
-  nombreClinica,
-  direccionClinica,
-  horario,
-  telefonoClinica,
-  provinciaId
+    nombreClinica,
+    direccionClinica,
+    horario,
+    telefonoClinica,
+    provinciaId
 ) {
   const obj = {
     nombre_Clinica: nombreClinica,

@@ -35,7 +35,7 @@ export const Contacto = () => {
     <div className="todo">
     <img src="../src/assets/portada3.jpg" alt="portada" width="1370" height="750" />
 
-      <div className="">
+      <>
         <form id="uno" ref={form} onSubmit={sendEmail}>
             <h2 id="cuadro">Contacto</h2>
             <br />
@@ -55,9 +55,9 @@ export const Contacto = () => {
              <br />
             <input type="submit" value="Send" />
         </form>
-      </div>
+      </>
       <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
-      <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
+      <Link to="/Nosotros" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
       <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
     </div>
     

@@ -12,6 +12,8 @@ const [telefono_Clinica,setTelefono_Clinica]=useState("");
 const [Provincias,setProvincias]=useState("");
 
 
+
+
     const agregarClinica = async (e) => {
       e.preventDefault();
        const trae = await llamadosClinic.postClinicas(

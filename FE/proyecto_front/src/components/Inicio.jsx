@@ -14,13 +14,12 @@ function Inicio() {
           <Link to="/Nosotros" className='enlace_sin_lineaa'>NOSOTROS</Link>
           <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
           
-          
           <div className='card-botones'>
             <div className='botones'>
              <button id="boton1" onClick={()=>{navigate("/Farmacias")}} size="lg">Farmacias</button>
              <button id="boton2" onClick={()=>{navigate("/Clinicas")}} size="lg">Clinicas</button>
              <button id="boton3" onClick={()=>{navigate("/Especialidades")}} size="lg">Especialidades</button>
-             <button id="boton4" onClick={()=>{navigate("/Afiliarse")}} size="lg">Afiliado</button>
+             <button id="boton4" onClick={()=>{navigate("/SociosPag")}} size="lg">Afiliado</button>
              <button id="boton5" onClick={()=>{navigate("/Mision")}} size="lg">Misión y Visión</button>
              <button id="boton6" onClick={()=>{navigate("/Contac")}} size="lg">Contacto</button>
             </div>

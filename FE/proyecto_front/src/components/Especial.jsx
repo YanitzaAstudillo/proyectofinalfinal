@@ -24,7 +24,7 @@ function Especial() {
         <>
             <div className='body4'>
                 <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
-                <Link to="/Login" className='enlace_sin_lineaa'>NOSOTROS</Link>
+                <Link to="/Nosotros" className='enlace_sin_lineaa'>NOSOTROS</Link>
                 <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
             <div className="roww">
                 {listaEspecialidades.map((especialidad) => (

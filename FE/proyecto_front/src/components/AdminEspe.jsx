@@ -31,7 +31,6 @@ function AdminEspe() {
                 setCentroEd(especialidad.centro);
                 setDescripcion_EspecialidadEd(especialidad.descripcion_Especialidad);
                 setUbicacion_EspecialidadEd(especialidad.ubicacion_Especialidad);
-                
                 setPrecioEd(especialidad.precio);
             }
             function edicionn(id) {
