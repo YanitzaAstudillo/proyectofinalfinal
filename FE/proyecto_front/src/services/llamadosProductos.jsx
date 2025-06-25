@@ -1,7 +1,7 @@
 
 async function getProductos() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/productos", {
+        const response = await fetch("http://127.0.0.1:8000/api/productos-get/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,11 +27,11 @@ async function postProductos(paquete,descripcion,precio_Paquete) {
     const obj={
         "paquete":paquete,
         "descripcion":descripcion,
-        "precio_Paquete":precio_Paquete
+        "precio_Paquete": parseInt(precio_Paquete)
     };
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/productos", {
+        const response = await fetch("http://127.0.0.1:8000/api/productos/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,11 +51,15 @@ async function postProductos(paquete,descripcion,precio_Paquete) {
 
 
 async function updateProductos(paquete,descripcion,precio_Paquete,id) {
-    const obj = {paquete,descripcion,precio_Paquete,id };
+    const obj = {
+        paquete,
+        descripcion,
+        precio:parseInt(precio_Paquete)
+    };
     
     try {
 
-        const response = await fetch(`http://127.0.0.1:8000/api/productos/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/editar-productos/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,7 +67,6 @@ async function updateProductos(paquete,descripcion,precio_Paquete,id) {
             body: JSON.stringify(obj)
         });
 
-     
         return await response.json();
     } catch (error) {
         console.error('Error update user:', error);
@@ -73,9 +76,10 @@ async function updateProductos(paquete,descripcion,precio_Paquete,id) {
 
 //////////////LLAMADO DELETE/////////////
 
+
 async function deleteProductos(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/productos/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/todos-productos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

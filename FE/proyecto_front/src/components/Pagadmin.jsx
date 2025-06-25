@@ -84,6 +84,7 @@ function Pagadmin() {
              <Link to={"/AdminFarm"}><button id="boton10">ADMIN FARMACIAS</button></Link>
              <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
              <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
+             <Link to={"/AdminSocios"}><button id="boton102">ADMIN SOCIOS</button></Link>
             <>
                 <div className="bodies">
                  <button className="card human-resources" href="/">

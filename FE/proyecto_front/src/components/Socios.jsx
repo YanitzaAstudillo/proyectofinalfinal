@@ -1,7 +1,7 @@
 
 
 import '../styles/socios.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import llamadosProductos from '../services/llamadosProductos';
 
@@ -15,7 +15,7 @@ function Socios() {
                 const dats = await llamadosProductos.getProductos();
                 console.log(dats);
                 
-                setListaPaquetes(dats);
+                setListaProductos(dats);
             };
             traerPaquetes();
         }, []);
@@ -36,7 +36,7 @@ return(
                     <h5 className="card-title">{producto.paquete}</h5>
                     <br />
                     <p className="card-text"><strong>Descripción:</strong> {producto.descripcion}</p>
-                    <p className="card-text"><strong>Precio:</strong>$ {producto.precio}</p>
+                    <p className="card-text"><strong>Precio:</strong>$ {producto.precio_Paquete}</p>
                  </div>
                  </>
                  </div>

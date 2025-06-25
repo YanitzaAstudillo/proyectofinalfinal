@@ -92,6 +92,18 @@
   font-weight:bold;
   box-shadow: 0 10 0px rgba(0, 0, 5, 0);
 }
+#boton102{
+  border-radius: 1rem;
+  width: 100%;
+  margin-top: 20px;
+  background-color:white;
+  padding: 0.5rem;
+  text-align: center;
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  font-weight:bold;
+  box-shadow: 0 10 0px rgba(0, 0, 5, 0);
+}
 
 #redo{
   border-radius: 5px;
@@ -137,7 +149,7 @@
 }
 
 .card {
-  margin-top: 70px;
+  margin-top: 300px;
   width: 250px;
   height: 40px;
   background: #fff;

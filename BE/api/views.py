@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView,RetrieveDestroyAPIView,ListAPIView
-from .models import Usuarios,Farmacias,Especialidades,Provincias, Clinicas,Centro
-from .serializers import UsuarioCompletoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer,CentroSerializer
+from .models import Usuarios,Farmacias,Especialidades,Provincias, Clinicas,Centro,Productos
+from .serializers import UsuarioCompletoSerializer, FarmaciasSerializer,EspecialidadesSerializer
+from .serializers import ProvinciasSerializer,ClinicasSerializer,CentroSerializer,ProductosSerializer
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 #from rest_framework.generics import RetrieveUpdateAPIView
@@ -356,6 +357,7 @@ class ProductoEliminarView(RetrieveDestroyAPIView):
 
 class EditarProductoView(APIView):
     #permission_classes = [IsAuthenticated]
+
     def patch(self, request, id):
         paquete= request.data.get("paquete")
         descripcion= request.data.get("descripcion")
@@ -370,5 +372,5 @@ class EditarProductoView(APIView):
         if precio_Paquete:
             producto.precio_Paquete= precio_Paquete
 
-            producto.save()
+        producto.save()
         return Response({"exito":"producto actualizado"}, status=status.HTTP_200_OK)

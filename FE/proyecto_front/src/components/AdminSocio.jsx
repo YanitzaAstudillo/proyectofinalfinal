@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import '../styles/AdminSocios.css';
+
 import { useNavigate, Link } from 'react-router-dom';
 import llamadosProductos from '../services/llamadosProductos';
 import Swal from 'sweetalert2';
@@ -12,8 +12,8 @@ function AdminSocios() {
     const [descripcion, setDescripcion] = useState("");
     const [precio_Paquete, setPrecio_Paquete] = useState("");
     const [productos, setProductos] = useState([]);
-    const [paquetes, setPaquetes] = useState([]);
 
+    const [paquetes, setPaquetes] = useState([]);
     const [paqueteEd, setPaqueteEd] = useState("");
     const [descripcionEd, setDescripcionEd] = useState("");
     const [precio_PaqueteEd, setPrecio_PaqueteEd] = useState("");
@@ -33,7 +33,6 @@ function AdminSocios() {
 
             const nuevos = await llamadosProductos.getProductos();
             setProductos(nuevos);
-
             setPaquete("");
             setDescripcion("");
             setPrecio_Paquete("");
@@ -58,21 +57,22 @@ function AdminSocios() {
     }
 
     function editarPaquete(id) {
-        if (!paqueteEd || !descripcionEd || !precio_PaqueteEd) {
+        if (!paqueteEd || !descripcionEd || !(parseInt(precio_PaqueteEd))) {
             Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
             return;
+            
         }
 
         llamadosProductos.updateProductos(paqueteEd, descripcionEd, precio_PaqueteEd, id)
             .then(() => {
-                Swal.fire('Plan actualizado', 'La actualización fue exitosa!', 'success');
-                setPaquetes(prev =>
-                    prev.map(plan =>
-                        plan.id === id
-                            ? { ...plan, paquete: paqueteEd, descripcion: descripcionEd, precio_Paquete: precio_PaqueteEd }
-                            : plan
-                    )
-                );
+            Swal.fire('Plan actualizado', 'La actualización fue exitosa!', 'success');
+            setPaquetes(prev =>
+            prev.map(plan =>
+            plan.id === id
+            ? { ...plan, paquete: paqueteEd, descripcion: descripcionEd, precio_Paquete: precio_PaqueteEd }
+             : plan
+             )
+            );
                 setPaqueteEd("");
                 setDescripcionEd("");
                 setPrecio_PaqueteEd("");
@@ -158,25 +158,25 @@ function AdminSocios() {
             </div>
 
             <div className='dentroo'>
-                {paquetes.map((paquete) => (
-                    <ul key={paquete.id}>
-                        <br />
-                        <strong>Plan:</strong> {paquete.paquete} <br />
-                        <strong>Descripción:</strong> {paquete.descripcion} <br />
-                        <strong>Precio:</strong> {paquete.precio_Paquete} <br /><br />
+              {paquetes.map((paquete) => (
+                <ul key={paquete.id}>
+                <br />
+                <strong>Plan:</strong> {paquete.paquete} <br />
+                <strong>Descripción:</strong> {paquete.descripcion} <br />
+                <strong>Precio:</strong> {paquete.precio_Paquete} <br /><br />
 
-                        {ids === paquete.id ? (
-                            <>
-                                <input id="redo" value={paqueteEd} onChange={(e) => setPaqueteEd(e.target.value)} type="text" /> Plan<br />
-                                <input id="redo" value={descripcionEd} onChange={(e) => setDescripcionEd(e.target.value)} type="text" /> Descripción<br />
-                                <input id="redo" value={precio_PaqueteEd} onChange={(e) => setPrecio_PaqueteEd(e.target.value)} type="text" /> Precio<br /><br />
-                                <button id="boton13" onClick={() => editarPaquete(paquete.id)}>Confirmar edición</button> <br />
-                            </>
-                        ) : (
-                            <button id="boton13" onClick={() => comenzarEd(paquete)}>Editar</button>
-                        )}
-                        <button id="boton14" onClick={() => eliminarPaquete(paquete.id)}>Eliminar</button> <br />
-                    </ul>
+                {ids === paquete.id ? (
+                <>
+                <input id="redo" value={paqueteEd} onChange={(e) => setPaqueteEd(e.target.value)} type="text" /> Plan<br />
+                <input id="redo" value={descripcionEd} onChange={(e) => setDescripcionEd(e.target.value)} type="text" /> Descripción<br />
+                <input id="redo" value={precio_PaqueteEd} onChange={(e) => setPrecio_PaqueteEd(e.target.value)} type="text" /> Precio<br /><br />
+                <button id="boton13" onClick={() => editarPaquete(paquete.id)}>Confirmar edición</button> <br />
+                </>
+                ) : (
+                <button id="boton13" onClick={() => comenzarEd(paquete)}>Editar</button>
+                )}
+                <button id="boton14" onClick={() => eliminarPaquete(paquete.id)}>Eliminar</button> <br />
+                </ul>
                 ))}
             </div>
         </div>

@@ -75,7 +75,7 @@ class Clinicas (models.Model):
 
 class Productos(models.Model):
     paquete=models.CharField(max_length=100)
-    descripcion= models.CharField(max_length=180)
+    descripcion= models.CharField(max_length=280)
     precio_Paquete= models.IntegerField(blank=False)
     def __str__(self):
         return self.paquete
