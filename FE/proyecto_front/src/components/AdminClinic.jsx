@@ -60,18 +60,13 @@ function AdminClinic() {
         Swal.fire('Clínica actualizada', 'La actualización fue exitosa!', 'success');
 
         setClinicas(prev =>
-            prev.map(clinica =>
-                clinica.id === id
-                    ? {
-                        ...clinica,
-                        nombre_Clinica: nombre_ClinicaEd,
-                        direccion_Clinica: direccion_ClinicaEd,
-                        horario: horarioEd,
-                        telefono_Clinica: telefono_ClinicaEd,
-                        Provincias: parseInt(nombre_ProvinciaEd)
-                    }
-                    : clinica
-            )
+        prev.map(clinica =>
+        clinica.id === id
+        ? {
+            ...clinica,nombre_Clinica: nombre_ClinicaEd,direccion_Clinica: direccion_ClinicaEd,horario: horarioEd, telefono_Clinica: telefono_ClinicaEd, Provincias: parseInt(nombre_ProvinciaEd)
+          }
+            : clinica
+        )
         );
         setNombre_ClinicaEd("");
         setDireccion_ClinicaEd("");

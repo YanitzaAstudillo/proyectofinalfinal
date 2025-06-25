@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView,RetrieveDestroyAPIView,ListAPIView
-from .models import Usuarios, Contacto,Farmacias,Especialidades,Provincias, Clinicas,Centro
-from .serializers import UsuarioCompletoSerializer, ContactoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer,CentroSerializer
+from .models import Usuarios,Farmacias,Especialidades,Provincias, Clinicas,Centro
+from .serializers import UsuarioCompletoSerializer, FarmaciasSerializer,EspecialidadesSerializer,ProvinciasSerializer,ClinicasSerializer,CentroSerializer
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 #from rest_framework.generics import RetrieveUpdateAPIView
@@ -259,17 +259,14 @@ class EditarCentroView(APIView):
             return Response({"error": "No se proporcionaron dato"}, status=status.HTTP_400_BAD_REQUEST)
 
 class CrearProvinciasView (ListCreateAPIView):
-    #permission_classes = [permisos]
     queryset=Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciasDetailView(ListAPIView):
-    #permission_classes = [permisos]
     queryset= Provincias.objects.all()
     serializer_class= ProvinciasSerializer
 
 class ProvinciaEliminarView(RetrieveDestroyAPIView):
-    #permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Provincias.objects.all()
     serializer_class = ProvinciasSerializer
@@ -277,12 +274,10 @@ class ProvinciaEliminarView(RetrieveDestroyAPIView):
 class EditarProvinciaView(APIView):
     def patch(self, request, id):
         nombre_Provincia= request.data.get("nombre_Provincia")
-
         provincia= Provincias.objects.get(id=id)
 
         if nombre_Provincia:
             provincia.nombre_Provincia= nombre_Provincia
-
             provincia.save()
 
         return Response({"exito":"Provincia actualizada"}, status=status.HTTP_200_OK)
@@ -334,17 +329,6 @@ class EditarClinicaView(APIView):
         clinica.save()
         return Response({"exito":"Clinica actualizada"}, status=status.HTTP_200_OK)
 
-
-class CrearContactoView(ListCreateAPIView):
-    queryset= Contacto.objects.all()
-    serializer_class= ContactoSerializer
-
-class ContactoDetailView(ListAPIView):
-    lookup_field = "id"
-    queryset= Contacto.objects.all()
-    serializer_class= ContactoSerializer
-
-
 class FarmaciasPorDirectorId(APIView):
     def get(self,request,id):
         try:
@@ -353,3 +337,38 @@ class FarmaciasPorDirectorId(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Farmacias.DoesNotExist:
             return Response({"error": "No se encontraron farmacias para este director"}, status=status.HTTP_404_NOT_FOUND)
+
+class CrearProductosView(ListCreateAPIView):
+    #permission_classes = [permisos]
+    queryset= Productos.objects.all()
+    serializer_class= ProductosSerializer
+
+class ProductosDetailView(ListAPIView):
+    #permission_classes = [permisos]
+    queryset= Productos.objects.all()
+    serializer_class= ProductosSerializer
+
+class ProductoEliminarView(RetrieveDestroyAPIView):
+    #permission_classes = [IsAuthenticated]
+    lookup_field = "id"
+    queryset = Productos.objects.all()
+    serializer_class = ProductosSerializer
+
+class EditarProductoView(APIView):
+    #permission_classes = [IsAuthenticated]
+    def patch(self, request, id):
+        paquete= request.data.get("paquete")
+        descripcion= request.data.get("descripcion")
+        precio_Paquete=request.data.get("precio_Paquete")
+        
+        producto= Productos.objects.get(id=id)
+
+        if paquete:
+            producto.paquete= paquete
+        if descripcion:
+            producto.descripcion= descripcion
+        if precio_Paquete:
+            producto.precio_Paquete= precio_Paquete
+
+            producto.save()
+        return Response({"exito":"producto actualizado"}, status=status.HTTP_200_OK)

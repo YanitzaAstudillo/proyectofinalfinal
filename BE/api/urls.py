@@ -5,7 +5,8 @@ from .views import CrearVerFarmacia, FarmaciasDetailView, FarmaciaEliminarView, 
 from .views import CrearEspecialidadesView, EspecialidadesDetailView,EspecialidadEliminarView,EditarEspecialidadView
 from .views import CrearProvinciasView, ProvinciasDetailView,ProvinciaEliminarView,EditarProvinciaView
 from .views import CrearClinicasView,ClinicasDetailView,ClinicaEliminarView,EditarClinicaView
-from .views import CrearContactoView,ContactoDetailView,FarmaciasPorDirectorId,CentroListView,CentroDetailView,CentroEliminarView,EditarCentroView
+from .views import CrearProductosView,ProductosDetailView,ProductosEliminarView,EditarProductosView
+from .views import FarmaciasPorDirectorId,CentroListView,CentroDetailView,CentroEliminarView,EditarCentroView
 
 
 urlpatterns= [
@@ -41,7 +42,9 @@ urlpatterns= [
     path('todas-clinicas/<int:id>/', ClinicaEliminarView.as_view()),
     path('editar-clinica/<int:id>/', EditarClinicaView.as_view()),
 
-    path('Contacto/', CrearContactoView.as_view()),
-    path('todos-contacto/', ContactoDetailView.as_view())
+    path('productos/', CrearProductosView.as_view()),
+    path('productos-get/', ProductosDetailView.as_view()),
+    path('todos-productos/<int:id>/',ProductosEliminarView.as_view()),
+    path('editar-productos/<int:id>/', EditarProductosView.as_view())
 
 ]

@@ -1,4 +1,4 @@
-import Socios from "../components/socios";
+import Socios from "../components/Socios";
 
 function SociosPag() {
     

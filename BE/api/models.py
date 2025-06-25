@@ -73,9 +73,9 @@ class Clinicas (models.Model):
     def __str__(self):
         return self.nombre_Clinica
 
-class Contacto (models.Model):
-    nombre_Contacto= models.CharField(max_length=100)
-    email_Contacto=models.EmailField(max_length=15)
-    mensaje= models.CharField(max_length=180)
+class Productos(models.Model):
+    paquete=models.CharField(max_length=100)
+    descripcion= models.CharField(max_length=180)
+    precio_Paquete= models.IntegerField(blank=False)
     def __str__(self):
-        return self.nombre_Contacto
+        return self.paquete

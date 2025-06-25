@@ -2,12 +2,13 @@
 
 import '../styles/socios.css';
 import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import llamadosProductos from '../services/llamadosProductos';
 
 
 function Socios() {
 
-    const [listaPaquetes, setListaPaquetes] = useState([]);
+    const [listaProductos, setListaProductos] = useState([]);
 
     useEffect(() => {
             const traerPaquetes = async () => {
@@ -26,6 +27,21 @@ return(
           <Link to="/Nosotros" className='enlace_sin_lineaa'>NOSOTROS</Link>
           <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
          </>
+
+         <div className="roww">
+                {listaProductos.map((producto) => (
+                 <div className="tarjeta" key={producto.id}>
+                 <>
+                 <div className="card-bodii">
+                    <h5 className="card-title">{producto.paquete}</h5>
+                    <br />
+                    <p className="card-text"><strong>Descripción:</strong> {producto.descripcion}</p>
+                    <p className="card-text"><strong>Precio:</strong>$ {producto.precio}</p>
+                 </div>
+                 </>
+                 </div>
+                ))}
+            </div>
 
     </div>
 )

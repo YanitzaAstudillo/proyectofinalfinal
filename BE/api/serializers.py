@@ -1,5 +1,5 @@
 
-from .models import Usuarios, Contacto, Farmacias, Especialidades, Provincias, Clinicas,Centro
+from .models import Usuarios,Farmacias, Especialidades, Provincias, Clinicas,Centro,Productos
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
@@ -49,9 +49,15 @@ class EspecialidadEliminarSerializer(serializers.ModelSerializer):
 
 class CentroSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Centro
-        fields="__all__"
+        model = Centro
+        fields = "__all__"
 
+    def validate_nombre(self, value):
+        if len(value) <= 3:
+            raise serializers.ValidationError('el nombre debe tener al menos 3 caracteres')
+        return value
+
+        
 class ProvinciasSerializer (serializers.ModelSerializer):
     class Meta:
         model= Provincias
@@ -60,7 +66,7 @@ class ProvinciasSerializer (serializers.ModelSerializer):
 class ProvinciaEliminarSerializer(serializers.ModelSerializer):
     class Meta:
         model= Provincias
-        fieds= "__all__"
+        fields= "__all__"
 
 class ClinicasSerializer (serializers.ModelSerializer):
     nombre_Provincia = serializers.CharField(source="Provincias.nombre_Provincia",read_only=True)
@@ -68,11 +74,11 @@ class ClinicasSerializer (serializers.ModelSerializer):
         model= Clinicas
         fields = ['id','nombre_Clinica','direccion_Clinica','horario','telefono_Clinica','Provincias','nombre_Provincia']
 
-class ContactoSerializer(serializers.ModelSerializer):
+class ProductosSerializer (serializers.ModelSerializer):
     class Meta:
-        model= Contacto
-        fields = '__all__'
-    def validate_nombre_Contacto(self, value):
+        model:Productos
+        fields= "__all__"
+        def validate_descripcion(self, value):
         if len(value) <= 3:
-            raise serializers.ValidationError('el nombre debe tener al menos 3 caracteres')
+            raise serializers.ValidationError('el plan debe tener al menos 3 caracteres')
         return value

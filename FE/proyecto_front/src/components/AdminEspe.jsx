@@ -20,8 +20,8 @@ function AdminEspe() {
         useEffect(() => {
             async function cargarEspecialidades() {
                 const dataa = await llamadosEspecial.getEspecialidades();
-                    setEspecialidades(dataa);
-                }
+                setEspecialidades(dataa);
+            }
                 cargarEspecialidades();
         }, []);
         
@@ -66,26 +66,26 @@ function AdminEspe() {
             }
 
             function eliii(id) {
-                async function eli(id) {
-                    const avisa= window.confirm ("¿Está seguro de eliminar?");
-                    if (!avisa) return;
+             async function eli(id) {
+              const avisa= window.confirm ("¿Está seguro de eliminar?");
+              if (!avisa) return;
 
-                    const eliminacion= await llamadosEspecial.deleteEspecialidades(id);
-                    if (eliminacion) {
-                         setEspecialidades(prev => prev.filter(especialidades => especialidades.id !== id));
-                         Swal.fire("especialidad eliminada", "", "success");
-                        } else {
-                         Swal.fire("Error al eliminar", "", "error");
-                        }
-                }
-                eli(id);
+              const eliminacion= await llamadosEspecial.deleteEspecialidades(id);
+              if (eliminacion) {
+               setEspecialidades(prev => prev.filter(especialidades => especialidades.id !== id));
+               Swal.fire("especialidad eliminada", "", "success");
+              } else {
+               Swal.fire("Error al eliminar", "", "error");
+              }
+             }
+             eli(id);
             }
             
         return(
             <div className='body5'>
                 <div className="container11">
-                    <p className="titll">Panel de Control</p>
-                    <br /><br />
+                  <p className="titll">Panel de Control</p>
+                  <br /><br />
                 <>
                   <Link to={"/Admin"}><button id="boton911">ADMIN USUARIOS</button></Link>
                   <Link to={"/AdminFarm"}><button id="boton181">ADMIN FARMACIAS</button></Link>
