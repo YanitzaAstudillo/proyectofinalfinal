@@ -25,18 +25,18 @@ function Routing() {
             <Router>
                 <Routes>
 
-                 <Route path="/AdminSocios" element={<AdminSocios/>}/>
+                 <Route path="/AdminSocios" element={<Privada rol={["asociado","administrador"]} children={<AdminSocios/>}/>} />
                  <Route path="/SociosPag" element={<SociosPag/>}/>
                  <Route path="/Nosotros" element={<Nosotros/>}/>
                  <Route path="/AdminFarm" element={<Privada rol={["asociado","administrador"]} children={<AdminFarm/>}/>} />
-                 <Route path="/AdminClinica" element={<AdminClinica/>}/>
+                 <Route path="/AdminClinica" element={<Privada rol={["asociado","administrador"]} children={<AdminClinica/>}/>} />
                  <Route path="/Clinicas" element={<Clinicas/>}/>
-                 <Route path="/AdminEspecial" element={<AdminEspecial/>}/>
+                 <Route path="/AdminEspecial" element={<Privada rol={["asociado","administrador"]} children={<AdminEspecial/>}/>} />
                  <Route path="/Especialidades" element={<Especialidades/>}/>
                  <Route path="/Farmacias" element={<Farmacias/>}/>
                  <Route path="/Mision" element={<Mision/>}/>
                  <Route path="/Contac" element={<Contac/>}/>
-                 <Route path="/Admin" element={<Admin/>}/>
+                 <Route path="/Admin" element={<Privada rol={["asociado","administrador"]} children={<Admin/>}/>}
                  <Route path="/Register" element={<Register/>}/>
                  <Route path="/Login" element={<Login/>}/>
                  <Route path="/PagInicio" element={<PagInicio/>}/>
