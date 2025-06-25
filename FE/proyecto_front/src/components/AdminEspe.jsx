@@ -91,6 +91,7 @@ function AdminEspe() {
                   <Link to={"/AdminFarm"}><button id="boton181">ADMIN FARMACIAS</button></Link>
                   <Link to={"/AdminClinica"}><button id="boton11">ADMIN CLINICAS</button></Link>
                   <Link to={"/AdminEspecial"}><button id="boton121">ADMIN ESPECIALIDADES</button></Link>
+                  <Link to={"/AdminSocios"}><button id="boton102">ADMIN SOCIOS</button></Link>
                 <>
                  <div className="bodies">
                   <button className="card human-resources" href="/">

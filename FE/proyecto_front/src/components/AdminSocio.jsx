@@ -134,7 +134,7 @@ function AdminSocios() {
                 <Link to={"/AdminFarm"}><button id="boton181">ADMIN FARMACIAS</button></Link>
                 <Link to={"/AdminClinica"}><button id="boton222">ADMIN CLINICAS</button></Link>
                 <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
-
+                <Link to={"/AdminSocios"}><button id="boton102"onMouseEnter={e => {e.target.style.backgroundColor = 'aqua';}}onMouseLeave={e => {e.target.style.backgroundColor = '';}}>ADMIN SOCIOS</button></Link>
                 <>
                   <button className="card human-resources">
                   <div className="overlay" />

@@ -86,7 +86,7 @@ function Pagadmin() {
              <Link to={"/AdminEspecial"}><button id="boton12">ADMIN ESPECIALIDADES</button></Link>
              <Link to={"/AdminSocios"}><button id="boton102">ADMIN SOCIOS</button></Link>
             <>
-                <div className="bodies">
+                <>
                  <button className="card human-resources" href="/">
                 <div className="overlay" />
                 <div className="circle">
@@ -103,7 +103,7 @@ function Pagadmin() {
                 </div>
                     <p><Link to="/" style={{ color: 'white', textDecoration: 'none' }} >CERRAR SESION</Link></p>
                 </button>
-            </div>
+            </>
             </>
             </div>
         </div>
