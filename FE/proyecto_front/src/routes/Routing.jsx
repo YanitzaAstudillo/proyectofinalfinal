@@ -36,7 +36,7 @@ function Routing() {
                  <Route path="/Farmacias" element={<Farmacias/>}/>
                  <Route path="/Mision" element={<Mision/>}/>
                  <Route path="/Contac" element={<Contac/>}/>
-                 <Route path="/Admin" element={<Privada rol={["asociado","administrador"]} children={<Admin/>}/>}
+                 <Route path="/Admin" element={<Privada rol={["asociado","administrador"]} children={<Admin/>}/>}/>
                  <Route path="/Register" element={<Register/>}/>
                  <Route path="/Login" element={<Login/>}/>
                  <Route path="/PagInicio" element={<PagInicio/>}/>

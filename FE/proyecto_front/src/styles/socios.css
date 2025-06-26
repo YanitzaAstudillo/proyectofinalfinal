@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -20,15 +23,16 @@
   background-color: #f1f1f1;
   padding: 20px;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 .card-bodii2:hover{
   transform: translateY(-3px);
 }
-.card-title1,
+
 .card-text2{
     color: #ba7c00;
     text-shadow: black solid 3px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 @media screen and (max-width: 768px) {
   .roww2 {
@@ -39,4 +43,16 @@
     width: 90%;
     max-width: 100%;
   }
+}
+
+.card-text3{
+  color: darkslategrey;
+  font-weight: bolder;
+}
+.card-title1{
+  color: darkslategrey;
+  font-weight: bold;
+  text-align: center;
+  font-size:x-large;
+  margin-top: 20px;
 }

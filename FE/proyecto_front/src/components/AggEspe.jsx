@@ -77,6 +77,8 @@ const AggEspe = () => {
     }
   };
 
+
+
   return (
     <div className="agregar-f">
       <h2>Agregar Especialidad</h2>

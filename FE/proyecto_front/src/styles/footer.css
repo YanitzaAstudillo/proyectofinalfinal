@@ -10,14 +10,15 @@
     cursor: pointer;
 }
 
-
 #fu{
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: bolder;
   text-align: center;
   color: white;
   position: absolute; z-index: 10;
-  top: 649px;
+  top: 688px;
   width: 100%;
+  left: 0;
     animation: mymove 70s infinite;
     white-space: nowrap;
   }

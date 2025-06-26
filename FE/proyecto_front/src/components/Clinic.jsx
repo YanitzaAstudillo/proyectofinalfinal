@@ -6,7 +6,6 @@ import anivImg from '../assets/aniv.jpg';
 import metroImg from '../assets/metro.png';
 import '../styles/clinicas.css';
 
-
 const provincias = [
     "San José",
     "Alajuela",
@@ -42,6 +41,7 @@ function Clinic() {
         fetchClinicas();
     }, [clinicasPorProvincia]);
 
+
     return (
   <div className="body45">
     <>
@@ -57,6 +57,7 @@ function Clinic() {
           value={clinicasPorProvincia}
           onChange={(e) => setClinicasPorProvincia(e.target.value)}
           style={{ width: '100%' }}
+          className={clinicasPorProvincia != '' ? 'input-select-provincia' : 'input-select-provincia-noselect'}
         >
           <option value="" disabled>Seleccione una provincia para filtrar</option>
           <option value="alajuela">Alajuela</option>

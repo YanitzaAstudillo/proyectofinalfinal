@@ -122,7 +122,6 @@ function AdminEspe() {
                      <strong>centro:</strong> {especialidad.nombre_centro} <br />
                      <strong>Descripcion:</strong> {especialidad.descripcion_Especialidad} <br />
                      <strong>Ubicacion:</strong> {especialidad.ubicacion_Especialidad} <br />
-                     
                      <strong>Precio:</strong> {especialidad.precio} <br />
 
                      {idEdita === especialidad.id && (

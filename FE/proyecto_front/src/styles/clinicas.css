@@ -58,3 +58,9 @@ body{
   display: grid !important;
   grid-template-columns: repeat(2,1fr) !important;
 }
+.input-select-provincia{
+  border: none;
+  font-weight: bold;
+  padding: 3px;
+  background: #9cecaf;
+}
