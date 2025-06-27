@@ -60,7 +60,7 @@ body{
 }
 .input-select-provincia{
   border: none;
-  font-weight: bold;
+  
   padding: 3px;
-  background: #9cecaf;
+  background: rgb(148, 219, 219);
 }

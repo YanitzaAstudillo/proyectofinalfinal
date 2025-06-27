@@ -2,33 +2,36 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/mision.css';
 
-
 function Nous() {
-    const navi= useNavigate()
+  const navi = useNavigate();
 
-    return(
-        <div className='body3'>
+  return (
+    <div className="body3">
+      <nav className="nav-bar2">
+        <Link to="/PagInicio" className="nav-link2">Inicio</Link>
+        <Link to="/Nosotros" className="nav-link2">Nosotros</Link>
+        <Link to="/Contac" className="nav-link2">Contacto</Link>
+      </nav>
+      <img
+        src="https://images.pexels.com/photos/20217786/pexels-photo-20217786.jpeg?auto=compress&cs=tinysrgb&w=800"
+        alt="Cirujanos operando en quirófano"
+        className="header-image"
+      />
+      <div className="containeer">
+        <h4>¿Quiénes somos?</h4>
+        <p>
+          Nuestro sistema médico informativo nace en mayo de 2025 como un proyecto estudiantil, planteando soluciones a una problemática actual: acortar los tiempos de espera para atención médica.
+          Nuestra propuesta ofrece alternativas médicas de calidad, rápidas, seguras y accesibles, mediante una plataforma que agrupa los mejores centros asistenciales en términos de precio y calidad,
+          con información actualizada sobre ubicación, costos y horarios.
 
-          <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
-          <Link to="/Nosotros" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
-          <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
+          <br /><br />
+          <strong>Visión:</strong><br />
+          Convertirnos en la principal plataforma de información médica en Costa Rica, brindando soluciones médicas accesibles a toda la población.
+        </p>
+      </div>
 
-            <div className='container'>
-                <h4>QUIENES SOMOS</h4>
-                <br />
-                <p>
-                 Nuestro Sistema médico informativo nace en Mayo de 2025 como proyecto estudiantil y planteándonos soluciones a una problematica actual: acortar los tiempos de espera de atención al paciente,
-                 esto es llevando alternativas médicas de calidad, rápida, segura y accesible, mediante una plataforma que agrupe los mejores centros asistenciales en cuanto a precio y óptima calidad,
-                 información actualizada en cuanto a ubicación, precios y horarios.
-                 Nuesta Alternativa va más allá de la información, ya que integra servicios de publicidad y competitividad de negocios.
-                 <br />
-                 <br />
-                  Visión
-                 <br />
-                 Convertirnos en la principal plataforma de información médica en Costa Rica, en busca de brindar soluciones médicas a la población.              
-                </p>
-            </div>
-        </div>
-    )
+    </div>
+  );
 }
+
 export default Nous;

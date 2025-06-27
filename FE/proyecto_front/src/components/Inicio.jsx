@@ -25,12 +25,15 @@ function Inicio() {
             </div>
           </div>
             <img src="portada2" alt="portada2" srcSet="../src/assets/portada2.jpg" width={"1370"} height={738}/>
+            <div className="login-area">
             <p className='reg'>¿Deseas registrarte?<Link to="/Register" >Registrese aquí</Link> </p>
             <div className='tituloLogin'>
              <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
              <br />
             </div>
              <a className="nav-link" href="/Register">Deseas afiliarte?</a>
+            </div>
+            
   
         </div>
     )
