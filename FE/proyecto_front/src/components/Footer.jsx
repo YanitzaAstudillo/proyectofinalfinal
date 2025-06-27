@@ -9,6 +9,7 @@ const Footer = () => {
   return (
     <div>
     <div className='duo'>
+      <h1>SISTEMA MÉDICO INFORMATIVO</h1>
       <div className="social-icons">
       <Link to="https://accounts.google.com" target="_blank" rel="noopener noreferrer" aria-label="Log in with Google" className="icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">

@@ -4,13 +4,11 @@
   margin: 0;
   padding: 0;
 }
-body {
-  font-family: 'Inter', sans-serif;
-}
+
 .booody{
     display: flex;
     flex-direction: column;
-    
+    font-family: 'Inter', sans-serif;
     align-items: flex-start;
     flex-wrap: wrap;
     min-height: 100vh;
@@ -24,13 +22,15 @@ body {
 }
 
 .enlace_sin_linea{
-    position: absolute; z-index: 13;
-    left: 6em;
-    top: 82px;
-    letter-spacing: 7px;
-    text-decoration: none;
-    color: white;
-    font-weight: bolder;
+  font-family: 'Inter', sans-serif;
+  position: absolute; z-index: 13;
+  left: 6em;
+  top: 82px;
+  letter-spacing: 7px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-size:large;
 }
 .enlace_sin_linea:hover{
     color: #c0cbf8;
@@ -39,6 +39,7 @@ body {
     0 12px 23px var(--box-shadow-color);
 }
 .enlace_sin_lineaa{
+  font-family: 'Inter', sans-serif;
   text-decoration: none;
   position: absolute;
    z-index: 123;
@@ -47,29 +48,32 @@ body {
   color: white;
   letter-spacing: 7px;
   font-weight: bolder;
+  font-size:large;
 }
 .enlace_sin_lineaa:hover{
-    color: #c0cbf8;
-    transform: translateY(-4px) scale(1.000) translateZ(0);
-    box-shadow: 0 12px 15px rgba(0,0,0,0.11),
-    0 12px 23px var(--box-shadow-color);
+  color: #c0cbf8;
+  transform: translateY(-4px) scale(1.000) translateZ(0);
+  box-shadow: 0 12px 15px rgba(0,0,0,0.11),
+  0 12px 23px var(--box-shadow-color);
 }
 
 .enlace_sin_linea1{
+  font-family: 'Inter', sans-serif;
   text-decoration: none;
   position: absolute; 
-  z-index: 13;
+  z-index: 133;
   left: 26em;
   top: 82px;
   color: white;
   letter-spacing: 7px;
   font-weight: bolder;
+  font-size:large;
 }
 .enlace_sin_linea1:hover{
-    color: #c0cbf8;
-    transform: translateY(-4px) scale(1.000) translateZ(0);
-    box-shadow: 0 12px 15px rgba(0,0,0,0.11),
-    0 12px 23px var(--box-shadow-color);
+  color: #c0cbf8;
+  transform: translateY(-4px) scale(1.000) translateZ(0);
+  box-shadow: 0 12px 15px rgba(0,0,0,0.11),
+  0 12px 23px var(--box-shadow-color);
 }
 
 .card-botones{
@@ -214,6 +218,7 @@ body {
 
   .card-botones {
     grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .card-botones button {
@@ -261,4 +266,15 @@ body {
 
 .login-area .nav-link:hover {
   color: #c0cbf8;
+}
+@media screen and (max-width: 480px) {
+  .enlace_sin_linea,
+  .enlace_sin_lineaa,
+  .enlace_sin_linea1 {
+    flex-direction:column;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 4px;
+    height: 4px;
+  }
 }

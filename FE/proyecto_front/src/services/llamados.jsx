@@ -25,7 +25,7 @@ async function getUsuarios() {
 
 //////////LLAMADO POST//////////
 
-async function postUsuarios(username,password,first_name,last_name,email, direccion, telefono,esta_afiliado) {
+async function postUsuarios(username,password,first_name,last_name,email, direccion, telefono,esta_asociado) {
     
     const obj={
         "username":username,
@@ -35,7 +35,7 @@ async function postUsuarios(username,password,first_name,last_name,email, direcc
         "email":email,
         "direccion":direccion,
         "telefono":telefono,
-        "esta_afiliado":esta_afiliado
+        "esta_asociado":esta_asociado
     };
 
     try {

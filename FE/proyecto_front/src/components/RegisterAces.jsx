@@ -1,5 +1,4 @@
 
-
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/register.css';
@@ -16,7 +15,7 @@ function RegisterAces() {
         email: '',
         direccion: '',
         telefono: '',
-        esta_afiliado: false
+        esta_asociado: false
     });
 
 
@@ -31,28 +30,30 @@ function RegisterAces() {
     const enviarDato = async (e) => {
         e.preventDefault();
         try {
-        const respuesta = await llamados.postUsuarios(formData.username,formData.password,formData.first_name,formData.last_name,formData.email,formData.direccion,formData.telefono,formData.esta_afiliado);
+        const respuesta = await llamados.postUsuarios(formData.username,formData.password,formData.first_name,formData.last_name,formData.email,formData.direccion,formData.telefono,formData.esta_asociado);
             if (respuesta.exito) {
-            Swal.fire('Usuario registrado', '¡Registrado con éxito!', 'success');
-            setFormData({
-             username: '',
-             password: '',
-             first_name: '',
-             last_name: '',
-             email: '',
-             direccion: '',
-             telefono: '',
-             esta_afiliado: false
-             });
-            } else {
-                Swal.fire("Error", "No se pudo registrar el usuario", "error");
-            }
+            Swal.fire('Usuario registrado', '¡Registrado con éxito!', 'success').then(() => {
+            navigate('/Login'); 
+        });
+
+        setFormData({
+            username: '',
+            password: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            direccion: '',
+            telefono: '',
+            esta_asociado: false
+        });
+}
             } catch (error) {
                 console.error("Error en el envío:", error);
                 Swal.fire("Error", "Error inesperado del servidor", "error");
             }
-        
     };
+        const navigate = useNavigate()
+
 
     return (
         <div className="fondo2">
@@ -61,46 +62,43 @@ function RegisterAces() {
             <Link to="/Nosotros" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
             <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
 
-            <div className="form-container">
-                <p className="title">Regístrese</p>
-                <form className="form" onSubmit={enviarDato}>
+         <div className="form-container">
+            <p className="title">Regístrese</p>
+            <form className="form" onSubmit={enviarDato}>
                 
-                    <div className="input-group">
-                        <label htmlFor="username">Nombre de usuario</label>
-                        <input type="text" name="username" value={formData.username} onChange={dato} />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Contraseña</label>
-                        <input type="password" name="password" value={formData.password} onChange={dato} />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="first_name">Nombre</label>
-                        <input type="text" name="first_name" value={formData.first_name} onChange={dato} />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="last_name">Apellido</label>
-                        <input type="text" name="last_name" value={formData.last_name} onChange={dato} />
-                    </div>
+         <div className="input-group">
+            <label htmlFor="username">Nombre de usuario</label>
+            <input type="text" name="username" value={formData.username} onChange={dato} />
+         </div>
+         <div className="input-group">
+            <label htmlFor="password">Contraseña</label>
+            <input type="password" name="password" value={formData.password} onChange={dato} />
+         </div>
+         <div className="input-group">
+            <label htmlFor="first_name">Nombre</label>
+            <input type="text" name="first_name" value={formData.first_name} onChange={dato} />
+         </div>
+         <div className="input-group">
+            <label htmlFor="last_name">Apellido</label>
+            <input type="text" name="last_name" value={formData.last_name} onChange={dato} />
+         </div>
 
-                    <div className="input-group">
-                        <label htmlFor="email">Correo electrónico</label>
-                        <input type="email" name="email" value={formData.email} onChange={dato} />
-                    </div>
+         <div className="input-group">
+            <label htmlFor="email">Correo electrónico</label>
+            <input type="email" name="email" value={formData.email} onChange={dato} />
+         </div>
                     
-                    <div className="input-group">
-                        <label htmlFor="direccion">Dirección</label>
-                        <input type="text" name="direccion" value={formData.direccion} onChange={dato} />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="telefono">Teléfono</label>
-                        <input type="text" name="telefono" value={formData.telefono} onChange={dato} />
-                    </div>
-               
-                    
-                    <button className="sign" type="submit" href="/Login" >Enviar</button>
-                </form>
-                
-            </div>
+         <div className="input-group">
+            <label htmlFor="direccion">Dirección</label>
+            <input type="text" name="direccion" value={formData.direccion} onChange={dato} />
+         </div>
+         <div className="input-group">
+            <label htmlFor="telefono">Teléfono</label>
+            <input type="text" name="telefono" value={formData.telefono} onChange={dato} />
+         </div>
+            <button className="sign" type="submit">Enviar</button>
+         </form>  
+         </div>
         </div>
     );
 }

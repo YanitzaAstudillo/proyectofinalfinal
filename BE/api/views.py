@@ -4,7 +4,7 @@ from .models import Usuarios,Farmacias,Especialidades,Provincias, Clinicas,Centr
 from .serializers import UsuarioCompletoSerializer, FarmaciasSerializer,EspecialidadesSerializer
 from .serializers import ProvinciasSerializer,ClinicasSerializer,CentroSerializer,ProductosSerializer
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 #from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -42,7 +42,6 @@ class permisos(BasePermission):
 
         return False
 
-
 # Create your views here
 class CrearUsuarioView(APIView):
     def post(self,request):
@@ -54,7 +53,7 @@ class CrearUsuarioView(APIView):
 
         direccion = request.data.get("direccion")
         telefono = request.data.get("telefono")
-        esta_afiliado = request.data.get("esta_afiliado", False)
+        esta_asociado = request.data.get("esta_asociado")
 
         usuario = User.objects.create_user(
             username=username,
@@ -68,12 +67,17 @@ class CrearUsuarioView(APIView):
             usuario=usuario,
             direccion = direccion,
             telefono = telefono,
-            esta_afiliado = esta_afiliado,
+            esta_asociado = esta_asociado
         )
 
+        group = Group.objects.get(name='paciente')
+        usuario.groups.add(group)
+        
         return Response({"exito":"Usuario creado"},status=201)
+    
 
-#login con authenticate
+
+#login con authenticate!
 class ValidarUsuarioView(APIView):
     def post(self,request):
         username = request.data.get("username")
@@ -134,7 +138,7 @@ class EditarUsuarioView(APIView):
     
 
 class CrearVerFarmacia(ListCreateAPIView):
-    # permission_classes= [permisos]
+    permission_classes= [permisos]
     queryset = Farmacias.objects.all()
     serializer_class = FarmaciasSerializer
 
@@ -179,7 +183,7 @@ class EditarFarmaciaView(APIView):
 
 
 class CrearEspecialidadesView(ListCreateAPIView):
-    #permission_classes = [permisos]
+    permission_classes = [permisos]
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 
@@ -189,13 +193,13 @@ class EspecialidadesDetailView(ListAPIView):
     serializer_class= EspecialidadesSerializer
 
 class EspecialidadEliminarView(RetrieveDestroyAPIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Especialidades.objects.all()
     serializer_class = EspecialidadesSerializer
 
 class EditarEspecialidadView(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Especialidad = request.data.get("nombre_Especialidad")
         centro_id = request.data.get("centro")
@@ -285,7 +289,7 @@ class EditarProvinciaView(APIView):
 
 
 class CrearClinicasView(ListCreateAPIView):
-    # permission_classes = [permisos]
+    permission_classes = [permisos]
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
@@ -295,13 +299,13 @@ class ClinicasDetailView(ListAPIView):
     serializer_class= ClinicasSerializer
 
 class ClinicaEliminarView(RetrieveDestroyAPIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Clinicas.objects.all()
     serializer_class = ClinicasSerializer
 
 class EditarClinicaView(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def patch(self, request, id):
         nombre_Clinica= request.data.get("nombre_Clinica")
         direccion_Clinica= request.data.get("direccion_Clinica")
@@ -357,7 +361,6 @@ class ProductoEliminarView(RetrieveDestroyAPIView):
 
 class EditarProductoView(APIView):
     #permission_classes = [IsAuthenticated]
-
     def patch(self, request, id):
         paquete= request.data.get("paquete")
         descripcion= request.data.get("descripcion")

@@ -14,33 +14,29 @@ function LoginAces(){
     };
 
 
-
     const inicioSesion = async (e) => {
       e.preventDefault();
       try {
         const response = await llamadosLogin.postUsuarios(formData.username, formData.password);
         console.log(response);
-        if (response.exito) {
+        if (response.exito && response.grupo_usuario === "administrador","asociado") {
           Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
           localStorage.setItem("token", response.token);
           localStorage.setItem("submit", response.grupo_usuario); 
           localStorage.setItem("id", response.id);
-        if (response.grupo_usuario === "administrador","asociado") {
-        navigate('/AdminFarm','/AdminClinica','/AdminClinica','/AdminClinica','/Admin');
-        } else if (response.grupo_usuario === "usuario") {
+          navigate('/AdminFarm','/AdminClinica','/AdminClinica','/AdminClinica','/Admin');
+        if (response.grupo_usuario === "paciente") {
+          Swal.fire("Éxito", "Sesión iniciada correctamente", "success");
           navigate('/');
-        } else {
-         Swal.fire("Error en inicio de sesión:", "error");
         }
 
-        } else {
-          Swal.fire("Error", "Credenciales inválidas", "error");
-        }
+        } 
       } catch (error) {
       console.error("Error en inicio de sesión:", error);
       Swal.fire("Error", "Ocurrió un problema en el servidor", "error");
       }
     };
+
 
     return (
         <div className="fondo2">
