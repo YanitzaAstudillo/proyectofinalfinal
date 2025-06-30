@@ -1,13 +1,13 @@
 
 .duo {
-  font-family: 'Inter', sans-serif;
+  
   position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
   z-index: 13;
-  left: 50%;
-  top: 65px;
+  left: 53%;
+  top: 57px;
   transform: translateX(-50%);
   cursor: pointer;
   text-align: center;
@@ -15,8 +15,9 @@
 }
 
 h1 {
-  font-weight: bolder;
-  font-size: clamp(1.2rem, 2.5vw, 2.1rem);
+  font-family: 'Inter', sans-serif;
+  font-weight:bolder;
+  font-size:x-large;
   margin: 0rem;
   color: white;
   position: relative;
@@ -38,18 +39,18 @@ h1 {
 }
 
 #fu {
-  font-family: 'Inter', sans-serif;
-  font-weight: bolder;
+  
+  font-size:medium;
   text-align: center;
   color: white;
   position: absolute;
   z-index: 10;
-  top: 688px;
+  top: 622px;
   width: 100%;
   left: 0;
   animation: mymove 70s infinite;
   white-space: nowrap;
-  font-size: clamp(0.8rem, 2vw, 1.2rem);
+ 
 }
 
 @keyframes mymove {

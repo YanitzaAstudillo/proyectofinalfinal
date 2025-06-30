@@ -7,18 +7,15 @@
 
 .booody{
     display: flex;
-    flex-direction: column;
-    font-family: 'Inter', sans-serif;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    min-height: 100vh;
-    box-sizing: border-box;
-    background-image: url("portada2.jpg");
-    background-size: cover;
-    background: linear-gradient(90deg,
-         #17224d,
-         #17224d
-    );
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .enlace_sin_linea{
@@ -76,138 +73,61 @@
   0 12px 23px var(--box-shadow-color);
 }
 
-.card-botones{
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem;
-    width: calc(100% - 340px);
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: absolute; z-index: 3;
-}
-#boton1{
-    background: linear-gradient(90deg,
-     black,
-     rgba(41, 6, 94, 0.814),
-     rgb(89, 0, 255)
-    );
-    color: white;
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding: 40px;
-    margin: 9px;
-    position: absolute; z-index: 3;
-    left: 51em;
-    top: 150px;
+.card-botones {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 2rem 2.5rem;
+  justify-content: end;
+  padding: 12rem 6rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-#boton2{
-    background: linear-gradient(90deg,
-      black,
-      rgba(41, 6, 94, 0.814),
-      rgb(89, 0, 255)
-    );
-    color: white;
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding: 40px;
-    margin: 9px;
-    position: absolute; z-index: 3;
-    left: 51em;
-    top: 300px;
-    letter-spacing: 1.5px;
+.card-botones button {
+  background: linear-gradient(90deg, black, navy, blue);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid rgb(60, 59, 59);
+  padding: 1.5rem 2rem;
+  min-width: 250px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex: 1 1 180px;
 }
 
-#boton3{
-    background: linear-gradient(90deg,
-     black,
-     rgba(41, 6, 94, 0.814),
-     rgb(89, 0, 255)
-    );
-    color: white;
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    padding-inline: 22px;
-    margin: 10px;
-    position: absolute; z-index: 1;
-    left: 51em;
-    top: 450px;
+.card-botones button:hover {
+  transform: scale(1.05);
 }
-
-#boton4{
-    background: linear-gradient(90deg,
-     black,
-     rgba(41, 6, 94, 0.814),
-     rgb(89, 0, 255)
-    );
-    color: white;
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding: 40px;
-    margin: 9px;
-    position: absolute; z-index: 3;
-    left: 66em;
-    top: 150px;
-    letter-spacing: 1.5px;
-}
-
-#boton5{
-    background-color:rgb(148, 219, 219);
-    color: rgba(41, 6, 94, 0.814);
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding-bottom: 39px;
-    padding-top: 39px;
-    padding-inline: 18px;
-    margin: 9px;
-    position: relative; z-index: 3;
-    left: 66em;
-    top: 300px;
-    font-weight: bold;
-}
-
-#boton6{
-    background: linear-gradient(90deg,
-     black,
-     rgba(41, 6, 94, 0.814),
-     rgb(89, 0, 255)
-    );
-    color: white;
-    border-radius: 10px;
-    border: rgb(60, 59, 59) solid 1px;
-    padding: 40px;
-    margin: 9px;
-    position: absolute; z-index: 3;
-    left: 66em;
-    top: 450px;
-    letter-spacing: 1px;
+button#azul {
+  background: linear-gradient(90deg,dodgerblue,lightskyblue) !important;
+  color:darkblue;
 }
 
 .reg{
-   color: white; 
+   color:white; 
    position: absolute; z-index: 3;
     left: 56em;
-    top: 600px;
+    top: 530px;
 }
 
 .tituloLogin{
    position: absolute; z-index: 3;
     left: 62em;
-    top: 631px;
-   letter-spacing: 3px;
-   font-weight:bolder;
+    top: 550px;
+   letter-spacing: 1px;
+   font-weight:bold;
+}
+.tituloLogin:hover {
+  transform: scale(1.1);
 }
 
-.nav-link{
+.nav-linkk{
     color: white;
     position: absolute; z-index: 3;
-    left: 60.3em;
-    top: 666px;
+    left: 60em;
+    top: 575px;
 }
 
 @media screen and (max-width: 768px) {
@@ -218,15 +138,17 @@
 
   .card-botones {
     grid-template-columns: 1fr;
-    flex-direction: column;
+    justify-content: center;
+    padding: 9rem;
   }
 
   .card-botones button {
-    padding: 1.5rem;
+    width: 80%;
+    min-width: unset;
   }
 
   .login-area .tituloLogin,
-  .login-area .nav-link {
+  .login-area .nav-linkk {
     font-size: 1rem;
   }
 }
@@ -237,8 +159,9 @@
   }
 
   .card-botones button {
-    padding: 1rem;
-    font-size: 0.9rem;
+    width: 80%;
+    min-width: unset;
+    text-align: center;
   }
 
   .login-area .tituloLogin,
@@ -257,24 +180,24 @@
   margin-top: 0.5rem;
 }
 
-.login-area .nav-link {
+.login-area .nav-linkk {
   color: white;
   text-decoration: none;
   margin-top: 0.3rem;
   display: inline-block;
 }
 
-.login-area .nav-link:hover {
-  color: #c0cbf8;
+.login-area .nav-linkk:hover {
+  transform: scale(1.1);
 }
 @media screen and (max-width: 480px) {
   .enlace_sin_linea,
   .enlace_sin_lineaa,
   .enlace_sin_linea1 {
-    flex-direction:column;
-    justify-content: center;
-    margin-top: 1rem;
-    width: 4px;
-    height: 4px;
+    position: static;
+    display: block;
+    margin: 0.5rem auto;
+    text-align: center;
+    font-size: 1rem;
   }
 }
