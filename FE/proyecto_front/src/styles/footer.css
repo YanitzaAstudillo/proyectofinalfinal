@@ -1,51 +1,52 @@
 
 .duo {
-  
+  color: white;
   position: absolute;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  
   z-index: 13;
   left: 53%;
-  top: 57px;
+  top: 10vh;
   transform: translateX(-50%);
   cursor: pointer;
   text-align: center;
   padding: 1rem;
 }
 
-h1 {
+h1{
   font-family: 'Inter', sans-serif;
-  font-weight:bolder;
-  font-size:x-large;
-  margin: 0rem;
+  font-weight:bold;
+  font-size:190%;
+  
   color: white;
   position: relative;
   left: 17rem;
-  top:0px;
+  
 }
 
-.social-icons .icon svg {
+.social-iicons .icon svg {
   width: 40px;
   height: 40px;
+  float: left;
+  fill: white;
+  padding: 1vh;
   transition: transform 0.2s ease;
   position: relative;
   left: 18rem;
-  top:0px;
 }
 
-.social-icons .icon svg:hover {
+.social-iicons .icon svg:hover {
   transform: scale(2);
 }
 
 #fu {
-  
   font-size:medium;
   text-align: center;
   color: white;
   position: absolute;
   z-index: 10;
-  top: 622px;
+  top: 92vh;
   width: 100%;
   left: 0;
   animation: mymove 70s infinite;
@@ -64,31 +65,39 @@ h1 {
 
 @media screen and (max-width: 768px) {
   .duo {
-  top: 20px;
-  padding: 0.5rem;
+  top: 30vh;
+  
+  padding: 2rem;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   }
-
   h1 {
-    font-size: clamp(1rem, 6vw, 1.8rem);
-    margin-top: 3rem; 
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    top: -13vh;
     position: relative;
     text-align: center;
-    top:29px;
+    
   }
-
-  .social-icons {
+  .social-iicons {
     justify-content: center;
-    margin-top: 1rem;
+    font-size: 1rem;
+    top: -15vh;
+    position: relative;
+    text-align: center;
   }
 
-  .social-icons .icon svg {
-    width: 24px;
-    height: 24px;
+  .social-iicons .icon svg {
+    justify-content: center;
+    width: 40px;
+    height: 40px;
   }
   #fu {
-    font-size: clamp(0.8rem, 3vw, 1rem);
-    top: 90%;
+    font-size: 1rem;
+    margin-top: 2vw;
+    
   }
 }

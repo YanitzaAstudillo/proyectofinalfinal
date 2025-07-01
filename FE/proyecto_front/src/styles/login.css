@@ -1,27 +1,38 @@
 
-.fondo2{
-  background-image: url("portada2.jpg");
-    background-size: cover;
-    background: linear-gradient(90deg,
-         #17224d,
-         #17224d
-    );
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
- 
+
+.booody{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 2rem;
+}
+
 .form-container2{
-  margin-left: 0px;
-  width: 320px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 200px;
   border-radius: 0.9rem;
   background-color: rgba(17, 24, 39, 1);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
-  
-  position: absolute; z-index: 3;
-    left: 55em;
-    top: 230px;
+  z-index: 3;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
-.titlee {
+.titlee{
   color: white;
   text-align: center;
   font-size: 1.5rem;
@@ -29,7 +40,7 @@
   font-weight: 700;
 }
 
-.form {
+.form{
   margin-top: 1.5rem;
   border-radius: 0.9rem;
 }
@@ -56,13 +67,13 @@
   color: rgba(243, 244, 246, 1);
 }
 
-.forgot a,.signup a {
+.forgot a, .signup a {
   color: rgba(243, 244, 246, 1);
   text-decoration: none;
   font-size: 14px;
 }
 
-.sign {
+.sign{
   display: block;
   border-radius: 1rem;
   width: 100%;
@@ -81,7 +92,7 @@
   padding-top: 1rem;
 }
 
-.line {
+.line{
   height: 1px;
   flex: 1 1 0%;
   background-color: rgba(55, 65, 81, 1);
@@ -95,12 +106,12 @@
   color: rgba(156, 163, 175, 1);
 }
 
-.social-icons {
+.sociall-iconss{
   display: flex;
   justify-content: center;
 }
 
-.social-icons .icon {
+.sociall-iconss .icon {
   border-radius: 0.125rem;
   padding: 0.75rem;
   border: none;
@@ -108,7 +119,7 @@
   margin-left: 8px;
 }
 
-.social-icons .icon svg {
+.sociall-iconss .icon svg {
   height: 1.25rem;
   width: 1.25rem;
   fill: #fff;
@@ -119,4 +130,33 @@
   font-size: 0.75rem;
   line-height: 1rem;
   color: rgba(156, 163, 175, 1);
+}
+
+@media (min-width: 768px){
+  .booody{
+    align-items: flex-start;
+    padding: 4rem;
+  }
+  .form-container2{
+    position: absolute;
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container2 {
+    padding: 1.5rem;
+  }
+  .titlee {
+    font-size: 1.25rem;
+  }
+  .sign {
+    padding: 0.5rem;
+  }
+  .sociall-iconss .icon {
+    margin-left: 4px;
+    padding: 0.5rem;
+  }
 }

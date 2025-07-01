@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import '../styles/contac.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from "react";
+import porta from '../assets/porta.png';
 
 
 export const Contacto = () => {
@@ -28,13 +29,13 @@ export const Contacto = () => {
         },
       );
   }
-  const navig = useNavigate()
+  const navigate = useNavigate()
 
 
   return (
-    <div className="todo">
-    <img src="../src/assets/portada3.jpg" alt="portada" width="1370" height="750" />
-
+    <div className='booody'style={{ backgroundImage: `url(${porta})` }}>
+      <div className="form-layout">
+      <img src="https://images.pexels.com/photos/11198234/pexels-photo-11198234.jpeg" alt="Dos cirujanos" className="ciru"/>
       <>
         <form id="uno" ref={form} onSubmit={sendEmail}>
             <h2 id="cuadro">Contacto</h2>
@@ -56,9 +57,13 @@ export const Contacto = () => {
             <input type="submit" value="Send" />
         </form>
       </>
-      <Link to="/PagInicio" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea'>INICIO</Link>
-      <Link to="/Nosotros" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_lineaa'>NOSOTROS</Link>
-      <Link to="/Contac" style={{ color: 'white', textDecoration: 'none' }} className='enlace_sin_linea1'>CONTACTO</Link>
+    <nav className="nav-bar2">
+      <Link to="/PagInicio" className="nav-link2">Inicio</Link>
+      <Link to="/Nosotros" className="nav-link2">Nosotros</Link>
+      <Link to="/Contac" className="nav-link2">Contacto</Link>
+    </nav>
+      </div>
+      
     </div>
     
   )

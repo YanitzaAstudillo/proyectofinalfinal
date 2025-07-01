@@ -4,29 +4,57 @@
   margin: 0;
   padding: 0;
 }
-.todo{
+.booody{
   display: flex;
-  justify-content: center;
-  min-height: 100vh;
   flex-direction: column;
-  background-image: url("portada3.jpg");
-    background-size: cover;
-    background: linear-gradient(90deg,
-         #17224d,
-         #17224d
-    );
+  font-family: 'Inter', sans-serif;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-#uno{
-  background-color:rgb(148, 219, 219);
+.form-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-start;
+  
+  flex-wrap: wrap;
+  
+  box-sizing: border-box;
+}
+
+.ciru{
+  flex-direction: row;
+  width: 100%;
+  max-width: 700px;
+  max-height: 750px;
+  object-fit: cover;
+  border-radius: 12px;
+  
+  margin-left: 40rem;
+  margin-top: 8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  opacity: 0.5;
+}
+#uno {
+  background-color: rgb(148, 219, 219);
   color: #17224d;
   width: 100%;
   max-width: 350px;
+  max-height: 450px;
   border-radius: 10px;
-  position: absolute; z-index: 3;
-  top: 200px;
   padding: 30px;
-  left: 700px;
+  
+  position: relative;
+  left: 15rem;
+  top: -55vh;
 }
 
 .field {
@@ -62,12 +90,40 @@
  text-align: center;
 }
 @media screen and (max-width: 768px) {
-  .todo{
-    flex-direction: column;
+  .booody{
+    flex-direction:column;
     align-items: center;
   }
-  #uno{
-    width: 90%;
-    max-width: 100%;
+  #uno {
+    left: 0;
+    top: 0;
+    margin: 2rem auto;
+    flex-direction: column;
+  }
+  .ciru{
+    flex-direction: column;
+    max-height: 200px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  #uno {
+    padding: 20vh;
+    margin: 20vh auto;
+    width: 95%;
+  }
+
+  .field input {
+    min-width: 100%;
+    font-size: 16px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+  }
+  .ciru {
+    max-height: 150px;
   }
 }

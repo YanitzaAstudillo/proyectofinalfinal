@@ -29,7 +29,7 @@ function Inicio() {
             <div className="login-area">
             <p className='reg'>¿Deseas registrarte?<Link to="/Register" >Registrese aquí</Link> </p>
             <div className='tituloLogin'>
-             <Link to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
+             <Link className='loginn' to="/Login" style={{ color: 'white', textDecoration: 'none' }} >LOGIN</Link>
              <br />
             </div>
              <a className="nav-linkk" href="/Register">Deseas afiliarte?</a>

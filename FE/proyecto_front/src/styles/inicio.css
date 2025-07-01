@@ -6,7 +6,7 @@
 }
 
 .booody{
-    display: flex;
+  display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
   align-items: flex-start;
@@ -108,16 +108,17 @@ button#azul {
 .reg{
    color:white; 
    position: absolute; z-index: 3;
-    left: 56em;
-    top: 530px;
+    left: 63em;
+    top: 80vh;
 }
 
 .tituloLogin{
-   position: absolute; z-index: 3;
-    left: 62em;
-    top: 550px;
-   letter-spacing: 1px;
-   font-weight:bold;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  left:69vw;
+  top: 93vh;
+  position: absolute;
 }
 .tituloLogin:hover {
   transform: scale(1.1);
@@ -126,14 +127,15 @@ button#azul {
 .nav-linkk{
     color: white;
     position: absolute; z-index: 3;
-    left: 60em;
-    top: 575px;
+    left: 67vw;
+    top: 96vh;
 }
 
 @media screen and (max-width: 768px) {
   .booody{
     flex-direction:column;
     align-items: center;
+    grid-template-columns: 100vw;
   }
 
   .card-botones {
@@ -148,16 +150,18 @@ button#azul {
   }
 
   .login-area .tituloLogin,
-  .login-area .nav-linkk {
-    font-size: 1rem;
+  .login-area .nav-linkk, .reg {
+    position: static !important;
+    margin: -2rem auto;
+    text-align: center;
+    display: block;
   }
 }
 @media screen and (max-width: 480px) {
   .booody{
-    flex-direction:column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 100vw;
   }
-
   .card-botones button {
     width: 80%;
     min-width: unset;
@@ -165,25 +169,31 @@ button#azul {
   }
 
   .login-area .tituloLogin,
-  .login-area .nav-link {
-    font-size: 1rem;
+  .login-area .nav-link,.reg {
+    font-size: 0rem;
+    justify-content: center;
   }
 }
-.login-area {
-  text-align: center;
-  color: white;
+.login-area, .reg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0rem;
 }
 
 .login-area .tituloLogin {
   letter-spacing: 3px;
+  justify-content: center;
   font-weight: bolder;
-  margin-top: 0.5rem;
+  margin-top: -3rem;
 }
 
 .login-area .nav-linkk {
   color: white;
+  justify-content: center;
   text-decoration: none;
-  margin-top: 0.3rem;
+  margin-top: -3rem;
   display: inline-block;
 }
 
@@ -193,11 +203,12 @@ button#azul {
 @media screen and (max-width: 480px) {
   .enlace_sin_linea,
   .enlace_sin_lineaa,
-  .enlace_sin_linea1 {
+  .enlace_sin_linea1, .reg{
     position: static;
     display: block;
-    margin: 0.5rem auto;
+    justify-content: center;
+    margin: 0rem auto;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 }

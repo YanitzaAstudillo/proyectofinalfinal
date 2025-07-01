@@ -1,6 +1,7 @@
 import llamadosFarma from "../services/llamadosFarma";
 import { useState,useEffect } from "react";
 import '../styles/adminFarm.css'
+import Swal from 'sweetalert2';
 
 const AggFarmacias = () => {
     const [nombre_Farmacia, setNombre_Farmacia] = useState("");
@@ -40,14 +41,41 @@ const AggFarmacias = () => {
       return null;
     }
   }
-    const agregarFarmacia = async (e) => {
-        e.preventDefault();
+
+  const agregarFarmacia = async (e) => {
+    e.preventDefault();
+
+    try{
         const peticion = await llamadosFarma.postFarmacias(
-            nombre_Farmacia,direccion_Farmacia,telefono_Farmacia,horario_Farmacia,sucursales_Farmacia,localStorage.getItem('id'),
-            img
+        nombre_Farmacia,
+        direccion_Farmacia,
+        telefono_Farmacia,
+        horario_Farmacia,
+        sucursales_Farmacia,
+        localStorage.getItem('id'),
+        img
         );
-        console.log(peticion);
+
+      console.log(peticion);
+
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'La farmacia fue agregada correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al agregar la farmacia.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
     }
+};
   return (  
     <div className="agregar-f">
       <h2>Agregar Farmacias</h2>

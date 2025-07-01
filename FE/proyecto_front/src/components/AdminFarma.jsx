@@ -13,6 +13,8 @@ function AdminFarma() {
   const [horario_FarmaciaEd, setHorario_FarmaciaEd] = useState("");
   const [sucursales_FarmaciaEd, setSucursales_FarmaciaEd] = useState("");
   const [idEdit, setIdEdit] = useState(null);
+  const [imgEd, setImgEd] = useState(null);
+
   
 
   useEffect(() => {
@@ -23,6 +25,37 @@ function AdminFarma() {
     cargarFarmacias();
   }, []);
 
+
+  async function subirImagenACloudinary(file) {
+  const url = "https://api.cloudinary.com/v1_1/dic09m8ij/upload";
+  const preset = "imagen";
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", preset);
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("Imagen subida:", data.secure_url);
+      return data.secure_url;
+    } else {
+      console.error("Error al subir:", data);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error de red:", error);
+    return null;
+  }
+}
+
+
   function inicioEd(farmacia) {
     setIdEdit(farmacia.id);
     setNombre_FarmaciaEd(farmacia.nombre_Farmacia);
@@ -30,53 +63,85 @@ function AdminFarma() {
     setTelefono_FarmaciaEd(farmacia.telefono_Farmacia);
     setHorario_FarmaciaEd(farmacia.horario_Farmacia);
     setSucursales_FarmaciaEd(farmacia.sucursales_Farmacia);
+    setImgEd(farmacia.img)
   }
 
-  function edicion(id) {
-    if (!nombre_FarmaciaEd || !direccion_FarmaciaEd || !telefono_FarmaciaEd || !horario_FarmaciaEd || !sucursales_FarmaciaEd) {
-      Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
-      return;
+  async function edicion(id) {
+    if (!id) {
+     Swal.fire('¡Error!', 'ID de la farmacia no válido.', 'error');
+    return;
     }
+
+    if (!nombre_FarmaciaEd || !direccion_FarmaciaEd || !telefono_FarmaciaEd || !horario_FarmaciaEd || !sucursales_FarmaciaEd) {
+  Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
+  return;
+}
+
     console.log(id);
 
-    llamadosFarma.updateFarmacias(nombre_FarmaciaEd, direccion_FarmaciaEd, telefono_FarmaciaEd, horario_FarmaciaEd, sucursales_FarmaciaEd, id)
-      .then(() => {
-        Swal.fire('Farmacia actualizada', 'La actualización fue exitosa!', 'success');
+  let imagenFinal = null;
 
-        setFarmacias(prev =>
-          prev.map(farmacia =>
-            farmacia.id === id
-              ? { ...farmacia, nombre_Farmacia: nombre_FarmaciaEd, direccion_Farmacia: direccion_FarmaciaEd, telefono_Farmacia: telefono_FarmaciaEd, horario_Farmacia: horario_FarmaciaEd, sucursales_Farmacia: sucursales_FarmaciaEd }
-              : farmacia
-          )
-        );
+if (imgEd instanceof File) {
+  imagenFinal = await subirImagenACloudinary(imgEd);
+  if (!imagenFinal) {
+    Swal.fire('Error', 'No se pudo subir la imagen', 'error');
+    return;
+  }
+} else {
+  
+  imagenFinal = imgEd;
+}
+
+    llamadosFarma.updateFarmacias(nombre_FarmaciaEd, direccion_FarmaciaEd, telefono_FarmaciaEd, horario_FarmaciaEd, sucursales_FarmaciaEd,imagenFinal, id)
+    .then(() => {
+     Swal.fire('Farmacia actualizada', 'La actualización fue exitosa!', 'success');
+
+     setFarmacias(prev =>
+     prev.map(farmacia =>
+     farmacia.id === id
+     ? { ...farmacia, nombre_Farmacia: nombre_FarmaciaEd, direccion_Farmacia: direccion_FarmaciaEd, telefono_Farmacia: telefono_FarmaciaEd, horario_Farmacia: horario_FarmaciaEd, sucursales_Farmacia: sucursales_FarmaciaEd,img:imagenFinal || farmacia.img }
+     : farmacia
+      )
+    );
         setNombre_FarmaciaEd("");
         setDireccion_FarmaciaEd("");
         setTelefono_FarmaciaEd("");
         setHorario_FarmaciaEd("");
         setSucursales_FarmaciaEd("");
+        setImgEd(null);
         setIdEdit(null);
-      })
+    })
       .catch(() => {
         Swal.fire('Error', 'No se pudo actualizar', 'error');
       });
   }
 
   function borrar(id) {
-    async function borra(id) {
-      const confirma = window.confirm("¿Está seguro de eliminar?");
-      if (!confirma) return;
-
-      const borrado = await llamadosFarma.deleteFarmacias(id);
-      if (borrado) {
-        setFarmacias(prev => prev.filter(farmacia => farmacia.id !== id));
+    Swal.fire({
+        title: "¿Está seguro de eliminar?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        denyButtonText: "No"
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+         try {
+        const borrado = await llamadosFarma.deleteFarmacias(id);
+        if (borrado) {
+         setFarmacias(prev => prev.filter(farmacia => farmacia.id !== id));
         Swal.fire("Farmacia eliminada", "", "success");
-      } else {
-        Swal.fire("Error al eliminar", "", "error");
-      }
-    }
-    borra(id);
-  }
+        } else {
+          Swal.fire("Error al eliminar", "", "error");
+        }
+        } catch (error) {
+         Swal.fire("Error", "No se pudo completar la eliminación", "error");
+        }
+        } else if (result.isDenied) {
+           Swal.fire("Cancelado", "No se realizaron cambios", "info");
+        }
+    });
+}
+
 
   return (
     <div className='body5'>
@@ -123,10 +188,14 @@ function AdminFarma() {
             {idEdit === farmacia.id && (
               <>
                 <input className="redo" value={nombre_FarmaciaEd} onChange={(e) => setNombre_FarmaciaEd(e.target.value)} type="text" placeholder="Nombre" />
+                
                 <input className="redo" value={direccion_FarmaciaEd} onChange={(e) => setDireccion_FarmaciaEd(e.target.value)} type="text" placeholder="Dirección" />
                 <input className="redo" value={telefono_FarmaciaEd} onChange={(e) => setTelefono_FarmaciaEd(e.target.value)} type="text" placeholder="Teléfono" />
                 <input className="redo" value={horario_FarmaciaEd} onChange={(e) => setHorario_FarmaciaEd(e.target.value)} type="text" placeholder="Horario" />
                 <input className="redo" value={sucursales_FarmaciaEd} onChange={(e) => setSucursales_FarmaciaEd(e.target.value)} placeholder="Sucursales" type="text" />
+                
+                <input className="redo" type="file" accept="image/*" onChange={(e) => setImgEd(e.target.files[0])}/>
+
               </>
             )}
 
