@@ -22,12 +22,18 @@ function Socios() {
         }, []);
 
     return(
-        <div>
-        <>
-          <Link to="/PagInicio" className='enlace_sin_linea'>INICIO</Link>
-          <Link to="/Nosotros" className='enlace_sin_lineaa'>NOSOTROS</Link>
-          <Link to="/Contac" className='enlace_sin_linea1'>CONTACTO</Link>
-         </>
+        <div className="body3">
+        <nav className="nav-bar2">
+            <Link to="/PagInicio" className="nav-link2">Inicio</Link>
+            <Link to="/Nosotros" className="nav-link2">Nosotros</Link>
+            <Link to="/Contac" className="nav-link2">Contacto</Link>
+        </nav>
+            <img
+             src="https://images.pexels.com/photos/20217786/pexels-photo-20217786.jpeg?auto=compress&cs=tinysrgb&w=800"
+             alt="Cirujanos operando en quirófano"
+             className="header-image"
+        />
+        
         <div className="roww2">
             {listaProductos.map((producto) => (
              <div className="tarjeta" key={producto.id}>

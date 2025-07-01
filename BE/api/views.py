@@ -289,7 +289,7 @@ class EditarProvinciaView(APIView):
 
 
 class CrearClinicasView(ListCreateAPIView):
-    permission_classes = [permisos]
+   # permission_classes = [permisos]
     queryset= Clinicas.objects.all()
     serializer_class= ClinicasSerializer
 
@@ -299,7 +299,7 @@ class ClinicasDetailView(ListAPIView):
     serializer_class= ClinicasSerializer
 
 class ClinicaEliminarView(RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     lookup_field = "id"
     queryset = Clinicas.objects.all()
     serializer_class = ClinicasSerializer

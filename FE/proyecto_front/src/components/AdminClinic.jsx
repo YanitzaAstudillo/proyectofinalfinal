@@ -43,6 +43,8 @@ function AdminClinic() {
     }
 
     async function Edittt(id) {
+
+        
         if (!nombre_ClinicaEd || !direccion_ClinicaEd || !horarioEd || !telefono_ClinicaEd || !nombre_ProvinciaEd) {
             Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
             return;
@@ -92,6 +94,9 @@ function AdminClinic() {
         elis(id);
     }
 
+
+    console.log(provincias);
+    
     return (
         <div className='body8'>
             <div className='container88'>

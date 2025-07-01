@@ -7,7 +7,7 @@ import metroImg from '../assets/metro.png';
 import '../styles/clinicas.css';
 
 const provincias = [
-    "San José",
+    "San Jose",
     "Alajuela",
     "Cartago",
     "Heredia",
@@ -25,6 +25,9 @@ function Clinic() {
 
         async function fetchClinicas() {
             try {
+
+             
+              
                 const clinicas = await llamadosClinic.getClinicas();
                 const clinicasFiltradas = clinicas.filter(
                     (clinica) => clinica.nombre_Provincia === clinicasPorProvincia
@@ -41,6 +44,9 @@ function Clinic() {
         fetchClinicas();
     }, [clinicasPorProvincia]);
 
+
+     
+    
 
     return (
   <div className="body3">

@@ -22,9 +22,7 @@
   flex-direction: row;
   justify-content: left;
   align-items: flex-start;
-  
   flex-wrap: wrap;
-  
   box-sizing: border-box;
 }
 
@@ -43,6 +41,11 @@
   animation-direction: alternate;
   opacity: 0.5;
 }
+@keyframes fadeIn{
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 #uno {
   background-color: rgb(148, 219, 219);
   color: #17224d;

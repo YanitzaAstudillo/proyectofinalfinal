@@ -4,6 +4,9 @@ import * as echarts from 'echarts';
 const Grafico = ({ clinicas }) => {
   const chartRef = useRef(null);
 
+
+  console.log(clinicas);
+  
   useEffect(() => {
     if (!chartRef.current) return;
 
@@ -25,18 +28,28 @@ const Grafico = ({ clinicas }) => {
       alajuela: 0,
       heredia: 0,
       cartago: 0,
-      'san josé': 0,
+      'san jose': 0,
       limon: 0,
       puntarenas: 0,
       guanacaste: 0,
     };
 
+   
+    
+
     clinicas.forEach((c) => {
     const original = c.nombre_Provincia?.toLowerCase()?.trim();
+    console.log(original);
+    
     const clave = equivalencias[original];
+    console.log(clave);
+    
     if (clave && conteo[clave] !== undefined) {
       conteo[clave]++;
+ 
+      
     }
+
   });
 
     const option = {
@@ -52,7 +65,7 @@ const Grafico = ({ clinicas }) => {
         data: [
           'Alajuela',
           'Heredia',
-          'San José',
+          'san josé',
           'Limón',
           'Guanacaste',
           'Puntarenas',
@@ -69,7 +82,7 @@ const Grafico = ({ clinicas }) => {
           data: [
             conteo.alajuela,
             conteo.heredia,
-            conteo['san josé'],
+            conteo["san jose"],
             conteo.limon,
             conteo.guanacaste,
             conteo.puntarenas,

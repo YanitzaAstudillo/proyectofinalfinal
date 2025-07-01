@@ -1,4 +1,9 @@
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .body4{
   padding-top: 80px;
   min-height: 100vh;
@@ -8,6 +13,11 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+@keyframes fadeIn{
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .far {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +25,7 @@
   gap:16px;
   padding: 45px 15px;
   box-sizing: border-box;
+  background-color: #e0e4f1;
 }
 
 .card-farmacia{
@@ -25,7 +36,7 @@
   background-color: #fff;
   box-sizing: border-box;
   padding: 0px;
-  
+  font-family: 'Segoe UI', sans-serif;
 }
 .card-farmacia:hover{
   transform: translateY(-4px);
@@ -39,18 +50,19 @@
 }
 
 .boton-waze{
-  background-color: #edeaea!important;
+  background-color: #a4a4a4!important;
   transition: background-color 0.3s ease;
   color: #17224d !important;
   cursor: pointer;
   font-weight: bolder;
   text-transform: uppercase;
+  font-family: 'Segoe UI', sans-serif;
 }
 .boton-waze:hover{
   background-color: #ccc!important;
 }
 .dropdown-toggle{
-  background-color: #edeaea!important;
+  background-color: #a4a4a4!important;
   transition: background-color 0.3s ease;
   border: none !important;
   color: #17224d !important;
@@ -67,11 +79,15 @@
   background-color: #e0e4f1;
   box-sizing: border-box;
   padding: 6px;
+  font-family: 'Segoe UI', sans-serif;
+  word-spacing: 2px;
+  padding: 2px;
 }
 .horario-item {
   padding: 4px;
   background-color: #e0e4f1;
   text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 @media screen and (max-width: 768px) {

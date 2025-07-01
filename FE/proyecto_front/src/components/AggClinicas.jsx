@@ -12,10 +12,11 @@ const [telefono_Clinica,setTelefono_Clinica]=useState("");
 const [Provincias,setProvincias]=useState("");
 
 
-
-
     const agregarClinica = async (e) => {
       e.preventDefault();
+
+      console.log(Provincias);
+      
        const trae = await llamadosClinic.postClinicas(
          nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,Provincias,localStorage.getItem('id')
         

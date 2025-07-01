@@ -36,7 +36,7 @@ async function postClinicas(
     direccion_Clinica: direccionClinica,
     horario,
     telefono_Clinica: telefonoClinica,
-    Provincias: parseInt(provinciaId, 10),
+    Provincias: provinciaId,
   };
 
   console.log("Enviando clínica:", obj);
