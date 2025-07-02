@@ -183,7 +183,7 @@ class EditarFarmaciaView(APIView):
 
 
 class CrearEspecialidadesView(ListCreateAPIView):
-    permission_classes = [permisos]
+    #permission_classes = [permisos]
     queryset= Especialidades.objects.all()
     serializer_class= EspecialidadesSerializer
 

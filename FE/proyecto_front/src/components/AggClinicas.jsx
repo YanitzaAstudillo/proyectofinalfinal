@@ -13,17 +13,46 @@ const [telefono_Clinica,setTelefono_Clinica]=useState("");
 const [Provincias,setProvincias]=useState("");
 
 
-    const agregarClinica = async (e) => {
-      e.preventDefault();
+  const agregarClinica = async (e) => {
+   e.preventDefault();
 
-      console.log(Provincias);
-      
-       const trae = await llamadosClinic.postClinicas(
-         nombre_Clinica,direccion_Clinica,horario,telefono_Clinica,Provincias,localStorage.getItem('id')
-        
-        );
-        console.log(trae);
-    }
+  try {
+    console.log(Provincias);
+
+    const trae = await llamadosClinic.postClinicas(
+      nombre_Clinica,
+      direccion_Clinica,
+      horario,
+      telefono_Clinica,
+      Provincias,
+      localStorage.getItem('id')
+    );
+
+    console.log(trae);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Clínica agregada',
+      text: 'La clínica se registró correctamente.',
+    });
+
+    setNombre_Clinica("");
+    setDireccion_Clinica("");
+    setHorario("");
+    setTelefono_Clinica("");
+    setProvincias("");
+
+  } catch (error) {
+    console.error("Error al agregar clínica:", error);
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No se pudo agregar la clínica. Intenta nuevamente.',
+    });
+  }
+};
+
 
     return (  
     <div className="agregar-f">

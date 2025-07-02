@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import llamadosEspecial from "../services/llamadosEspecial";
 import "../styles/adminEspe.css";
+import Swal from 'sweetalert2';
 
 const AggEspe = () => {
   const [nombre_Especialidad, setNombre_Especialidad] = useState("");
@@ -28,60 +29,80 @@ const AggEspe = () => {
   }, []);
 
   const agregarEspecialidad = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await llamadosEspecial.postEspecialidades(
-        nombre_Especialidad,
-        centroSeleccionado,
-        descripcion_Especialidad,
-        ubicacion_Especialidad,
-        precio
-      );
-      console.log("Especialidad agregada:", response);
-      setNombre_Especialidad("");
-      setCentroSeleccionado("");
-      setDescripcion_Especialidad("");
-      setUbicacion_Especialidad("");
-      setPrecio("");
-    } catch (error) {
-      console.error("Error agregando especialidad:", error);
-    }
-  };
+  e.preventDefault();
+  try {
+    const response = await llamadosEspecial.postEspecialidades(
+      nombre_Especialidad,
+      centroSeleccionado,
+      descripcion_Especialidad,
+      ubicacion_Especialidad,
+      precio
+    );
+    console.log("Especialidad agregada:", response);
+
+    setNombre_Especialidad("");
+    setCentroSeleccionado("");
+    setDescripcion_Especialidad("");
+    setUbicacion_Especialidad("");
+    setPrecio("");
+
+    Swal.fire("Especialidad agregada", "La especialidad fue registrada correctamente.", "success");
+  } catch (error) {
+    console.error("Error agregando especialidad:", error);
+
+    Swal.fire("Error", "No se pudo agregar la especialidad.", "error");
+  }
+};
 
   const agregarCentrosVarios = async (e) => {
     e.preventDefault();
     const nombres = nuevoCentroNombre
-      .split(",")
-      .map((nombre) => nombre.trim())
-      .filter((nombre) => nombre.length > 0);
+    .split(",")
+    .map((nombre) => nombre.trim())
+    .filter((nombre) => nombre.length > 0);
 
-    try {
-      for (let nombre of nombres) {
-        const res = await fetch("http://127.0.0.1:8000/api/centros/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ nombre }),
-        });
+  if (nombres.length === 0) {
+    Swal.fire("Campo vacío", "Por favor ingrese al menos un nombre de centro.", "warning");
+    return;
+  }
 
-        if (!res.ok) {
-          console.error(`Error creando centro: ${nombre}`);
-        }
+  try {
+    let errores = [];
+
+    for (let nombre of nombres) {
+      const res = await fetch("http://127.0.0.1:8000/api/centros/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nombre }),
+      });
+
+      if (!res.ok) {
+        console.error(`Error creando centro: ${nombre}`);
+        errores.push(nombre);
       }
-
-      await cargarCentros(); 
-      setNuevoCentroNombre("");
-    } catch (error) {
-      console.error("Error agregando centros:", error);
     }
-  };
+    await cargarCentros();
+    setNuevoCentroNombre("");
 
-
+    if (errores.length === 0) {
+      Swal.fire("Centros agregados", "Todos los centros fueron registrados correctamente.", "success");
+    } else {
+      Swal.fire(
+        "Algunos centros no se agregaron"
+      );
+    }
+  } catch (error) {
+    console.error("Error agregando centros:", error);
+    Swal.fire("Error", "Ocurrió un problema al agregar los centros.", "error");
+  }
+};
 
   return (
     <div className="agregar-f">
-      <h2>Agregar Especialidad</h2>
+      <h4>Agregar Especialidad</h4>
+      <p>Al colocar sus datos, debe seleccionar su centro previamente agregado:</p>
       <form className="f-list" onSubmit={agregarEspecialidad}>
         <input
           type="text"
@@ -128,9 +149,10 @@ const AggEspe = () => {
         </button>
       </form>
 
-      <hr style={{ margin: "2rem 0" }} />
+      <hr style={{ margin: "0.1rem" }} />
 
-      <h5>Agregar centros asistenciales</h5>
+      <h5>IMPORTANTE: Primero debe agregar su centro asistencial:</h5>
+
       <form onSubmit={agregarCentrosVarios} className="f-list">
         <input
           type="text"

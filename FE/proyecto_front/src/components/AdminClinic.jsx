@@ -79,20 +79,30 @@ function AdminClinic() {
     }
 
     function ClinicaElim(id) {
-        async function elis(id) {
-            const confirm = window.confirm("¿Está seguro de eliminar?");
-            if (!confirm) return;
-
-            const delet = await llamadosClinic.deleteClinicas(id);
-            if (delet) {
-                setClinicas(prev => prev.filter(clinica => clinica.id !== id));
-                Swal.fire("Clínica eliminada", "", "success");
-            } else {
-            Swal.fire("Error al eliminar", "", "error");
+    Swal.fire({
+        title: "¿Está seguro de eliminar?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        denyButtonText: "No"
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            try {
+                const delet = await llamadosClinic.deleteClinicas(id);
+                if (delet) {
+                    setClinicas(prev => prev.filter(clinica => clinica.id !== id));
+                    Swal.fire("Clínica eliminada", "", "success");
+                } else {
+                    Swal.fire("Error al eliminar", "", "error");
+                }
+            } catch (error) {
+                Swal.fire("Error", "No se pudo completar", "error");
             }
+        } else if (result.isDenied) {
+            Swal.fire("Cancelado", "No se realizaron cambios", "info");
         }
-        elis(id);
-    }
+    });
+}
 
 
     console.log(provincias);

@@ -3,8 +3,6 @@ import '../styles/socios.css';
 import { Link, useNavigate} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import llamadosProductos from '../services/llamadosProductos';
-import panam from '../assets/panam.png';
-import medis from '../assets/medis.png'
 import PaidIcon from '@mui/icons-material/Paid';
 
 function Socios() {

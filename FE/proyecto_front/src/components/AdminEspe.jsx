@@ -66,21 +66,31 @@ function AdminEspe() {
             }
 
             function eliii(id) {
-             async function eli(id) {
-              const avisa= window.confirm ("¿Está seguro de eliminar?");
-              if (!avisa) return;
-
-              const eliminacion= await llamadosEspecial.deleteEspecialidades(id);
-              if (eliminacion) {
-               setEspecialidades(prev => prev.filter(especialidades => especialidades.id !== id));
-               Swal.fire("especialidad eliminada", "", "success");
-              } else {
-               Swal.fire("Error al eliminar", "", "error");
-              }
-             }
-             eli(id);
+             Swal.fire({
+             title: "¿Está seguro de eliminar?",
+             showDenyButton: true,
+             showCancelButton: true,
+             confirmButtonText: "Sí",
+             denyButtonText: "No"
+            }).then(async (result) => {
+            if (result.isConfirmed) {
+             try {
+                const eliminacion = await llamadosEspecial.deleteEspecialidades(id);
+                if (eliminacion) {
+                    setEspecialidades(prev => prev.filter(especialidad => especialidad.id !== id));
+                    Swal.fire("Especialidad eliminada", "", "success");
+                } else {
+                    Swal.fire("Error al eliminar", "", "error");
+                }
+            } catch (error) {
+                Swal.fire("Error", "No se pudo completar", "error");
             }
-            
+        } else if (result.isDenied) {
+            Swal.fire("Cancelado", "No se realizaron cambios", "info");
+        }
+    });
+}
+
         return(
             <div className='body5'>
                 <div className="container11">
