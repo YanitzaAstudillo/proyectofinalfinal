@@ -1,6 +1,6 @@
     
 import '../styles/socios.css';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import llamadosProductos from '../services/llamadosProductos';
 import panam from '../assets/panam.png';
@@ -21,6 +21,8 @@ function Socios() {
             traerPaquetes();
         }, []);
 
+        const navigate= useNavigate()
+
     return(
         <div className="body3">
         <nav className="nav-bar2">
@@ -33,7 +35,6 @@ function Socios() {
              alt="Cirujanos operando en quirófano"
              className="header-image"
         />
-        
         <div className="roww2">
             {listaProductos.map((producto) => (
              <div className="tarjeta" key={producto.id}>
@@ -43,16 +44,26 @@ function Socios() {
              <br />
              <p className="card-text2"><strong>Descripción:</strong> {producto.descripcion}</p>
              <p className="card-text3"><strong> <PaidIcon/> Precio:</strong> {producto.precio_Paquete}</p>
+             
+             <button onClick={() => { navigate('/Plan', {state: { price: producto.precio_Paquete },});
+                }} size="lg"
+                style={{
+                backgroundColor: '#00008B',
+                color: '#fff',
+                borderRadius: '8px',
+                padding: '5px 20px',
+                border: 'none',
+                cursor: 'pointer'
+                }}
+                >Comprar plan
+            </button>
+             
              </div>
              </>
         </div>
             ))}
         </div>
-            <div style={{ display: 'flex', flexDirection: 'column', marginTop:'0px', gap: '10px', width: '320px', flexShrink: 0 }}>
-                <img src={panam} alt="Decoracion Aniv" style={{ width: '100%', borderRadius: '10px', opacity: 0.6 }}/>
-                <img src={medis} alt="Decoracion Metro"  style={{ width: '100%', borderRadius: '10px', opacity: 0.6 }}/>
-            </div>
-
+           
     </div>
 )
     

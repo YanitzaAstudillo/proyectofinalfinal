@@ -11,4 +11,4 @@ function PagInicio() {
     )
 }
 
-export default PagInicio
+export default PagInicio;

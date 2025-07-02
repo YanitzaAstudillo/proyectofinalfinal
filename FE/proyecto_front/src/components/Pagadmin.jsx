@@ -32,13 +32,14 @@ function Pagadmin() {
 
     function editar(id) {   
         console.log(id);
-        
+        const token = localStorage.getItem("token");
+
     if (!emailEditar || !direccionEditar || !telefonoEditar) {
         Swal.fire('¡Error!', 'Todos los campos deben estar completos.', 'error');
         return;
     }
 
-    llamados.updateUsuarios(emailEditar, direccionEditar, telefonoEditar, id)
+    llamados.updateUsuarios(emailEditar, direccionEditar, telefonoEditar, id,token)
         .then(() => {
          Swal.fire('Usuario actualizado', 'La actualización fue exitosa!', 'success');
 

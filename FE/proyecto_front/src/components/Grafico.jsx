@@ -34,8 +34,6 @@ const Grafico = ({ clinicas }) => {
       guanacaste: 0,
     };
 
-   
-    
 
     clinicas.forEach((c) => {
     const original = c.nombre_Provincia?.toLowerCase()?.trim();
@@ -46,7 +44,6 @@ const Grafico = ({ clinicas }) => {
     
     if (clave && conteo[clave] !== undefined) {
       conteo[clave]++;
- 
       
     }
 
@@ -63,7 +60,7 @@ const Grafico = ({ clinicas }) => {
       xAxis: {
         type: 'category',
         data: [
-          'Alajuela',
+          'alajuela',
           'Heredia',
           'san josé',
           'Limón',

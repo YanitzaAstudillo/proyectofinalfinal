@@ -26,7 +26,7 @@ function Nous() {
 
           <br /><br />
           <strong>Visión:</strong><br />
-          Convertirnos en la principal plataforma de información médica en Costa Rica, brindando soluciones médicas accesibles a toda la población.
+          Convertirnos en la principal plataforma de información médica en Costa Rica, brindando soluciones médicas accesibles a toda la población, valorando precios justos y calidad de atención.
         </p>
       </div>
 

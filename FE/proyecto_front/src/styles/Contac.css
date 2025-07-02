@@ -40,7 +40,9 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
   opacity: 0.5;
+  animation: fadeIn 2s ease-in-out;
 }
+
 @keyframes fadeIn{
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -57,7 +59,7 @@
   
   position: relative;
   left: 15rem;
-  top: -55vh;
+  top: -56vh;
 }
 
 .field {
@@ -92,6 +94,7 @@
  
  text-align: center;
 }
+
 @media screen and (max-width: 768px) {
   .booody{
     flex-direction:column;

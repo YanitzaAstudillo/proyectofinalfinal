@@ -60,7 +60,7 @@ async function postUsuarios(username,password,first_name,last_name,email, direcc
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsuarios(email, direccion, telefono,id) {
+async function updateUsuarios(email, direccion, telefono,id, token) {
     const obj={
         
         "email":email,
@@ -73,6 +73,7 @@ async function updateUsuarios(email, direccion, telefono,id) {
         const response = await fetch(`http://127.0.0.1:8000/api/editar-usuarios/${id}/`,{
             method: 'PATCH',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)

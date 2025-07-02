@@ -2,6 +2,7 @@
 import llamadosClinic from '../services/llamadosClinic';
 import { useState } from "react";
 import '../styles/adminClinic.css';
+import Swal from 'sweetalert2';
 
 
 const AggClinicas = () => {

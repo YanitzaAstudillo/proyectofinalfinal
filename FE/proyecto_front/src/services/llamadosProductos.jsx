@@ -54,7 +54,7 @@ async function updateProductos(paquete,descripcion,precio_Paquete,id) {
     const obj = {
         paquete,
         descripcion,
-        precio:parseInt(precio_Paquete)
+        precio_Paquete:parseInt(precio_Paquete)
     };
     
     try {

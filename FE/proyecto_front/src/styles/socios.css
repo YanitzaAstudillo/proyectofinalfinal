@@ -10,6 +10,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: rgba(17, 24, 39, 0.9);
+  border-radius: 15px;
+  animation: fadeIn 2s ease-in-out;
   gap: 20px;
   padding: 20px 20px;
 }
@@ -38,6 +41,7 @@
     text-shadow: black solid 3px;
     font-weight: bold;
 }
+
 @media screen and (max-width: 768px) {
   .roww2 {
     flex-direction: column;
@@ -48,7 +52,6 @@
     max-width: 100%;
   }
 }
-
 .card-text3{
   color: darkslategrey;
   font-weight: bolder;

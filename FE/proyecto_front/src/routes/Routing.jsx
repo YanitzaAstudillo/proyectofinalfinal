@@ -16,6 +16,7 @@ import AdminFarm from '../pages/AdminFarm.jsx';
 import Privada from '../components/Privada.jsx';
 import SociosPag from '../pages/SociosPag.jsx';
 import AdminSocios from '../pages/AdminSocios.jsx';
+import Plan from '../pages/Plan.jsx';
 
 
 function Routing() {
@@ -25,6 +26,7 @@ function Routing() {
             <Router>
                 <Routes>
 
+                 <Route path="/Plan" element={<Plan/>}/>
                  <Route path="/AdminSocios" element={<Privada rol={["asociado","administrador"]} children={<AdminSocios/>}/>} />
                  <Route path="/SociosPag" element={<SociosPag/>}/>
                  <Route path="/Nosotros" element={<Nosotros/>}/>
